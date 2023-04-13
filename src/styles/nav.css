@@ -1,0 +1,82 @@
+@import url('/src/styles/main.css');
+
+
+header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 3rem;
+    background-color: var(--color-outline);
+}
+
+header nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+header nav div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+header nav a {
+    line-height: 1;
+    display: block;
+    font-size: 120%;
+    padding: 0.9rem 1rem;     /* IF NAV ISSUES - check here - valign is not a solution */
+    font-family: var(--font-1);
+}
+
+header #page-logo,
+header nav div {
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+}
+
+header #page-logo:hover,
+header nav div:hover {
+    opacity: 1;
+    background-position: right center;
+    text-decoration: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: rgba(119, 119, 119, 0.541);
+}
+
+#page-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120%;
+    font-family: var(--font-1);
+    text-decoration: none;
+    color: var(--color-on-background);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+header #page-logo img,
+header nav div {
+    height: 100%;
+}
+
+header nav a {
+    color: var(--color-on-background);
+    text-decoration: none;
+}
+
+.nav-active {
+    background-color: rgb(71, 71, 71);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
