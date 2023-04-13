@@ -3,12 +3,12 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 
 let context = null;
 export async function dashboardPage(ctx) {
-    console.log(ctx);
-    context = ctx;
-    let itemsArray = await getAllItems(); // TO ADD in API
-    if (!itemsArray) itemsArray = [];
-    // let itemsArray = [];
-    ctx.render(itemsTemplate(itemsArray));
+    // console.log(ctx);
+    // context = ctx;
+    // let itemsArray = await getAllItems(); // TO ADD in API
+    // if (!itemsArray) itemsArray = [];
+    // // let itemsArray = [];
+    // ctx.render(itemsTemplate(itemsArray));
 }
 
 async function onDetails(e) {
