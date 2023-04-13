@@ -49,7 +49,8 @@
     --radius-pill: 500px;
     --radius-circle: 50%;
 
-    --transition-short: 100ms ease;
+    --transition-100ms: all 100ms ease;
+    --transition-2s: all 2s ease-in-out
 }
 
 * {
@@ -66,10 +67,9 @@ header {
     position: fixed;
     top: 0;
     display: flex;
-    justify-content: center;
-    column-gap: 0.5rem;
+    justify-content: space-evenly;
     width: 100vw;
-    height: 1.2rem;
+    height: 3rem;
     background-color: var(--color-outline);
 }
 
@@ -77,19 +77,41 @@ header nav {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 1.2rem;
-    column-gap: 0.5rem;
+    height: 100%;
+
+}
+
+header nav div {
+    height: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header nav a {
-    display: block;
-    font-size: 0.5rem;
+    font-size: 150%;
     font-family: var(--font-1);
 }
 
-header #page-logo img {
-    height: 1.2rem;
+#page-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+    font-family: var(--font-1);
+    text-decoration: none;
+    color: var(--color-on-background);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
+
+header #page-logo img,
+header nav div {
+    height: 100%;
+}
+
 
 header nav a {
     color: var(--color-on-background);
@@ -97,6 +119,15 @@ header nav a {
 }
 
 main {
-    padding-top: 1.2rem;
-    height: calc(100vh - 1.2rem);
+    padding-top: 3rem;
+    height: calc(100vh - 3rem);
+}
+
+#main-ctr {
+    height: 100%;
+}
+
+#page-logo:hover,
+header nav div:hover {
+    background-color: rgba(0, 128, 0, 0.411);
 }
