@@ -91,15 +91,15 @@ header nav {
 
 header nav div {
     height: 100%;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 header nav a {
-    font-size: 150%;
+    font-size: 120%;
     font-family: var(--font-1);
 }
 
@@ -125,12 +125,12 @@ header nav div:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 150%;
+    font-size: 120%;
     font-family: var(--font-1);
     text-decoration: none;
     color: var(--color-on-background);
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 header #page-logo img,
@@ -141,6 +141,11 @@ header nav div {
 header nav a {
     color: var(--color-on-background);
     text-decoration: none;
+}
+
+.nav-active {
+    color: #100E17;
+    background-color: var(--color-white-alpha-8);
 }
 
 main {
