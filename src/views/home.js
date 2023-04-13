@@ -5,26 +5,34 @@ export async function homePage(ctx) {
     // console.log(ctx);
     context = ctx;
     ctx.render(homeTemplate());
-    carousel();
+    slideshow();
 }
 
-var myIndex = 0;
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+let myIndex = 0;
+function slideshow() {
+    let mySlides = document.querySelectorAll(".mySlides");
+    for (let i = 0; i < mySlides.length; i++) {
+        mySlides[i].style.display = "none";
     }
     myIndex++;
-    if (myIndex > x.length) { myIndex = 1 }
-    x[myIndex - 1].style.display = "block";
-    setTimeout(carousel, 2000);
+    if (myIndex > mySlides.length) {
+        myIndex = 1;
+    }
+    mySlides[myIndex - 1].style.display = "block";
+    setTimeout(slideshow, 7000);
 }
 
 const homeTemplate = () => html`
+<div class="overlay-home"><p>TEST</p></div>
 <div class="slideshow-section">
-  <img class="mySlides" src="../images/home/1.jpg">
-  <img class="mySlides" src="img_ny.jpg">
-  <img class="mySlides" src="img_chicago.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/1.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/2.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/3.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/4.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/5.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/6.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/7.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/8.jpg">
+  <img class="mySlides animate-fading" src="/src/images/home/9.jpg">
 </div>
 `; 
