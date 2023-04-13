@@ -1,5 +1,3 @@
-
-
 export const elements = [
     document.querySelector('#page-logo'),
     document.querySelector('header nav div:nth-of-type(1)'),
