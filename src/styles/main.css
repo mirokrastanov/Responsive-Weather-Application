@@ -1,4 +1,6 @@
 @import url('/src/styles/home.css');
+@import url('/src/styles/nav.css'); 
+
 
 :root {
     --color-primary: #B5A1E5;
@@ -50,7 +52,8 @@
     --radius-circle: 50%;
 
     --transition-100ms: all 100ms ease;
-    --transition-2s: all 2s ease-in-out
+    --transition-1s: all 1s ease-in-out;
+    --transition-2s: all 2s ease-in-out;
 }
 
 * {
@@ -61,93 +64,6 @@
 
 body {
     background-color: var(--color-background);
-}
-
-.overlay-home a:hover {
-    opacity: 1;
-    background-position: right center;
-    color: #fff;
-    text-decoration: none;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100vw;
-    height: 3rem;
-    background-color: var(--color-outline);
-}
-
-header nav {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-
-}
-
-header nav div {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-header nav a {
-    line-height: 1;
-    display: block;
-    font-size: 120%;
-    padding: 0.9rem 1rem;     /* IF NAV ISSUES - check here - valign is not a solution */
-    font-family: var(--font-1);
-}
-
-header #page-logo,
-header nav div {
-    text-align: center;
-    transition: 0.5s;
-    background-size: 200% auto;
-}
-
-header #page-logo:hover,
-header nav div:hover {
-    opacity: 1;
-    background-position: right center;
-    text-decoration: none;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background-color: rgba(255, 255, 255, 0.411);
-}
-
-#page-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 120%;
-    font-family: var(--font-1);
-    text-decoration: none;
-    color: var(--color-on-background);
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-header #page-logo img,
-header nav div {
-    height: 100%;
-}
-
-header nav a {
-    color: var(--color-on-background);
-    text-decoration: none;
-}
-
-.nav-active {
-    background-color: rgb(102, 102, 102);
-    border: 1px solid wheat;
 }
 
 main {
