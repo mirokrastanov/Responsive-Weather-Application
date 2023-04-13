@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.overlay-home p {
+.overlay-home a {
     display: block;
     position: absolute;
     top: 47vh;
@@ -21,15 +21,16 @@
     padding: 5px 20px;
     backdrop-filter: blur(20px);
     opacity: 0.5;
-    border-radius: 15px;
+    border-radius: 25px;
     background-image: linear-gradient(to right, #304352 0%, #d7d2cc 51%, #304352 100%);
     text-align: center;
+    font-size: 200%;
     transition: 0.5s;
     background-size: 200% auto;
-    box-shadow: 0 0 20px #eee;
+    box-shadow: 0 0 20px #eee;    
 }
 
-.overlay-home p:hover {
+.overlay-home a:hover {
     opacity: 1;
     background-position: right center;
     color: #fff;
