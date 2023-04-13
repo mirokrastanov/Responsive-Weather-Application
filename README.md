@@ -2,4 +2,4 @@
 ☀️🌤️🌧️🌨️🌡️Web application with modern responsive design showing information about the weather, air quality &amp; more.
 
 # NYI - In Progress...
-### ETA: At or before May 23
+### ETA: At or before May 2023
