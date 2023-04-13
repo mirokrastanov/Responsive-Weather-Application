@@ -23,7 +23,7 @@ function slideshow() {
 }
 
 const homeTemplate = () => html`
-<div class="overlay-home"><a>Weather &#10149;</a></div>
+<div class="overlay-home"><a href="/">Weather &#10149;</a></div>
 <div class="slideshow-section">
   <img class="mySlides animate-fading" src="/src/images/home/1.jpg">
   <img class="mySlides animate-fading" src="/src/images/home/2.jpg">
