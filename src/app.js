@@ -14,7 +14,7 @@ page(mainMiddleware);
 page('/', homePage);
 page('/index.html', homePage);
 page('/dashboard', dashboardPage);
-page('/my-dashboard', airQualityPage);
+page('/air-quality', airQualityPage);
 page('/about', aboutPage);
 page('*', errorPage);
 page.start();
