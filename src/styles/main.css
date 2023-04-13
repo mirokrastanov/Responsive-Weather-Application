@@ -91,15 +91,17 @@ header nav {
 
 header nav div {
     height: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 header nav a {
+    line-height: 1;
+    display: block;
     font-size: 120%;
+    padding: 0.9rem 1rem;     /* IF NAV ISSUES - check here - valign is not a solution */
     font-family: var(--font-1);
 }
 
@@ -144,8 +146,8 @@ header nav a {
 }
 
 .nav-active {
-    color: #100E17;
-    background-color: var(--color-white-alpha-8);
+    background-color: rgb(102, 102, 102);
+    border: 1px solid wheat;
 }
 
 main {
@@ -156,3 +158,14 @@ main {
 #main-ctr {
     height: 100%;
 }
+
+
+
+
+
+
+
+
+
+/* TODO */
+/* MEDIA QUERIES - make sure nav is updated - font and the valign note thing too */
