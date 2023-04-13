@@ -5,8 +5,10 @@ import { dashboardPage } from './views/dashboard.js';
 import { aboutPage } from './views/about.js';
 import { airQualityPage } from './views/air-quality.js';
 import { errorPage } from './util/error.js';
+import { elements, routes } from './util/util.js';
 
 const root = document.querySelector('body main #main-ctr');
+
 
 // TODO - create views ==> Home, Weather Dashboard, Air Quality Page, About, Error 404
 
@@ -18,14 +20,20 @@ page('/air-quality', airQualityPage);
 page('/about', aboutPage);
 page('*', errorPage);
 page.start();
-updateNav();
+// updateNav();
 
-function updateNav() {
-    // TODO
+function updateNav(path) {
+    elements.forEach(x => {
+        let el = x;
+        if (x.tagName == 'DIV') el = x.querySelector('a');
+        if (path == el.pathname) x.classList.add('nav-active');
+        else x.classList.remove('nav-active');
+    })
 }
 
 function mainMiddleware(ctx, next) {
+    // console.log(ctx);
     ctx.render = (content) => render(content, root);
-    ctx.updateNav = updateNav;
+    ctx.updateNav = updateNav(ctx.path);
     next();
 }
