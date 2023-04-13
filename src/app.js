@@ -9,9 +9,6 @@ import { elements, routes } from './util/util.js';
 
 const root = document.querySelector('body main #main-ctr');
 
-
-// TODO - create views ==> Home, Weather Dashboard, Air Quality Page, About, Error 404
-
 page(mainMiddleware);
 page('/', homePage);
 page('/index.html', homePage);
