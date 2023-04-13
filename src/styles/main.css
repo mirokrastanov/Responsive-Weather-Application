@@ -1,0 +1,38 @@
+:root {
+    --test-var-1: black;
+    --test-var-2: cyan;
+    --test-var-3: teal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--test-var-1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 1.2rem;
+    background-color: var(--test-var-2);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    height: 1.2rem;
+}
+
+header nav a {
+    font-size: 0.7rem;
+}
+
+header #page-logo img {
+    height: 1.2rem;
+    background-color: var(--test-var-3);
+}
