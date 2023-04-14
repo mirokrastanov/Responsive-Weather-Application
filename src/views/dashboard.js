@@ -76,7 +76,15 @@ const initialTemplate = () => html`
             </a>
         </div>
 
-        <!-- TODO more -->
+        <!-- IN PROGRESS... -->
+        <main>
+            <article class="container">
+                <!-- continue here -->
+
+            </article>
+        </main>
+
+
 
     </div>
 </div>
