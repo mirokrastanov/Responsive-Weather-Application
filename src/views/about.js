@@ -7,6 +7,7 @@ export async function aboutPage(ctx) {
 }
 
 const aboutTemplate = () => html`
+<div>TEST - ABOUT</div>
 `; 
 
 

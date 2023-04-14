@@ -3,11 +3,12 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 
 let context = null;
 export async function dashboardPage(ctx) {
-    // context = ctx;
+    context = ctx;
     // let itemsArray = await getAllItems(); // TO ADD in API
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
+    ctx.render(initialTemplate());
 }
 
 async function onDetails(e) {
@@ -25,4 +26,8 @@ const itemTemplate = (item) => html`
 `;
 
 const noItemsTemplate = () => html`
+`;
+
+const initialTemplate = () => html`
+<div>TEST - Weather Dashboard</div>
 `;
