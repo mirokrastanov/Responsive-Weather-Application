@@ -65,13 +65,9 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: var(--color-background);
-}
-
 main {
     padding-top: 3rem;
-    height: calc(100vh - 3rem);
+    height: calc(300vh - 3rem);
 }
 
 #main-ctr {

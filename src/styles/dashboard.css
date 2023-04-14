@@ -50,25 +50,25 @@ sub, sup {
 }
 
 html {
-    font-family: var(--ff--nunito-sans);
+    font-family: var(--font-1);
     font-size: 10px;
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--background);
-    color: var(--on-background);
+    background-color: var(--color-background);
+    color: var(--color-on-background);
     font-size: var(--body-3);
     overflow: hidden;
 }
 
 :focus-visible {
-    outline: 2px solid var(--white);
+    outline: 2px solid var(--color-white);
     outline-offset: 2px;
 }
 
 ::selection {
-    background-color: var(--white-alpha-8);
+    background-color: var(--color-white-alpha-8);
 }
 
 ::-webkit-scrollbar {
@@ -76,4 +76,8 @@ body {
     height: 6px;
 }
 
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-white-alpha-8);
+    border-radius: var(--radius-pill);
+}
 
