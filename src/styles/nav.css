@@ -30,7 +30,7 @@ header nav a {
     line-height: 1;
     display: block;
     font-size: 120%;
-    padding: 0.9rem 1rem;     /* IF NAV ISSUES - check here - valign is not a solution */
+    padding: 0.5rem 1rem;     /* IF NAV ISSUES - check here - valign is not a solution */
     font-family: var(--font-1);
 }
 
