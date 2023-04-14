@@ -64,6 +64,10 @@ header nav div:hover {
     padding-right: 1rem;
 }
 
+#page-logo img {
+    margin-right: 5px;
+}
+
 header #page-logo img,
 header nav div {
     height: 100%;
