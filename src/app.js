@@ -23,7 +23,7 @@ page.start();
 function updateNav(path) {
     let pathCopy = '';
     if (path == '/home' || path == '/index.html') pathCopy = '/';
-
+    else pathCopy = path;
     elements.forEach(x => {
         let el = x;
         if (x.tagName == 'DIV') el = x.querySelector('a');
