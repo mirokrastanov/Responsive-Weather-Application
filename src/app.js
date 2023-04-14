@@ -11,6 +11,7 @@ const root = document.querySelector('body main #main-ctr');
 
 page(mainMiddleware);
 page('/', homePage);
+page('/home', homePage);
 page('/index.html', homePage);
 page('/dashboard', dashboardPage);
 page('/air-quality', airQualityPage);
@@ -20,10 +21,13 @@ page.start();
 // updateNav();
 
 function updateNav(path) {
+    let pathCopy = '';
+    if (path == '/home' || path == '/index.html') pathCopy = '/';
+
     elements.forEach(x => {
         let el = x;
         if (x.tagName == 'DIV') el = x.querySelector('a');
-        if (path == el.pathname) x.classList.add('nav-active');
+        if (pathCopy == el.pathname) x.classList.add('nav-active');
         else x.classList.remove('nav-active');
     })
 }
