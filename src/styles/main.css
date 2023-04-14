@@ -1,5 +1,6 @@
 @import url('/src/styles/home.css');
-@import url('/src/styles/nav.css'); 
+@import url('/src/styles/nav.css');
+@import url('/src/styles/dashboard.css');
 
 
 :root {
@@ -56,7 +57,9 @@
     --transition-2s: all 2s ease-in-out;
 }
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
