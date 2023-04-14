@@ -7,7 +7,7 @@ import { airQualityPage } from './views/air-quality.js';
 import { errorPage } from './util/error.js';
 import { elements, routes } from './util/util.js';
 
-const root = document.querySelector('body main #main-ctr');
+const root = document.querySelector('body #main #main-ctr');
 
 page(mainMiddleware);
 page('/', homePage);

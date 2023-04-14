@@ -11,7 +11,7 @@
     box-sizing: border-box;
 }
 
-main {
+#main {
     padding-top: 3rem;
     height: calc(300vh - 3rem);
 }
