@@ -4,25 +4,39 @@ let context = null;
 export async function homePage(ctx) {
     context = ctx;
     ctx.render(homeTemplate());
-    slideshow();
+    slideshow(ctx);
 }
 
 let myIndex = 0;
 function slideshow() {
-    let mySlides = document.querySelectorAll(".mySlides");
-    for (let i = 0; i < mySlides.length; i++) {
-        mySlides[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > mySlides.length) {
-        myIndex = 1;
-    }
-    mySlides[myIndex - 1].style.display = "block";
-    setTimeout(slideshow, 7000);
+    try {
+        let mySlides = document.querySelectorAll(".mySlides");
+        for (let i = 0; i < mySlides.length; i++) {
+            mySlides[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > mySlides.length) {
+            myIndex = 1;
+        }
+        mySlides[myIndex - 1].style.display = "block";
+        // console.log(context.pathname);
+        if (context.pathname != '/' && context.pathname != '/home'
+            && context.pathname != '/index.html') return;
+        setTimeout(slideshow, 7000);
+    } catch (error) { }
 }
 
+
+// elements.forEach(x => {
+//     let el = x;
+//     if (x.tagName == 'DIV') el = x.querySelector('a');
+//     if (path == el.pathname) x.classList.add('nav-active');
+//     else x.classList.remove('nav-active');
+// })
+
+
 const homeTemplate = () => html`
-<div class="overlay-home"><a href="/">Weather &#10149;</a></div>
+<div class="overlay-home"><a href="/dashboard">Weather &#10149;</a></div>
 <div class="slideshow-section">
   <img class="mySlides animate-fading" src="/src/images/home/1.jpg">
   <img class="mySlides animate-fading" src="/src/images/home/2.jpg">
