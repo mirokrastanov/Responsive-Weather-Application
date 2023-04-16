@@ -5,7 +5,7 @@ import { dashboardPage } from './views/dashboard.js';
 import { aboutPage } from './views/about.js';
 import { airQualityPage } from './views/air-quality.js';
 import { errorPage } from './util/error.js';
-import { elements, routes } from './util/util.js';
+import { elements } from './util/util.js';
 
 const root = document.querySelector('body #main #main-ctr');
 
@@ -26,7 +26,6 @@ function updateNav(path) {
     else pathCopy = path;
     elements.forEach(x => {
         let el = x;
-        if (x.tagName == 'DIV') el = x.querySelector('a');
         if (pathCopy == el.pathname) x.classList.add('nav-active');
         else x.classList.remove('nav-active');
     })
