@@ -82,7 +82,7 @@ const initialTemplate = () => html`
 <main>
     <article class="container">
         <div class="content-left">
-            <!-- current weather -->
+            <!-- CURRENT WEATHER -->
             <section class="section current-weather" aria-label="current weather"
             data-current-weather>
                 <div class="card card-lg current-weather-card">
@@ -110,9 +110,89 @@ const initialTemplate = () => html`
 
                     </ul>
                 </div> 
+            </section> <!-- current weather ends here -->
+            
+            <!-- FORECAST -->
+            <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast>
+                <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+
+                <div class="card card-lg forecast-card">
+                    <ul>
+                        <li class="card-item"> <!-- li 1 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
+                        <li class="card-item"> <!-- li 2 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
+                        <li class="card-item"> <!-- li 3 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
+                        <li class="card-item"> <!-- li 4 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
+                        <li class="card-item"> <!-- li 5 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
+
+                    </ul>
+                </div> <!-- div.card.card-lg.forecast-card ends here -->
             </section>
         </div> <!-- div.content-left ends here -->
-
 
     </article> <!-- article.container ends here -->
 </main>
