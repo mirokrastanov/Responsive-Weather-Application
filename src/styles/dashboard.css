@@ -423,7 +423,7 @@ article.container::before {
     margin-inline: auto;
 }
 
-.current-weather-card > .body-3 {
+.current-weather-card>.body-3 {
     text-transform: capitalize;
 }
 
@@ -447,3 +447,28 @@ article.container::before {
     color: var(--color-on-surface-variant);
 }
 
+
+
+
+
+.forecast-card .title-2 {
+    margin-block-end: 0;
+}
+
+.forecast-card:is(.card-item, .icon-wrapper) { /* TODO - figure out the issue - FIX! */
+    display: flex;
+    align-items: center;
+}
+
+/* .forecast-card .card-item:not(:last-child) {
+    margin-block-end: 12px;
+}
+
+.forecast-card .icon-wrapper {
+    gap: 8px;
+}
+
+.forecast-card .label-1 {
+    color: var(--color-on-surface-variant);
+    font-weight: var(--weight-semiBold);
+} */
