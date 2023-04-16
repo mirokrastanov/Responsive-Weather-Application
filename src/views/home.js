@@ -26,15 +26,6 @@ function slideshow() {
     } catch (error) { }
 }
 
-
-// elements.forEach(x => {
-//     let el = x;
-//     if (x.tagName == 'DIV') el = x.querySelector('a');
-//     if (path == el.pathname) x.classList.add('nav-active');
-//     else x.classList.remove('nav-active');
-// })
-
-
 const homeTemplate = () => html`
 <div class="overlay-home"><a href="/dashboard">Weather &#10149;</a></div>
 <div class="slideshow-section">
