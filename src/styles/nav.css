@@ -9,6 +9,7 @@ header {
     width: 100vw;
     height: 3rem;
     background-color: var(--color-outline);
+    z-index: 100;
 }
 
 nav {
