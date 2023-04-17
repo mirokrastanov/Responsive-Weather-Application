@@ -373,7 +373,8 @@ main {
     height: calc(100vh - 80px);
     height: calc(100svh - 80px);
     overflow: hidden;
-    padding-bottom: 30px; /* to compensate for the nav bar */
+    padding-bottom: 30px;
+    /* to compensate for the nav bar */
 }
 
 article.container {
@@ -474,7 +475,7 @@ article.container::before {
     font-weight: var(--weight-semiBold);
 }
 
-.forecast-card .card-item > .label-1 {
+.forecast-card .card-item>.label-1 {
     width: 100%;
     text-align: right;
 }
@@ -567,5 +568,49 @@ article.container::before {
 
 .highlight-card.two .label-1 {
     margin-block-end: 4px;
+}
+
+
+
+
+
+
+
+.slider-container {
+    overflow-x: auto;
+    margin-inline: -16px;
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-list {
+    display: flex;
+    gap: 12px;
+}
+
+.slider-list:first-child {
+    margin-block-end: 16px;
+}
+
+.slider-list::before,
+.slider-list::after {
+    content: "";
+    min-width: 4px;
+}
+
+.slider-item {
+    min-width: 110px;
+    flex: 1 1 100%;
+}
+
+.slider-card {
+    text-align: center;
+}
+
+.slider-item .weather-icon {
+    margin-inline: auto;
+    margin-block: 12px;
 }
 
