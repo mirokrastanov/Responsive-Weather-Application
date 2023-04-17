@@ -326,7 +326,7 @@ const initialTemplate = () => html`
             </section> <!-- section.section.highlights ends here -->
 
             <!-- HOURLY -->
-            <div class="section hourly-forecast" aria-label="hourly forecast"
+            <section class="section hourly-forecast" aria-label="hourly forecast"
                 data-hourly-forecast>
                 
                 <h2 class="title-2">Today at</h2>
@@ -496,24 +496,25 @@ const initialTemplate = () => html`
 
                 </div>
 
-            </div> <!-- div.section.hourly-forecast ends here -->
+            </section> <!-- div.section.hourly-forecast ends here -->
 
+            <footer class="footer">
+                <p class="body-3">
+                    Author: Miro Krastanov. Extra credits in the About section.
+                </p>
+
+                <p class="body-3">
+                    Powered By <a href="https://open-meteo.com/" title="Free Weather API"
+                    target="_blank" rel="noopener">
+                        <img src="/src/images/open-meteo.gif" width="150px" height="30px"
+                        loading="lazy" alt="Open-Meteo">
+                    </a>
+                </p>
+            </footer>
         </div> <!-- div.content-right ends here -->
 
-
-        <footer class="footer">
-            <p class="body-3">
-                Author: Miro Krastanov. Extra credits in the About section.
-            </p>
-
-            <p class="body-3">
-                Powered By <a href="https://open-meteo.com/" title="Free Weather API"
-                target="_blank" rel="noopener">
-                    <img src="/src/images/open-meteo.gif" width="150px" height="30px"
-                    loading="lazy" alt="Open-Meteo">
-                </a>
-            </p>
-        </footer>
+        <div class="loading" data-loading></div>
+        
 
     </article> <!-- article.container ends here -->
 </main>
