@@ -36,18 +36,18 @@ const initialTemplate = () => html`
             <img src="/src/images/logo.gif" alt="logo" width="364" height="58">
         </a>
 
-        <div class="search-view active" data-search-view> <!-- toggle .active for testing -->
+        <div class="search-view" data-search-view> <!-- toggle .active for testing -->
             <div class="search-wrapper">
                 <input type="search" name="search" placeholder="Search city ..." 
                 autocomplete="off" class="search-field" data-search-field>
-                <span class="m-icon">search</span>
+                <span class="m-icon leading-icon">search</span>
                 <button class="icon-btn leading-icon has-state" aria-label="close search" 
                 data-search-toggler>
                     <span class="m-icon">arrow_back</span>
                 </button>
             </div> <!-- search-wrapper ends here -->
 
-            <div class="search-result" data-search-result>
+            <div class="search-result" data-search-result> <!-- toggle .active for testing -->
                 <ul class="view-list" data-search-list>
                     <li class="view-item">
                         <span class="m-icon">location_on</span>

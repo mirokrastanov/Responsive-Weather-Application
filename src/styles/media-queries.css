@@ -54,7 +54,7 @@
         gap: 24px;
     }
 
-    .container-left {
+    .content-left {
         position: sticky;
         top: 0;
     }
@@ -108,7 +108,8 @@
         padding: 16px;
     }
 
-    .search-view.active { /* search showing in lower res */
+    .search-view.active {
+        /* search showing in lower res */
         all: unset;
         display: block;
         position: relative;
@@ -127,8 +128,13 @@
         padding: 40px;
     }
 
-    article.container { /* fix for the ratio left / right */
+    article.container {
         grid-template-columns: 280px minmax(0, 1fr);
+    }
+
+    .content-left {
+        position: sticky;
+        top: 0;
     }
 
     .card-lg {
@@ -147,9 +153,9 @@
         column-gap: 24px;
     }
 
-    .header .icon-btn {
+    /* .header .icon-btn {
         display: none;
-    }
+    } */
 
     .logo img {
         width: 200px;
@@ -174,4 +180,110 @@
         animation: none;
     }
 
+    .search-wrapper {
+        border-block-end: none;
+    }
+
+    .search-wrapper>.m-icon {
+        display: block;
+    }
+
+    .search-field,
+    .search-view .view-list {
+        background-color: var(--color-surface);
+    }
+
+    .search-field {
+        height: 56px;
+        border-radius: var(--radius-28);
+    }
+
+    .search-result,
+    .search-view:not(:focus-within) .search-result {
+        display: none;
+    }
+
+    .search-view:focus-within .search-result.active {
+        display: block;
+    }
+
+    .search-view:has(.search-result.active):focus-within .search-field {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .search-view .view-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 360px;
+        border-radius: 0 0 var(--radius-28) var(--radius-28);
+        border-block-start: 1px solid var(--color-outline);
+        overflow-y: auto;
+        overflow-y: overlay;
+    }
+
+    .search-view .view-list:empty {
+        min-height: 120px;
+    }
+
+    .search-view .view-list::-webkit-scrollbar-button {
+        height: 20px;
+    }
+
+    .search-view :is(:hover, :has(.view-list):hover) {
+        filter: drop-shadow(var(--shadow-1));
+    }
+
+    .search-view :is(:focus-within, :has(.view-list):focus-within) {
+        filter: drop-shadow(var(--shadow-2))
+    }    
+
+    main {
+        height: calc(100vh - 120px);
+        height: calc(100svh - 120px);
+    }
+
+    article.container {
+        grid-template-columns: 360px minmax(0, 1fr);
+        gap: 40px;
+    }
+
+    .current-weather .weather-icon {
+        width: 80px;
+    }
+
+    .forecast-card .title-2 {
+        --title-2: 2.2rem;
+    }
+
+    .highlight-card:nth-child(-n+2) {
+        height: 200px;
+    }
+
+    .highlight-card:nth-child(n+3) {
+        height: 150px;
+    }
+
+    .highlight-card .m-icon {
+        font-size: 4.8rem;
+    }
+
+    .slider-list {
+        gap: 16px;
+    }
+}
+
+
+@media all and (min-width: 1400px) {
+
+    article.container .content-left {
+        position: sticky;
+        top: 0;
+    }
+
+    .highlight-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
