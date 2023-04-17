@@ -455,12 +455,12 @@ article.container::before {
     margin-block-end: 0;
 }
 
-.forecast-card:is(.card-item, .icon-wrapper) { /* TODO - figure out the issue - FIX! */
+.forecast-card :is(.card-item, .icon-wrapper) {
     display: flex;
     align-items: center;
 }
 
-/* .forecast-card .card-item:not(:last-child) {
+.forecast-card .card-item:not(:last-child) {
     margin-block-end: 12px;
 }
 
@@ -471,4 +471,10 @@ article.container::before {
 .forecast-card .label-1 {
     color: var(--color-on-surface-variant);
     font-weight: var(--weight-semiBold);
-} */
+}
+
+.forecast-card .card-item > .label-1 {
+    width: 100%;
+    text-align: right;
+}
+
