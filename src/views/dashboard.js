@@ -240,9 +240,7 @@ const initialTemplate = () => html`
                                 </ul>
                             </div>
 
-                            <span clas="badge aqi-1 label-1" title="aqi message">
-                            Good
-                            </span>
+                            <span class="badge aqi-1 label-1" title="aqi message">Good</span>
 
                         </div>
 
