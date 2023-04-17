@@ -515,7 +515,6 @@ const initialTemplate = () => html`
 
         <div class="loading" data-loading></div>
         
-
     </article> <!-- article.container ends here -->
 </main>
 `;
