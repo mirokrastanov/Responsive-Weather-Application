@@ -4,6 +4,7 @@
 @import url('/src/styles/dashboard.css');
 @import url('/src/styles/util.css');
 @import url('/src/styles/error.css');
+@import url('/src/styles/media-queries.css');
 
 *,
 *::before,
