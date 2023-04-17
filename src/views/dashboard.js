@@ -500,7 +500,7 @@ const initialTemplate = () => html`
 
         </div> <!-- div.content-right ends here -->
 
-        
+
         <footer class="footer">
             <p class="body-3">
                 Author: Miro Krastanov. Extra credits in the About section.
@@ -509,7 +509,7 @@ const initialTemplate = () => html`
             <p class="body-3">
                 Powered By <a href="https://open-meteo.com/" title="Free Weather API"
                 target="_blank" rel="noopener">
-                    <img src="/src/images/open-meteo.png" width="150px" height="30px"
+                    <img src="/src/images/open-meteo.gif" width="150px" height="30px"
                     loading="lazy" alt="Open-Meteo">
                 </a>
             </p>
