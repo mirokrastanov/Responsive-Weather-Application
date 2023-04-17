@@ -373,6 +373,7 @@ main {
     height: calc(100vh - 80px);
     height: calc(100svh - 80px);
     overflow: hidden;
+    padding-bottom: 30px; /* to compensate for the nav bar */
 }
 
 article.container {
@@ -556,5 +557,15 @@ article.container::before {
 .badge.aqi-5 {
     background-color: var(--color-bg-aqi-5);
     color: var(--color-on-bg-aqi-5);
+}
+
+.highlight-card.two .card-item {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+.highlight-card.two .label-1 {
+    margin-block-end: 4px;
 }
 
