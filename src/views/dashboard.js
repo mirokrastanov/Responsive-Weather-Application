@@ -195,6 +195,7 @@ const initialTemplate = () => html`
         </div> <!-- div.content-left ends here -->
 
         <div class="content-right">
+            
             <!-- HIGHLIGHTS -->
             <section class="section highlights" aria-labelledby="highlights-label" data-highlights>
                 <div class="card card-lg">
@@ -325,8 +326,8 @@ const initialTemplate = () => html`
             </section> <!-- section.section.highlights ends here -->
 
             <!-- HOURLY -->
-            <section class="section hourly-forecast" aria-label="hourly forecast"
-            data-hourly-forecast>
+            <div class="section hourly-forecast" aria-label="hourly forecast"
+                data-hourly-forecast>
                 
                 <h2 class="title-2">Today at</h2>
                 
@@ -495,10 +496,24 @@ const initialTemplate = () => html`
 
                 </div>
 
-            </section>
-
+            </div> <!-- div.section.hourly-forecast ends here -->
 
         </div> <!-- div.content-right ends here -->
+
+        
+        <footer class="footer">
+            <p class="body-3">
+                Author: Miro Krastanov. Extra credits in the About section.
+            </p>
+
+            <p class="body-3">
+                Powered By <a href="https://open-meteo.com/" title="Free Weather API"
+                target="_blank" rel="noopener">
+                    <img src="/src/images/open-meteo.png" width="150px" height="30px"
+                    loading="lazy" alt="Open-Meteo">
+                </a>
+            </p>
+        </footer>
 
     </article> <!-- article.container ends here -->
 </main>
