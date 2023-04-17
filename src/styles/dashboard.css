@@ -273,7 +273,8 @@ body {
 }
 
 .search-view.active {
-    display: block; /* line 234: display: none ==> override */
+    /* BELOW -> FIX for line 234: display: none ==> override */
+    display: block; 
     opacity: 1;
     visibility: visible;
     clip-path: circle(130% at 73% 5%);

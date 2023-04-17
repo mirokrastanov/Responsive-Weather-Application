@@ -36,7 +36,7 @@ const initialTemplate = () => html`
             <img src="/src/images/logo.gif" alt="logo" width="364" height="58">
         </a>
 
-        <div class="search-view active" data-search-view>
+        <div class="search-view active" data-search-view> <!-- toggle .active for testing -->
             <div class="search-wrapper">
                 <input type="search" name="search" placeholder="Search city ..." 
                 autocomplete="off" class="search-field" data-search-field>
@@ -84,16 +84,16 @@ const initialTemplate = () => html`
         <div class="content-left">
             <!-- CURRENT WEATHER -->
             <section class="section current-weather" aria-label="current weather"
-            data-current-weather>
+                data-current-weather>
                 <div class="card card-lg current-weather-card">
                 
-                    <h2 class="title-2 card-title">Now<h2>
+                    <h2 class="title-2 card-title">Now</h2>
 
                     <div class="weapper">
                         <p class="heading">25&deg;<sup>c</sup></p>
 
-                        <img src="/src/images/weather-icons/01d.png" width="64"
-                        height="64" alt="Overcast Clouds" class="weather-icon">
+                        <img src="/src/images/weather-icons/01d.png" width="64px"
+                        height="64px" alt="Overcast Clouds" class="weather-icon">
                     </div>
 
                     <p class="body-3">Overcast Clouds</p>

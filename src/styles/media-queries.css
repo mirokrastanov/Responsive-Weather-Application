@@ -107,6 +107,14 @@
     .hourly-forecast .card-sm {
         padding: 16px;
     }
+
+    .search-view.active { /* search showing in lower res */
+        all: unset;
+        display: block;
+        position: relative;
+        animation: none;
+    }
+
 }
 
 @media all and (min-width: 1200px) {
@@ -118,7 +126,11 @@
     .container {
         padding: 40px;
     }
-    
+
+    article.container { /* fix for the ratio left / right */
+        grid-template-columns: 280px minmax(0, 1fr);
+    }
+
     .card-lg {
         padding: 36px;
     }
@@ -153,4 +165,13 @@
         padding-block: 0;
         height: 100%;
     }
+
+    .search-view.active {
+        all: unset;
+        display: block;
+        position: relative;
+        width: 500px;
+        animation: none;
+    }
+
 }
