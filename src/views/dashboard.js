@@ -36,7 +36,7 @@ const initialTemplate = () => html`
             <img src="/src/images/logo.gif" alt="logo" width="364" height="58">
         </a>
 
-        <div class="search-view" data-search-view>
+        <div class="search-view active" data-search-view>
             <div class="search-wrapper">
                 <input type="search" name="search" placeholder="Search city ..." 
                 autocomplete="off" class="search-field" data-search-field>
