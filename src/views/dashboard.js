@@ -8,27 +8,29 @@ export async function dashboardPage(ctx) {
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
-    ctx.render(initialTemplate());
+    ctx.render(dashboardTemplate());
 }
 
-async function onDetails(e) {
+async function hourlyDetails(e) {
     e.preventDefault();
-    let item = e.currentTarget;
-    console.log(item);;
-    // let id = item.dataset.id;
-    // context.page.redirect(`/details/${id}`);
+
+    context.render(hourlyTemplate());
 }
 
-const itemsTemplate = (items) => html`
-`;
+async function redirectToAqi(e) {
+    e.preventDefault();
 
-const itemTemplate = (item) => html`
-`;
+    context.render(dashboardTemplate());
+}
 
-const noItemsTemplate = () => html`
-`;
 
-const initialTemplate = () => html`
+const itemsTemplate = (items) => html``;
+
+const itemTemplate = (item) => html``;
+
+const noItemsTemplate = () => html``;
+
+const dashboardTemplate = () => html`
 <div class="header">
     <div class="container">
 
@@ -61,7 +63,6 @@ const initialTemplate = () => html`
                 </ul>
             </div> <!-- search-result ends here -->
         </div> <!-- search-view ends here -->
-
 
         <div class="header-actions">
             <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
@@ -269,7 +270,7 @@ const initialTemplate = () => html`
                                 </ul>
                             </div>
 
-                            <span id="aqi-link" title="aqi more info">More Info</span>
+                            <a href="/air-quality" id="aqi-link" title="aqi more info">More Info</a>
                             <span class="badge aqi-1 label-1" title="aqi message">Good</span>
 
                         </div>
@@ -555,7 +556,7 @@ const initialTemplate = () => html`
 
                     </ul>
 
-                    <h2 class="title-2" id="h-info">More Info</h2>
+                    <h2 @click=${hourlyDetails} class="title-2" id="h-info">Detailed Hourly Info</h2>
 
                 </div>
 
@@ -581,3 +582,64 @@ const initialTemplate = () => html`
     </article> <!-- article.container ends here -->
 </main>
 `;
+
+const hourlyTemplate = () => html`
+<div class="header">
+    <div class="container">
+
+        <a href="javascript:void(0)" class="logo">
+            <img src="/src/images/logo.gif" alt="logo" width="364" height="58">
+        </a>
+
+        <div class="h-forecast-title">Hourly Forecast</div>
+
+        <div class="header-actions">
+            <a href="/dashboard" id="h-forecast-btn">Back to Dashboard</a>
+        </div>
+
+    </div> <!-- div.container ends here -->
+</div> <!-- div.header ends here -->
+
+<div class="blurred">
+    <table class="hour-section">
+        <tbody data-hour-section>
+            <tr class="hour-row">
+                <td>
+                    <div class="info-group">
+                        <div class="label">Thursday</div>
+                        <div>3 PM</div>
+                    </div>
+                </td>
+                <td>
+                    <img src="icons/cloud.svg" class="weather-icon" />
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">Temp</div>
+                        <div>31&deg;</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">FL Temp</div>
+                        <div>25&deg;</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">Wind</div>
+                        <div>26<span class="value-sub-info">mph</span></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="info-group">
+                        <div class="label">Precip</div>
+                        <div>0<span class="value-sub-info">in</span></div>
+                    </div>
+                </td>
+            </tr>
+            <!-- DYNAMICALLY ADD MORE ROWS -->
+        </tbody>
+    </table>
+</div>`;
+
