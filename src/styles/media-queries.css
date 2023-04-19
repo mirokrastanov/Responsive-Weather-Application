@@ -3,7 +3,7 @@
 
 @media all and (max-width: 450px) {
     .h-forecast-title {
-        font-size: 1.5rem;   
+        font-size: 1.5rem;
     }
 }
 
@@ -126,12 +126,23 @@
     #h-forecast-btn {
         font-size: 2rem;
     }
+
     .h-forecast-title {
         font-size: 3rem;
     }
+
     #h-forecast-btn {
         padding: 4px 20px;
     }
+
+    .hour-section .label {
+        font-size: 1.3rem;
+    }
+    
+    .info-group div:nth-of-type(2) {
+        font-size: 2.2rem;
+    }
+    
 }
 
 @media all and (min-width: 1200px) {
@@ -294,9 +305,11 @@
     #h-forecast-btn {
         font-size: 2rem;
     }
+
     .h-forecast-title {
         font-size: 3.5rem;
     }
+
     #h-forecast-btn {
         padding: 10px 25px;
     }

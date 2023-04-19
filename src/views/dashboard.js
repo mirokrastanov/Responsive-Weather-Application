@@ -26,6 +26,7 @@ async function redirectToAqi(e) {
 
 const itemsTemplate = (items) => html``;
 
+// hourRowTemplate
 const itemTemplate = (item) => html``;
 
 const noItemsTemplate = () => html``;
@@ -603,43 +604,54 @@ const hourlyTemplate = () => html`
 <div class="blurred">
     <table class="hour-section">
         <tbody data-hour-section>
-            <tr class="hour-row">
-                <td>
-                    <div class="info-group">
-                        <div class="label">Thursday</div>
-                        <div>3 PM</div>
-                    </div>
-                </td>
-                <td>
-                    <img src="icons/cloud.svg" class="weather-icon" />
-                </td>
-                <td>
-                    <div class="info-group">
-                        <div class="label">Temp</div>
-                        <div>31&deg;</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="info-group">
-                        <div class="label">FL Temp</div>
-                        <div>25&deg;</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="info-group">
-                        <div class="label">Wind</div>
-                        <div>26<span class="value-sub-info">mph</span></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="info-group">
-                        <div class="label">Precip</div>
-                        <div>0<span class="value-sub-info">in</span></div>
-                    </div>
-                </td>
-            </tr>
-            <!-- DYNAMICALLY ADD MORE ROWS -->
+            <!-- add dynamic info to each row -->
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+         
+            <!-- AND condition for no items shown -->
         </tbody>
     </table>
 </div>`;
 
+const hourRowTemplate = () => html`
+<tr class="hour-row">
+    <td>
+        <div class="info-group">
+            <div class="label">Thursday</div>
+            <div>3 PM</div>
+        </div>
+    </td>
+    <td>
+        <img src="/src/images/weather-icons/09n.png" class="weather-icon"
+        height="40px" width="40px" />
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Temp</div>
+            <div>31&deg;</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">FL Temp</div>
+            <div>25&deg;</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Wind</div>
+            <div>26<span class="value-sub-info">km/h</span></div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Precip</div>
+            <div>0<span class="value-sub-info">cm</span></div>
+        </div>
+    </td>
+</tr>`;
