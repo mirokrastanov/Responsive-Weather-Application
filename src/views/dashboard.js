@@ -1,4 +1,7 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { getWeather } from '../api/api.js';
+import { getCurrentTimeZone } from '../api/data.js';
+
 // import from api
 
 let context = null;
@@ -8,13 +11,17 @@ export async function dashboardPage(ctx) {
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
+    let weatherInfoObj = await getWeather(42.7, 23.32, getCurrentTimeZone());
+    console.log(weatherInfoObj);
     ctx.render(dashboardTemplate());
+    document.querySelector('article.container').style.display = 'grid';
 }
 
 async function hourlyDetails(e) {
     e.preventDefault();
 
     context.render(hourlyTemplate());
+    document.querySelector('article.container').style.display = 'block';
 }
 
 async function redirectToAqi(e) {
@@ -601,6 +608,9 @@ const hourlyTemplate = () => html`
     </div> <!-- div.container ends here -->
 </div> <!-- div.header ends here -->
 
+<main>
+    <article class="container">
+        <div class="content-middle">
 <div class="blurred">
     <table class="hour-section">
         <tbody data-hour-section>
@@ -612,11 +622,25 @@ const hourlyTemplate = () => html`
             ${html`${hourRowTemplate()}`}
             ${html`${hourRowTemplate()}`}
             ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
+            ${html`${hourRowTemplate()}`}
          
             <!-- AND condition for no items shown -->
         </tbody>
     </table>
-</div>`;
+</div>
+
+</div>
+</article>
+</main>`;
 
 const hourRowTemplate = () => html`
 <tr class="hour-row">
@@ -628,7 +652,7 @@ const hourRowTemplate = () => html`
     </td>
     <td>
         <img src="/src/images/weather-icons/09n.png" class="weather-icon"
-        height="40px" width="40px" />
+        height="60px" width="60px" />
     </td>
     <td>
         <div class="info-group">
@@ -645,19 +669,48 @@ const hourRowTemplate = () => html`
     <td>
         <div class="info-group">
             <div class="label">Wind</div>
-            <div>26<span class="value-sub-info">km/h</span></div>
+            <div>26 km/h</div>
         </div>
+    </td>
+    <td>
+        <img src="/src/images/weather-icons/direction.png" class="weather-icon"
+        height="40px" width="40px" />
     </td>
     <td>
         <div class="info-group">
             <div class="label">Precip</div>
-            <div>0<span class="value-sub-info">cm</span></div>
+            <div>0 cm</div>
+        </div>
+    </td>
+
+    <td>
+        <div class="info-group">
+            <div class="label">Precip %</div>
+            <div>25 %</div>
         </div>
     </td>
     <td>
         <div class="info-group">
-            <div class="label">Precip %</div>
-            <div>0<span class="value-sub-info">%</span></div>
+            <div class="label">Humidity</div>
+            <div>84 %</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Visibility</div>
+            <div>14 km</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Pressure</div>
+            <div>1011 hPa</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">TODO</div>
+            <div>Todo</div>
         </div>
     </td>
 </tr>`;
