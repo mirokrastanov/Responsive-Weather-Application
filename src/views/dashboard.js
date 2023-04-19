@@ -114,7 +114,7 @@ const initialTemplate = () => html`
             
             <!-- FORECAST -->
             <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast>
-                <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+                <h2 class="title-2" id="forecast-label">Weekly Forecast</h2>
 
                 <div class="card card-lg forecast-card">
                     <ul>
@@ -188,6 +188,34 @@ const initialTemplate = () => html`
                             <p class="label-1">Friday</p>
 
                         </li>
+                        <li class="card-item"> <!-- li 6 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
+                        <li class="card-item"> <!-- li 7 -->
+                            <div class="icon-wrapper">
+                                <img src="/src/images/weather-icons/01n.png" alt="Overcast Clouds" 
+                                width="36" height="36px" class="weather-icon">
+                            
+                                <span class="span">
+                                    <p class="title-2">25</p>
+                                </span>
+                            </div>
+
+                            <p class="label-1">17 Feb</p>
+                            <p class="label-1">Friday</p>
+
+                        </li>
 
                     </ul>
                 </div> <!-- div.card.card-lg.forecast-card ends here -->
@@ -241,6 +269,7 @@ const initialTemplate = () => html`
                                 </ul>
                             </div>
 
+                            <span id="aqi-link" title="aqi more info">More Info</span>
                             <span class="badge aqi-1 label-1" title="aqi message">Good</span>
 
                         </div>
@@ -329,7 +358,7 @@ const initialTemplate = () => html`
             <section class="section hourly-forecast" aria-label="hourly forecast"
                 data-hourly-forecast>
                 
-                <h2 class="title-2">Today at</h2>
+                <h2 class="title-2">Hourly Forecast</h2>
                 
                 <div class="slider-container">
                     <ul class="slider-list" data-temp>
@@ -493,6 +522,8 @@ const initialTemplate = () => html`
                         </li>
 
                     </ul>
+
+                    <h2 class="title-2" id="h-info">More Info</h2>
 
                 </div>
 

@@ -14,6 +14,7 @@ page('/', homePage);
 page('/home', homePage);
 page('/index.html', homePage);
 page('/dashboard', dashboardPage);
+// TODO ==> Add HOURLY PAGE with a details list for each hour 
 page('/air-quality', airQualityPage);
 page('/about', aboutPage);
 page('*', errorPage);
