@@ -527,6 +527,11 @@ article.container::before {
     gap: 4px;
 }
 
+.card.card-sm.highlight-card.two .card-item {
+    width: calc(100% / 3);
+    gap: 4px;
+}
+
 .highlight-card .label-1 {
     color: var(--color-on-surface-variant);
 }
@@ -554,8 +559,8 @@ article.container::before {
     transform: scale(1.1);
     background-color: rgba(119, 119, 119, 0.582);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .badge.aqi-1 {
@@ -651,8 +656,8 @@ article.container::before {
     transform: scale(1.1);
     background-color: rgba(119, 119, 119, 0.582);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 

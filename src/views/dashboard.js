@@ -281,6 +281,16 @@ const initialTemplate = () => html`
                             <div class="card-list">
 
                                 <div class="card-item">
+                                    <span class="m-icon">nest_clock_farsight_analog</span>
+
+                                    <div>
+                                        <p class="label-1">Now</p>
+                                        
+                                        <p class="title-1">12:30 PM</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-item">
                                     <span class="m-icon">clear_day</span>
 
                                     <div>
@@ -307,6 +317,28 @@ const initialTemplate = () => html`
                     
                         <div class="card card-sm highlight-card">
 
+                            <h3 class="title-3">Feels Like</h3>
+
+                            <div class="wrapper">
+                                <span class="m-icon">thermostat</span>
+                                
+                                <p class="title-1">25&deg;<sup>c</sup></p>
+                            </div>
+                        </div>
+
+                        <div class="card card-sm highlight-card">
+
+                            <h3 class="title-3">Wind</h3>
+
+                            <div class="wrapper">
+                                <span class="m-icon">wind_power</span>
+                                
+                                <p class="title-1">12<sub>km/h</sub></p>
+                            </div>
+                        </div>
+
+                        <div class="card card-sm highlight-card">
+
                             <h3 class="title-3">Humidity</h3>
 
                             <div class="wrapper">
@@ -315,7 +347,29 @@ const initialTemplate = () => html`
                                 <p class="title-1">35<sub>%</sub></p>
                             </div>
                         </div>
-                    
+
+                         <div class="card card-sm highlight-card">
+
+                            <h3 class="title-3">Precipitation</h3>
+
+                            <div class="wrapper">
+                                <span class="m-icon">cloudy_snowing</span>
+                                
+                                <p class="title-1">4<sub>cm</sub></p>
+                            </div>
+                        </div>
+                                            
+                        <div class="card card-sm highlight-card">
+                            
+                            <h3 class="title-3">Visibility</h3>
+                            
+                            <div class="wrapper">
+                                <span class="m-icon">visibility</span>
+                                
+                                <p class="title-1">10<sub>km</sub></p>
+                            </div>
+                        </div>
+                        
                         <div class="card card-sm highlight-card">
 
                             <h3 class="title-3">Pressure</h3>
@@ -324,28 +378,6 @@ const initialTemplate = () => html`
                                 <span class="m-icon">airwave</span>
                                 
                                 <p class="title-1">1052<sub>hPa</sub></p>
-                            </div>
-                        </div>
-                    
-                        <div class="card card-sm highlight-card">
-
-                            <h3 class="title-3">Visibility</h3>
-
-                            <div class="wrapper">
-                                <span class="m-icon">visibility</span>
-                                
-                                <p class="title-1">10<sub>km</sub></p>
-                            </div>
-                        </div>
-                    
-                        <div class="card card-sm highlight-card">
-
-                            <h3 class="title-3">Feels Like</h3>
-
-                            <div class="wrapper">
-                                <span class="m-icon">thermostat</span>
-                                
-                                <p class="title-1">25&deg;<sup>c</sup></p>
                             </div>
                         </div>
                     

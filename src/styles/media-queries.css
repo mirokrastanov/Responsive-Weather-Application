@@ -284,6 +284,11 @@
     }
 
     .highlight-list {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card.card-sm.highlight-card.one,
+    .card.card-sm.highlight-card.two {
+        grid-column: 1 / 4;
     }
 }
