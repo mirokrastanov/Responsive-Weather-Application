@@ -1,6 +1,12 @@
 @import url('/src/styles/main.css');
 
 
+@media all and (max-width: 450px) {
+    .h-forecast-title {
+        font-size: 1.5rem;   
+    }
+}
+
 @media all and (min-width: 768px) {
 
     .container {
@@ -116,6 +122,16 @@
         animation: none;
     }
 
+    .h-forecast-title,
+    #h-forecast-btn {
+        font-size: 2rem;
+    }
+    .h-forecast-title {
+        font-size: 3rem;
+    }
+    #h-forecast-btn {
+        padding: 4px 20px;
+    }
 }
 
 @media all and (min-width: 1200px) {
@@ -238,7 +254,7 @@
 
     .search-view :is(:focus-within, :has(.view-list):focus-within) {
         filter: drop-shadow(var(--shadow-2))
-    }    
+    }
 
     main {
         height: calc(100vh - 120px);
@@ -273,6 +289,17 @@
     .slider-list {
         gap: 16px;
     }
+
+    .h-forecast-title,
+    #h-forecast-btn {
+        font-size: 2rem;
+    }
+    .h-forecast-title {
+        font-size: 3.5rem;
+    }
+    #h-forecast-btn {
+        padding: 10px 25px;
+    }
 }
 
 
@@ -290,5 +317,9 @@
     .card.card-sm.highlight-card.one,
     .card.card-sm.highlight-card.two {
         grid-column: 1 / 4;
+    }
+
+    .h-forecast-title {
+        font-size: 4rem;
     }
 }
