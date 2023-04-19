@@ -745,12 +745,27 @@ article.container::before {
 
 
 
-
+/* Dynamic styling from JS
+    GRID for the Dashboard
+    document.querySelector('article.container').style.display = 'grid';
+    BLOCK for the Hourly list
+    document.querySelector('article.container').style.display = 'block';
+*/
 
 .hour-section {
     width: 100%;
     text-align: center;
     border-spacing: 0;
+}
+
+.hour-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+tr td:nth-of-type(1),
+tr td:nth-of-type(2) {
+    grid-row: 1 / 3;
 }
 
 .hour-section .label {
@@ -762,22 +777,22 @@ article.container::before {
     font-size: 1.5rem;
 }
 
-.hour-row:nth-child(2n - 1) {
-    background-color: var(--color-surface);
+.hour-row:nth-child(2n + 1) {
+    background-color: rgb(63, 61, 61);
 }
 
-.hour-row > td {
-    padding: 0.5rem;
-}
-
-tr td:nth-of-type(5) .info-group div:nth-of-type(2),
-tr td:nth-of-type(6) .info-group div:nth-of-type(2),
-tr td:nth-of-type(7) .info-group div:nth-of-type(2) {
+.hour-row:nth-child(2n + 1) td:nth-child(2) {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
 }
 
-.value-sub-info {
-    margin-left: 4px;
+.hour-row td {
+    padding: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    border: 1px solid var(--color-on-surface-variant);
+    
 }
+
