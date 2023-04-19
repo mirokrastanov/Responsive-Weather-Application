@@ -771,7 +771,8 @@ article.container::before {
 }
 
 tr td:nth-of-type(5) .info-group div:nth-of-type(2),
-tr td:nth-of-type(6) .info-group div:nth-of-type(2) {
+tr td:nth-of-type(6) .info-group div:nth-of-type(2),
+tr td:nth-of-type(7) .info-group div:nth-of-type(2) {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;

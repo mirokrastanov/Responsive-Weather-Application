@@ -654,4 +654,10 @@ const hourRowTemplate = () => html`
             <div>0<span class="value-sub-info">cm</span></div>
         </div>
     </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Precip %</div>
+            <div>0<span class="value-sub-info">%</span></div>
+        </div>
+    </td>
 </tr>`;
