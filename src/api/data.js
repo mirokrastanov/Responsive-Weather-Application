@@ -43,6 +43,7 @@ function parseHourlyWeather(data) {
     return hourly.time.map((time, index) => {
         return {
             timestamp: time * 1000,
+            is_day: hourly.is_day[index],
             weatherCode: hourly.weathercode[index],
             weatherText: weatherCodes[hourly.weathercode[index]],
             temp: Math.round(hourly.temperature_2m[index]),
