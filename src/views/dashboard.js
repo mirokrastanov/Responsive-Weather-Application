@@ -646,7 +646,7 @@ const hourRowTemplate = () => html`
 <tr class="hour-row">
     <td>
         <div class="info-group">
-            <div class="label">Thursday</div>
+            <div class="label">Thursday, May 17</div>
             <div>3 PM</div>
         </div>
     </td>
@@ -656,37 +656,14 @@ const hourRowTemplate = () => html`
     </td>
     <td>
         <div class="info-group">
-            <div class="label">Temp</div>
-            <div>31&deg;</div>
-        </div>
-    </td>
-    <td>
-        <div class="info-group">
-            <div class="label">FL Temp</div>
-            <div>25&deg;</div>
+            <div class="label">Precip</div>
+            <div>0.02 mm</div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Wind</div>
-            <div>26 km/h</div>
-        </div>
-    </td>
-    <td>
-        <img src="/src/images/weather-icons/direction.png" class="weather-icon"
-        height="40px" width="40px" />
-    </td>
-    <td>
-        <div class="info-group">
-            <div class="label">Precip</div>
-            <div>0 cm</div>
-        </div>
-    </td>
-
-    <td>
-        <div class="info-group">
-            <div class="label">Precip %</div>
-            <div>25 %</div>
+            <div>26 m/s</div>
         </div>
     </td>
     <td>
@@ -703,14 +680,36 @@ const hourRowTemplate = () => html`
     </td>
     <td>
         <div class="info-group">
+            <div class="label">Temp</div>
+            <div>31&deg;</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">FL Temp</div>
+            <div>25&deg;</div>
+        </div>
+    </td>
+    <td>
+        <div class="info-group">
+            <div class="label">Precip %</div>
+            <div>25 %</div>
+        </div>
+    </td>
+    <td>
+        <img src="/src/images/weather-icons/direction.png" class="weather-icon"
+        height="40px" width="40px" />
+    </td>
+    <td>
+        <div class="info-group">
             <div class="label">Pressure</div>
             <div>1011 hPa</div>
         </div>
     </td>
     <td>
         <div class="info-group">
-            <div class="label">TODO</div>
-            <div>Todo</div>
+            <div class="label">Cloud cover</div>
+            <div>65 %</div>
         </div>
     </td>
 </tr>`;
