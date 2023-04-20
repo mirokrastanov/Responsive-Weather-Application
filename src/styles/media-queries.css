@@ -393,12 +393,17 @@
     }
 
     article.container {
-        grid-template-columns: 360px minmax(0, 1fr);
+        grid-template-columns: 320px minmax(0, 1fr);
         gap: 40px;
     }
 
+    .current-weather .weapper {
+        justify-content: space-between;
+    }
+
     .current-weather .weather-icon {
-        width: 80px;
+        width: 100px;
+        margin: 0;
     }
 
     .forecast-card .title-2 {

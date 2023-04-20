@@ -814,10 +814,8 @@ tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
 }
 
 
-.hour-row {
-    border-radius: 10px;
-}
-
+.hour-row,
 .hour-row td {
     border-radius: 10px;
 }
+
