@@ -11,11 +11,26 @@ export async function dashboardPage(ctx) {
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
-    let rawInfo = await getWeather(42.7, 23.32, getCurrentTimeZone());
-    let parsedInfo = getParsedWeatherData(rawInfo);
-    console.log(parsedInfo);
+    
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
+    // enable BLUR initially while still fetching
+    
+    try {
+        let rawInfo = await getWeather(42.7, 23.32, getCurrentTimeZone());
+        let parsedInfo = getParsedWeatherData(rawInfo);
+        console.log(parsedInfo);
+        
+
+        // IF NO ITEMS - enable blur and show alert - no data , or something
+
+        // Finally, render with the items object fed as a parameter to the template
+    } catch (error) {
+        console.error(error);
+        alert('Error getting weather data!');
+        // AND enable BLUR again
+
+    }
 }
 
 async function hourlyDetails(e) {
@@ -23,6 +38,21 @@ async function hourlyDetails(e) {
 
     context.render(hourlyTemplate());
     document.querySelector('article.container').style.display = 'block';
+    // enable BLUR initially while still fetching
+
+    try {
+        // follow the dashboard fetching example, prob can take the same object
+        // Code here... get items
+
+        // IF NO ITEMS - enable blur and show alert - no data , or something
+
+        // Finally, render with the items object fed as a parameter to the template
+    } catch (error) {
+        console.error(error);
+        alert('Error getting weather data!');
+        // AND enable BLUR again
+    }
+
 }
 
 async function redirectToAqi(e) {
@@ -32,14 +62,16 @@ async function redirectToAqi(e) {
 }
 
 
-const itemsTemplate = (items) => html``;
+// array(7) = daily
+const weeklyForecastTemplate = (items = []) => html``;
 
-// hourRowTemplate
-const itemTemplate = (item) => html``;
 
-const noItemsTemplate = () => html``;
+// array(16) = hourly*
+// hourly* = cut only 0, 2, 5, 8, 11, etc INDICES for every 3h and stop after 16 elems
+const dashboardHourlyTemplate = (items = []) => html``;
 
-const dashboardTemplate = () => html`
+
+const dashboardTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
 
@@ -592,7 +624,8 @@ const dashboardTemplate = () => html`
 </main>
 `;
 
-const hourlyTemplate = () => html`
+
+const hourlyTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
 
@@ -653,9 +686,11 @@ const hourlyTemplate = () => html`
             </div>
         </div>
     </article>
-</main>`;
+</main>
+`;
 
-const hourRowTemplate = () => html`
+
+const hourRowTemplate = (item = {}) => html`
 <tr class="hour-row">
     <td>
         <div class="info-group">
@@ -725,4 +760,6 @@ const hourRowTemplate = () => html`
             <div>65 %</div>
         </div>
     </td>
-</tr>`;
+</tr>
+`;
+
