@@ -38,7 +38,7 @@ function parseDailyWeather(data) {
 
 }
 function parseHourlyWeather(data) {
-    let { hourly } = data;
+    let { hourly, current_weather } = data;
 
     return hourly.time.map((time, index) => {
         return {
@@ -57,7 +57,8 @@ function parseHourlyWeather(data) {
             visibility: Math.round(hourly.visibility[index] * 100) / 100,
             cloudCover: hourly.cloudcover[index],
         }
-    });
+    }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000); 
+    // filter only the hours from current hour to after 7 days
 }
 
 export function getParsedWeatherData(data) {
