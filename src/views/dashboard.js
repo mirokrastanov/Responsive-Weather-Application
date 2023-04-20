@@ -101,8 +101,8 @@ const dashboardTemplate = () => html`
                     <div class="weapper">
                         <p class="heading">25&deg;<sup>c</sup></p>
 
-                        <img src="/src/images/weather-icons/01d.png" width="64px"
-                        height="64px" alt="Overcast Clouds" class="weather-icon">
+                        <img src="/src/images/weather-icons/01d.png" width="60px"
+                        height="60px" alt="Overcast Clouds" class="weather-icon">
                     </div>
 
                     <p class="body-3">Overcast Clouds</p>
@@ -611,35 +611,47 @@ const hourlyTemplate = () => html`
 <main>
     <article class="container">
         <div class="content-middle">
-<div class="blurred">
-    <table class="hour-section">
-        <tbody data-hour-section>
-            <!-- add dynamic info to each row -->
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-            ${html`${hourRowTemplate()}`}
-         
-            <!-- AND condition for no items shown -->
-        </tbody>
-    </table>
-</div>
+            <div class="blurred">
+                <table class="hour-section">
+                    <tbody data-hour-section>
+                        <!-- add dynamic info to each row -->
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                    
+                        <!-- AND condition for no items shown -->
+                    </tbody>
+                </table>
 
-</div>
-</article>
+                <footer class="footer">
+                    <p class="body-3">
+                        Author: Miro Krastanov. Extra credits in the About section.
+                    </p>
+                    <p class="body-3">
+                        Powered By <a href="https://open-meteo.com/" title="Free Weather API"
+                        target="_blank" rel="noopener">
+                            <img src="/src/images/open-meteo.gif" width="150px" height="30px"
+                            loading="lazy" alt="Open-Meteo">
+                        </a>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </article>
 </main>`;
 
 const hourRowTemplate = () => html`
