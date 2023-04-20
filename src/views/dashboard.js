@@ -1,6 +1,7 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getWeather } from '../api/api.js';
 import { getCurrentTimeZone, getParsedWeatherData } from '../api/data.js';
+import { weatherImgRoutesDAY } from '../util/util.js';
 
 // import from api
 
@@ -11,16 +12,19 @@ export async function dashboardPage(ctx) {
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
-    
+
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
     // enable BLUR initially while still fetching
-    
     try {
         let rawInfo = await getWeather(42.7, 23.32, getCurrentTimeZone());
         let parsedInfo = getParsedWeatherData(rawInfo);
         console.log(parsedInfo);
         
+        // initial TEST with dynamic info
+        document.querySelector('.section.current-weather .card.card-lg.current-weather-card img.weather-icon')
+        .setAttribute('src', parsedInfo.current.weatherImage);
+
 
         // IF NO ITEMS - enable blur and show alert - no data , or something
 
