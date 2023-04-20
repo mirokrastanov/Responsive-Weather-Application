@@ -342,7 +342,7 @@ const dashboardTemplate = () => html`
                             <div class="wrapper">
                                 <span class="m-icon">wind_power</span>
                                 
-                                <p class="title-1">12<sub>km/h</sub></p>
+                                <p class="title-1">12 <sub>m/s</sub></p>
                             </div>
                         </div>
 
@@ -353,7 +353,7 @@ const dashboardTemplate = () => html`
                             <div class="wrapper">
                                 <span class="m-icon">humidity_percentage</span>
                                 
-                                <p class="title-1">35<sub>%</sub></p>
+                                <p class="title-1">35 <sub>%</sub></p>
                             </div>
                         </div>
 
@@ -364,7 +364,7 @@ const dashboardTemplate = () => html`
                             <div class="wrapper">
                                 <span class="m-icon">cloudy_snowing</span>
                                 
-                                <p class="title-1">4<sub>cm</sub></p>
+                                <p class="title-1">0.04 <sub>mm</sub></p>
                             </div>
                         </div>
                                             
@@ -375,7 +375,7 @@ const dashboardTemplate = () => html`
                             <div class="wrapper">
                                 <span class="m-icon">visibility</span>
                                 
-                                <p class="title-1">10<sub>km</sub></p>
+                                <p class="title-1">10 <sub>km</sub></p>
                             </div>
                         </div>
                         
@@ -386,7 +386,7 @@ const dashboardTemplate = () => html`
                             <div class="wrapper">
                                 <span class="m-icon">airwave</span>
                                 
-                                <p class="title-1">1052<sub>hPa</sub></p>
+                                <p class="title-1">1052 <sub>hPa</sub></p>
                             </div>
                         </div>
                     
@@ -492,7 +492,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
                         
@@ -503,7 +503,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
                         
@@ -514,7 +514,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
                         
@@ -525,7 +525,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
                         
@@ -536,7 +536,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
                         
@@ -547,7 +547,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
                         
@@ -558,7 +558,7 @@ const dashboardTemplate = () => html`
                                 <img src="/src/images/weather-icons/direction.png" width="48" height="48"
                                 loading="lazy" alt="" class="weather-icon" title="">
 
-                                <p class="body-3">12 km/h</p>
+                                <p class="body-3">12 m/s</p>
                             </div>
                         </li>
 
