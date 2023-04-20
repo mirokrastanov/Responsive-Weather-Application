@@ -1,6 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getWeather } from '../api/api.js';
-import { getCurrentTimeZone } from '../api/data.js';
+import { getCurrentTimeZone, getParsedWeatherData } from '../api/data.js';
 
 // import from api
 
@@ -11,8 +11,9 @@ export async function dashboardPage(ctx) {
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
-    let weatherInfoObj = await getWeather(42.7, 23.32, getCurrentTimeZone());
-    console.log(weatherInfoObj);
+    let rawInfo = await getWeather(42.7, 23.32, getCurrentTimeZone());
+    let parsedInfo = getParsedWeatherData(rawInfo);
+    console.log(parsedInfo);
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
 }
