@@ -1,4 +1,4 @@
-import { weatherCodes } from "../util/util.js";
+import { weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 
 export function getCurrentTimeZone() {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -57,15 +57,26 @@ function parseHourlyWeather(data) {
             visibility: Math.round(hourly.visibility[index] * 100) / 100,
             cloudCover: hourly.cloudcover[index],
         }
-    }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000); 
+    }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000);
     // filter only the hours from current hour to after 7 days
 }
 
 export function getParsedWeatherData(data) {
-    return {
+    let result = {
         raw: data,
         current: parseCurrentWeather(data),
         daily: parseDailyWeather(data),
         hourly: parseHourlyWeather(data),
-    }
+    };
+    result.current.is_day = result.hourly[0].is_day;
+    let convertorImgPath = result.current.is_day == 1
+        ? weatherImgRoutesDAY[result.current.weatherCode]
+        : weatherImgRoutesNIGHT[result.current.weatherCode];
+    result.current.weatherImage = convertorImgPath;
+    return result;
 }
+
+// ADD conversion / parser for the times (maybe after checking/filtering)
+
+// maybe add last updated at ${the time of the index=0 element in the hourly array}
+// or whenever it was - do the math tomorrow
