@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { dashboardElements, monthsShort, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -18,6 +18,7 @@ export function createErrorOverlay() {
 }
 
 export function getCurrentTimeZone() {
+    // console.log(new Date().getMonth());
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
 
@@ -147,7 +148,8 @@ function renderCurrentWeather(page, current) {
     if (page == 'dashboard') {
         setImage(dashboardElements.currentImg(), current.weatherImage);
         setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>c</sup>`);
-
+        setValue(dashboardElements.currentText(), current.weatherText);
+        setValue(dashboardElements.currentDateDay(), `${current.dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`)
 
     } else if (page == 'hourly') {
 
