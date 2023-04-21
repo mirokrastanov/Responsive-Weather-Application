@@ -152,6 +152,7 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
 
+        // CONTINUE HERE 
     } else if (page == 'hourly') {
 
     }
