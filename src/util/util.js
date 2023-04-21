@@ -118,7 +118,11 @@ export const weatherImgRoutesNIGHT = {
 };
 
 export const elements = {
-    main: document.querySelector('#main #main-ctr main'),
-
+    // get it each time -> invoke on reuse
+    main: () => document.querySelector('#main #main-ctr main'),
+    mainCtr: () => document.querySelector('#main-ctr'),
+    body: () => document.querySelector('body'),
+    dotHeader: () => document.querySelector('.header'),
+    
 };
 
