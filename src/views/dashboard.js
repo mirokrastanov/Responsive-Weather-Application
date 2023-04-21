@@ -17,15 +17,15 @@ export async function dashboardPage(ctx) {
     document.querySelector('article.container').style.display = 'grid';
     applyBlur(elements.main());
     try {
-        let rawInfo = await getWeather(42.7, 23.32, getCurrentTimeZone());
-        let parsedInfo = getParsedWeatherData(rawInfo);
-        renderWeather(parsedInfo); // DYNAMIC DATA is pulled from here
-        console.log(parsedInfo);
+        let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
+        let weatherInfo = await getParsedWeatherData(coords);
+        renderWeather(weatherInfo); // DYNAMIC DATA is pulled from here
+        console.log(weatherInfo);
 
 
         // initial TEST with dynamic info
         document.querySelector('.section.current-weather .card.card-lg.current-weather-card img.weather-icon')
-            .setAttribute('src', parsedInfo.current.weatherImage);
+            .setAttribute('src', weatherInfo.current.weatherImage);
 
 
         // IF NO ITEMS - enable blur and show alert - no data , or something
@@ -46,21 +46,29 @@ async function hourlyDetails(e) {
 
     context.render(hourlyTemplate());
     document.querySelector('article.container').style.display = 'block';
-    // enable BLUR initially while still fetching
-
+    applyBlur(elements.main());
     try {
-        // follow the dashboard fetching example, prob can take the same object
-        // Code here... get items
+        let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
+        let weatherInfo = await getParsedWeatherData(coords);
+        renderWeather(weatherInfo); // DYNAMIC DATA is pulled from here
+        console.log(weatherInfo);
+
+        // initial TEST with dynamic info
+        document.querySelector('.hour-section .hour-row td:nth-of-type(2) img')
+            .setAttribute('src', weatherInfo.current.weatherImage);
+
 
         // IF NO ITEMS - enable blur and show alert - no data , or something
 
         // Finally, render with the items object fed as a parameter to the template
+        removeBlur(elements.main());
     } catch (error) {
-        console.error(error);
+        console.log('Error details: ', { ...error, 'stack': error.stack });
         alert('Error getting weather data!');
-        // AND enable BLUR again
+        elements.dotHeader().appendChild(createErrorOverlay());
+        // APPLY LOADING ANIMATION as well
+        applyBlur(elements.main());
     }
-
 }
 
 async function redirectToAqi(e) {
