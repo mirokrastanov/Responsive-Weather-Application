@@ -1,12 +1,10 @@
 import { weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
-import { getWeather } from "./api.js";
-import { elements } from "../util/util.js"
 
-function applyBlur(element) {
+export function applyBlur(element) {
     element.classList.add('blurred');
 }
 
-function removeBlur(element) {
+export function removeBlur(element) {
     element.classList.remove('blurred');
 }
 
@@ -92,10 +90,6 @@ export function renderWeather({ current, daily, hourly }) {
     renderCurrentWeather(current);
     renderDailyWeather(daily);
     renderHourlyWeather(hourly);
-    let main = elements.main;
-    if (main) {
-        removeBlur(main);
-    }
 }
 
 function renderCurrentWeather(current) {
