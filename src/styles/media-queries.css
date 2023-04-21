@@ -14,7 +14,7 @@
         padding: 0;
     }
 
-    .hour-row td .info-group div{
+    .hour-row td .info-group div {
         margin: 0;
     }
 
@@ -104,6 +104,10 @@
 
     tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
         font-size: 0.9rem;
+    }
+
+    html body #main #main-ctr .header .error-overlay {
+        font-size: 2rem;
     }
 }
 
@@ -455,6 +459,10 @@
     tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
         font-size: 1.8rem;
     }
+
+    html body #main #main-ctr .header .error-overlay {
+        top: 200px;
+    }
 }
 
 
@@ -477,5 +485,4 @@
     .h-forecast-title {
         font-size: 4rem;
     }
-
 }
