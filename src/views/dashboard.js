@@ -33,7 +33,7 @@ export async function dashboardPage(ctx) {
         // Finally, render with the items object fed as a parameter to the template
         removeBlur(elements.main());
     } catch (error) {
-        console.error(error);
+        console.log('Error details: ', { ...error, 'stack': error.stack });
         let message = 'Error getting weather data!';
         alert(message);
         let errorOverlay = document.createElement('a');
