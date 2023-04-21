@@ -120,6 +120,11 @@ export function renderWeather({ current, daily, hourly }) {
     renderCurrentWeather(current);
     renderDailyWeather(daily);
     renderHourlyWeather(hourly);
+export function renderWeather(page, { current, daily, hourly }) {
+    renderCurrentWeather(page, current);
+    renderDailyWeather(page, daily);
+    renderHourlyWeather(page, hourly);
+}
 
 function setValue(element, value, addin = false) {
     element.textContent = value;
