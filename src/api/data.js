@@ -149,7 +149,8 @@ function renderCurrentWeather(page, current) {
         setImage(dashboardElements.currentImg(), current.weatherImage);
         setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>c</sup>`);
         setValue(dashboardElements.currentText(), current.weatherText);
-        setValue(dashboardElements.currentDateDay(), `${current.dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`)
+        setValue(dashboardElements.currentDateDay(), `${current.
+            dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
 
     } else if (page == 'hourly') {
 
