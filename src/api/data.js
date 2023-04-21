@@ -51,6 +51,8 @@ function parseCurrentWeather(data) {
         timeNow: current_weather.time * 1000,
         sunrise: daily.sunrise[0] * 1000,
         sunset: daily.sunset[0] * 1000,
+        dayLong: returnDayLONG().format(current_weather.time * 1000),
+        dayShort: returnDaySHORT().format(current_weather.time * 1000),
     }
 }
 
@@ -89,6 +91,7 @@ function parseHourlyWeather(data) {
             pressure: Math.round(hourly.pressure_msl[index]),
             visibility: Math.round(hourly.visibility[index] * 100) / 100,
             cloudCover: hourly.cloudcover[index],
+            hour: returnHour().format(time * 1000),
         }
     }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000);
     // filter only the hours from current hour to after 7 days
