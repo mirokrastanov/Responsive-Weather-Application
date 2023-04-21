@@ -1,4 +1,5 @@
-import { weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { dashboardElements, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -18,6 +19,17 @@ export function createErrorOverlay() {
 
 export function getCurrentTimeZone() {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
+}
+
+export async function getCurrentLocationCoords() {
+    let getPosition = async function () {
+        return new Promise(function (resolve, reject) {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+    }
+    let res = await getPosition();
+    // console.log(res);
+    return [res.coords.latitude, res.coords.longitude];
 }
 
 function returnDayLONG() {
@@ -116,10 +128,6 @@ export async function getParsedWeatherData(coords) {
     return result;
 }
 
-export function renderWeather({ current, daily, hourly }) {
-    renderCurrentWeather(current);
-    renderDailyWeather(daily);
-    renderHourlyWeather(hourly);
 export function renderWeather(page, { current, daily, hourly }) {
     renderCurrentWeather(page, current);
     renderDailyWeather(page, daily);
