@@ -1,4 +1,4 @@
-export const elements = [
+export const navElements = [
     document.querySelector('#page-logo'),
     document.querySelector('header nav a:nth-of-type(2)'),
     document.querySelector('header nav a:nth-of-type(3)'),
@@ -56,10 +56,10 @@ export const weatherCodes = {
 };
 
 export const weatherImgRoutesDAY = {
-    0 : '/src/images/weather-icons/01d.png',
-    1 : '/src/images/weather-icons/02d.png',
-    2 : '/src/images/weather-icons/03d.png',
-    3 : '/src/images/weather-icons/04d.png',
+    0: '/src/images/weather-icons/01d.png',
+    1: '/src/images/weather-icons/02d.png',
+    2: '/src/images/weather-icons/03d.png',
+    3: '/src/images/weather-icons/04d.png',
     45: '/src/images/weather-icons/50d.png',
     48: '/src/images/weather-icons/50d.png',
     51: '/src/images/weather-icons/09d.png',
@@ -87,10 +87,10 @@ export const weatherImgRoutesDAY = {
 };
 
 export const weatherImgRoutesNIGHT = {
-    0 : '/src/images/weather-icons/01n.png',
-    1 : '/src/images/weather-icons/02n.png',
-    2 : '/src/images/weather-icons/03n.png',
-    3 : '/src/images/weather-icons/04n.png',
+    0: '/src/images/weather-icons/01n.png',
+    1: '/src/images/weather-icons/02n.png',
+    2: '/src/images/weather-icons/03n.png',
+    3: '/src/images/weather-icons/04n.png',
     45: '/src/images/weather-icons/50n.png',
     48: '/src/images/weather-icons/50n.png',
     51: '/src/images/weather-icons/09n.png',
@@ -116,3 +116,9 @@ export const weatherImgRoutesNIGHT = {
     96: '/src/images/weather-icons/11n.png',
     99: '/src/images/weather-icons/11n.png',
 };
+
+export const elements = {
+    main: document.querySelector('#main #main-ctr main'),
+
+};
+

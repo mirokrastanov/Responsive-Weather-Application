@@ -5,7 +5,7 @@ import { dashboardPage } from './views/dashboard.js';
 import { aboutPage } from './views/about.js';
 import { airQualityPage } from './views/air-quality.js';
 import { errorPage } from './views/error.js';
-import { elements } from './util/util.js';
+import { navElements } from './util/util.js';
 
 const root = document.querySelector('body #main #main-ctr');
 
@@ -24,7 +24,7 @@ function updateNav(path) {
     let pathCopy = '';
     if (path == '/home' || path == '/index.html') pathCopy = '/';
     else pathCopy = path;
-    elements.forEach(x => {
+    navElements.forEach(x => {
         let el = x;
         if (pathCopy == el.pathname) x.classList.add('nav-active');
         else x.classList.remove('nav-active');

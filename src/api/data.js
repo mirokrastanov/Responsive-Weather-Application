@@ -1,4 +1,14 @@
 import { weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { getWeather } from "./api.js";
+import { elements } from "../util/util.js"
+
+function applyBlur(element) {
+    element.classList.add('blurred');
+}
+
+function removeBlur(element) {
+    element.classList.remove('blurred');
+}
 
 export function getCurrentTimeZone() {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -75,6 +85,34 @@ export function getParsedWeatherData(data) {
     result.current.weatherImage = convertorImgPath;
     return result;
 }
+
+// let testRaw = await getWeather(42.7, 23.32, getCurrentTimeZone());
+
+export function renderWeather({ current, daily, hourly }) {
+    renderCurrentWeather(current);
+    renderDailyWeather(daily);
+    renderHourlyWeather(hourly);
+    let main = elements.main;
+    if (main) {
+        removeBlur(main);
+    }
+}
+
+function renderCurrentWeather(current) {
+
+}
+
+function renderDailyWeather(daily) {
+
+}
+
+function renderHourlyWeather(hourly) {
+
+}
+
+
+
+
 
 // ADD conversion / parser for the times (maybe after checking/filtering)
 
