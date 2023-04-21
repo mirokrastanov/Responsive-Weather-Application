@@ -122,8 +122,15 @@ export function renderWeather({ current, daily, hourly }) {
     renderHourlyWeather(hourly);
 }
 
-function renderCurrentWeather(current) {
+function renderCurrentWeather(page, current) {
+    if (page == 'dashboard') {
+        setImage(dashboardElements.currentImg(), current.weatherImage);
+        setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>c</sup>`);
 
+
+    } else if (page == 'hourly') {
+
+    }
 }
 
 function renderDailyWeather(page, daily) {
