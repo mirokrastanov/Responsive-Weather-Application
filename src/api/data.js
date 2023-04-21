@@ -126,12 +126,20 @@ function renderCurrentWeather(current) {
 
 }
 
-function renderDailyWeather(daily) {
+function renderDailyWeather(page, daily) {
+    if (page == 'dashboard') {
 
+    } else if (page == 'hourly') {
+
+    }
 }
 
-function renderHourlyWeather(hourly) {
+function renderHourlyWeather(page, hourly) {
+    if (page == 'dashboard') {
 
+    } else if (page == 'hourly') {
+
+    }
 }
 
 
