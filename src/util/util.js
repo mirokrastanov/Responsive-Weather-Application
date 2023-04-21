@@ -123,6 +123,10 @@ export const elements = {
     mainCtr: () => document.querySelector('#main-ctr'),
     body: () => document.querySelector('body'),
     dotHeader: () => document.querySelector('.header'),
-    
 };
 
+export const dashboardElements = {
+    currentImg: () => document.querySelector('.current-weather .weapper img'),
+    currentTemp: () => document.querySelector('.current-weather .weapper .heading'),
+
+};
