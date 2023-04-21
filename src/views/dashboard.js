@@ -1,6 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getWeather } from '../api/api.js';
-import { applyBlur, getCurrentTimeZone, getParsedWeatherData, removeBlur, renderWeather } from '../api/data.js';
+import { applyBlur, createErrorOverlay, getCurrentTimeZone, getParsedWeatherData, removeBlur, renderWeather } from '../api/data.js';
 import { elements } from '../util/util.js';
 
 // import from api
@@ -34,15 +34,10 @@ export async function dashboardPage(ctx) {
         removeBlur(elements.main());
     } catch (error) {
         console.log('Error details: ', { ...error, 'stack': error.stack });
-        let message = 'Error getting weather data!';
-        alert(message);
-        let errorOverlay = document.createElement('a');
-        errorOverlay.href = '/dashboard';
-        errorOverlay.classList.add('error-overlay');
-        elements.dotHeader().appendChild(errorOverlay);
-
-        // AND enable BLUR again
-
+        alert('Error getting weather data!');
+        elements.dotHeader().appendChild(createErrorOverlay());
+        // APPLY LOADING ANIMATION as well
+        applyBlur(elements.main());
     }
 }
 

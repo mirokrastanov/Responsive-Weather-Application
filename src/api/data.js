@@ -8,6 +8,13 @@ export function removeBlur(element) {
     element.classList.remove('blurred');
 }
 
+export function createErrorOverlay() {
+    let errorOverlay = document.createElement('a');
+    errorOverlay.href = '/dashboard';
+    errorOverlay.classList.add('error-overlay');
+    return errorOverlay;
+}
+
 export function getCurrentTimeZone() {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
