@@ -19,10 +19,10 @@ export const monthsFull = [
     'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-export const monthsShort = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-];
+export const monthsShort = {
+    0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun',
+    6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec'
+};
 
 export const weatherCodes = {
     0: 'Clear sky',
@@ -128,5 +128,7 @@ export const elements = {
 export const dashboardElements = {
     currentImg: () => document.querySelector('.current-weather .weapper img'),
     currentTemp: () => document.querySelector('.current-weather .weapper .heading'),
+    currentText: () => document.querySelector('.current-weather .body-3'),
+    currentDateDay: () => document.querySelector('.current-weather .meta-list .meta-item .meta-text'),
 
 };
