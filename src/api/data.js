@@ -20,6 +20,18 @@ export function getCurrentTimeZone() {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
 
+function returnDayLONG() {
+    return new Intl.DateTimeFormat(undefined, { weekday: 'long' }); // has .format func
+}
+
+function returnDaySHORT() {
+    return new Intl.DateTimeFormat(undefined, { weekday: 'short' }); // has .format func
+}
+
+function returnHour() {
+    return new Intl.DateTimeFormat(undefined, { hour: 'numeric' }); // has .format func
+}
+
 function parseCurrentWeather(data) {
     let { current_weather, daily, hourly } = data;
 
