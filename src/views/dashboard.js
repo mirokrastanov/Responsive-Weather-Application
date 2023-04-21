@@ -1,7 +1,7 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getWeather } from '../api/api.js';
-import { getCurrentTimeZone, getParsedWeatherData, renderWeather } from '../api/data.js';
-import { weatherImgRoutesDAY } from '../util/util.js';
+import { applyBlur, getCurrentTimeZone, getParsedWeatherData, removeBlur, renderWeather } from '../api/data.js';
+import { elements } from '../util/util.js';
 
 // import from api
 
@@ -15,11 +15,11 @@ export async function dashboardPage(ctx) {
 
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
-    // enable BLUR initially while still fetching
+    applyBlur(elements.main());
     try {
         let rawInfo = await getWeather(42.7, 23.32, getCurrentTimeZone());
         let parsedInfo = getParsedWeatherData(rawInfo);
-        let renderedInfo = renderWeather(parsedInfo);
+        renderWeather(parsedInfo); // DYNAMIC DATA is pulled from here
         console.log(parsedInfo);
 
 
@@ -31,9 +31,16 @@ export async function dashboardPage(ctx) {
         // IF NO ITEMS - enable blur and show alert - no data , or something
 
         // Finally, render with the items object fed as a parameter to the template
+        removeBlur(elements.main());
     } catch (error) {
         console.error(error);
-        alert('Error getting weather data!');
+        let message = 'Error getting weather data!';
+        alert(message);
+        let errorOverlay = document.createElement('a');
+        errorOverlay.href = '/dashboard';
+        errorOverlay.classList.add('error-overlay');
+        elements.dotHeader().appendChild(errorOverlay);
+
         // AND enable BLUR again
 
     }
@@ -77,6 +84,7 @@ const weeklyForecastTemplate = (items = []) => html``;
 const dashboardHourlyTemplate = (items = []) => html``;
 
 
+// main.blurred applied - remove with removeBlur() function as needed
 const dashboardTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
@@ -631,6 +639,7 @@ const dashboardTemplate = (items = {}) => html`
 `;
 
 
+// main.blurred applied - remove with removeBlur() function as needed
 const hourlyTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
