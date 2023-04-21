@@ -546,6 +546,7 @@ article.container::before {
     flex-wrap: wrap;
     flex-grow: 1;
     row-gap: 8px;
+    justify-content: space-around;
 }
 
 .highlight-card .card-item {
@@ -555,7 +556,7 @@ article.container::before {
 }
 
 .card.card-sm.highlight-card.two .card-item {
-    width: calc(100% / 3);
+    width: fit-content;
     gap: 4px;
 }
 
