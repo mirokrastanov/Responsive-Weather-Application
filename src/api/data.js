@@ -1,4 +1,5 @@
 import { weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
     element.classList.add('blurred');
@@ -26,6 +27,7 @@ function parseCurrentWeather(data) {
         currentTemp: Math.round(current_weather.temperature),
         weatherCode: current_weather.weathercode,
         weatherText: weatherCodes[current_weather.weathercode],
+        weatherImage: generateImage(current_weather.is_day, current_weather.weathercode),
         feelsLikeTemp: Math.round(hourly.apparent_temperature[0]),
         windSpeed: current_weather.windspeed,
         windDirection: current_weather.winddirection,
@@ -39,19 +41,22 @@ function parseCurrentWeather(data) {
         sunset: daily.sunset[0] * 1000,
     }
 }
+
 function parseDailyWeather(data) {
-    let { daily } = data;
+    let { current_weather, daily } = data;
 
     return daily.time.map((time, index) => {
         return {
             timestamp: time * 1000,
             weatherCode: daily.weathercode[index],
             weatherText: weatherCodes[daily.weathercode[index]],
+            weatherImage: generateImage(current_weather.is_day, daily.weathercode[index]),
             temp: Math.round(daily.apparent_temperature_max[index]),
         }
     });
 
 }
+
 function parseHourlyWeather(data) {
     let { hourly, current_weather } = data;
 
@@ -61,6 +66,7 @@ function parseHourlyWeather(data) {
             is_day: hourly.is_day[index],
             weatherCode: hourly.weathercode[index],
             weatherText: weatherCodes[hourly.weathercode[index]],
+            weatherImage: generateImage(hourly.is_day[index], hourly.weathercode[index]),
             temp: Math.round(hourly.temperature_2m[index]),
             feelsLikeTemp: Math.round(hourly.apparent_temperature[index]),
             precip: Math.round(hourly.precipitation[index] * 100) / 100,
@@ -76,7 +82,15 @@ function parseHourlyWeather(data) {
     // filter only the hours from current hour to after 7 days
 }
 
-export function getParsedWeatherData(data) {
+function generateImage(isDay, weatherCode) {
+    return isDay == 1
+        ? weatherImgRoutesDAY[weatherCode]
+        : weatherImgRoutesNIGHT[weatherCode]
+}
+
+export async function getParsedWeatherData(coords) {
+    // let testRaw = await getWeather(42.7, 23.32, getCurrentTimeZone());
+    let data = await getWeather(coords[0], coords[1], getCurrentTimeZone());
     let result = {
         raw: data,
         current: parseCurrentWeather(data),
@@ -84,14 +98,8 @@ export function getParsedWeatherData(data) {
         hourly: parseHourlyWeather(data),
     };
     result.current.is_day = result.hourly[0].is_day;
-    let convertorImgPath = result.current.is_day == 1
-        ? weatherImgRoutesDAY[result.current.weatherCode]
-        : weatherImgRoutesNIGHT[result.current.weatherCode];
-    result.current.weatherImage = convertorImgPath;
     return result;
 }
-
-// let testRaw = await getWeather(42.7, 23.32, getCurrentTimeZone());
 
 export function renderWeather({ current, daily, hourly }) {
     renderCurrentWeather(current);
