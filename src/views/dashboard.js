@@ -1,6 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { getWeather } from '../api/api.js';
-import { applyBlur, createErrorOverlay, getCurrentTimeZone, getParsedWeatherData, removeBlur, renderWeather } from '../api/data.js';
+import { applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData, removeBlur, renderWeather } from '../api/data.js';
 import { elements } from '../util/util.js';
 
 // import from api
@@ -19,13 +18,9 @@ export async function dashboardPage(ctx) {
     try {
         let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
         let weatherInfo = await getParsedWeatherData(coords);
-        renderWeather(weatherInfo); // DYNAMIC DATA is pulled from here
+        renderWeather('dashboard', weatherInfo); // DYNAMIC DATA is pulled from here
         console.log(weatherInfo);
 
-
-        // initial TEST with dynamic info
-        document.querySelector('.section.current-weather .card.card-lg.current-weather-card img.weather-icon')
-            .setAttribute('src', weatherInfo.current.weatherImage);
 
 
         // IF NO ITEMS - enable blur and show alert - no data , or something
@@ -50,17 +45,16 @@ async function hourlyDetails(e) {
     try {
         let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
         let weatherInfo = await getParsedWeatherData(coords);
-        renderWeather(weatherInfo); // DYNAMIC DATA is pulled from here
+        renderWeather('hourly', weatherInfo); // DYNAMIC DATA is pulled from here
         console.log(weatherInfo);
-
-        // initial TEST with dynamic info
-        document.querySelector('.hour-section .hour-row td:nth-of-type(2) img')
-            .setAttribute('src', weatherInfo.current.weatherImage);
 
 
         // IF NO ITEMS - enable blur and show alert - no data , or something
 
         // Finally, render with the items object fed as a parameter to the template
+        // setTimeout(() => {
+        //     removeBlur(elements.main());
+        // }, 1000);
         removeBlur(elements.main());
     } catch (error) {
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -71,10 +65,11 @@ async function hourlyDetails(e) {
     }
 }
 
-async function redirectToAqi(e) {
+async function onCurrentLocationClick(e) { // add the listener
     e.preventDefault();
-
-    context.render(dashboardTemplate());
+    let coords = await getCurrentLocationCoords();
+    console.log(coords);
+    // render based on those coords - FIGURE IT OUT :)
 }
 
 
