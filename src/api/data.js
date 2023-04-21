@@ -30,6 +30,7 @@ export async function getCurrentLocationCoords() {
     }
     let res = await getPosition();
     // console.log(res);
+    // TODO - error getting your location - please allow us  to use your location...
     return [res.coords.latitude, res.coords.longitude];
 }
 
