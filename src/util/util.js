@@ -125,6 +125,7 @@ export const weatherImgRoutesNIGHT = {
 export const timeParser = {
     hours24: (x = new Date()) => x.getHours() > 12 ? [x.getHours() % 12, 'PM'] : [x.getHours(), 'AM'],
     min: (x = new Date()) => x.getMinutes(),
+    sec: (x = new Date()) => x.getSeconds(),
 };
 
 export const elements = {
