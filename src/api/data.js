@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements, daysFull, daysShortObj, monthsShort, timeParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { dashboardElements, daysFull, daysShort, monthsShort, timeParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -213,7 +213,7 @@ function renderDailyWeather(page, daily) {
             let dateRaw = new Date(daily[i].timestamp);
             let [date, month, day] =
                 [dateRaw.getDate(), dateRaw.getMonth(), dateRaw.getDay()];
-            setValue(el, `${daysShortObj[day]} ${date}, ${monthsShort[month]}`);
+            setValue(el, `${daysShort[day]} ${date}, ${monthsShort[month]}`);
         });
         dashboardElements.dailyDay().forEach(el => {
             el.parentElement.removeChild(el);

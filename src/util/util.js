@@ -10,19 +10,16 @@ export const daysFull = {
     4: 'Thursday', 5: 'Friday', 6: 'Saturday', 0: 'Sunday',
 };
 
-export const daysShortObj = {
+export const daysShort = {
     1: 'Mon', 2: 'Tue', 3: 'Wed',
     4: 'Thu', 5: 'Fri', 6: 'Sat', 0: 'Sun',
 };
 
-export const daysShort = [
-    'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
-];
-
-export const monthsFull = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-];
+export const monthsFull = {
+    0: 'January', 1: 'February', 2: 'March', 3: 'April',
+    4: 'May', 5: 'June', 6: 'July', 7: 'August',
+    8: 'September', 9: 'October', 10: 'November', 11: 'December',
+};
 
 export const monthsShort = {
     0: 'Jan', 1: 'Feb', 2: 'Mar', 3: 'Apr', 4: 'May', 5: 'Jun',
@@ -137,6 +134,8 @@ export const elements = {
 };
 
 export const dashboardElements = {
+    lastUpdated: () => document.querySelector('.highlights .card-lg #highlights-label'),
+
     currentImg: () => document.querySelector('.current-weather .weapper img'),
     currentTemp: () => document.querySelector('.current-weather .weapper .heading'),
     currentText: () => document.querySelector('.current-weather .body-3'),

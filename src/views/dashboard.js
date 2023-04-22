@@ -52,9 +52,10 @@ export async function dashboardPage(ctx) {
         // Finally, render with the items object fed as a parameter to the template
         removeBlur(elements.main());
     } catch (error) {
+        let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
-        alert('Error getting weather data!');
-        elements.dotHeader().appendChild(createErrorOverlay());
+        alert(message);
+        elements.dotHeader().appendChild(createErrorOverlay(message));
         // APPLY LOADING ANIMATION as well
         applyBlur(elements.main());
     }
@@ -178,6 +179,7 @@ const dashboardTemplate = (items = {}) => html`
                 <div class="card card-lg current-weather-card">
                 
                     <h2 class="title-2 card-title">Now</h2>
+                    <h4 id="last-updated">Last updated: 12:17 AM</h4>
 
                     <div class="weapper">
                         <p class="heading">25&deg;<sup>c</sup></p>
@@ -317,7 +319,7 @@ const dashboardTemplate = (items = {}) => html`
             <!-- HIGHLIGHTS -->
             <section class="section highlights" aria-labelledby="highlights-label" data-highlights>
                 <div class="card card-lg">
-                    
+
                     <h2 class="title-2" id="highlights-label">Todays Highlights</h2>
 
                     <div class="highlight-list">
@@ -697,6 +699,7 @@ const hourlyTemplate = (items = {}) => html`
             <div class="blurred">
                 <table class="hour-section">
                     <tbody data-hour-section>
+                        <h4 id="last-updated-hourly">Last updated: 12:17 AM</h4>
                         <!-- add dynamic info to each row -->
                         ${html`${hourRowTemplate()}`}
                         ${html`${hourRowTemplate()}`}
