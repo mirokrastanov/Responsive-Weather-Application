@@ -173,13 +173,15 @@ function renderDailyWeather(page, daily) {
             setValue(el, daily[i].temp, html`&deg;<sup>c</sup>`);
         });
         dashboardElements.dailyDateMonth().forEach((el, i) => {
-            let template = `${new Date(daily[i].timestamp).getDate()} ${monthsShort[new Date(daily[i].timestamp).getMonth()]}`
-            setValue(el, template);
+            let dateRaw = new Date(daily[i].timestamp);
+            let [date, month, day] =
+                [dateRaw.getDate(), dateRaw.getMonth(), dateRaw.getDay()];
+            setValue(el, `${daysShortObj[day]} ${date}, ${monthsShort[month]}`);
         });
-        dashboardElements.dailyDay().forEach((el, i) => {
-            setValue(el, `${daysShortObj[new Date(daily[i].timestamp).getDay()]}`);
+        dashboardElements.dailyDay().forEach(el => {
+            el.parentElement.removeChild(el);
         });
-
+        
 
     } else if (page == 'hourly') {
 
