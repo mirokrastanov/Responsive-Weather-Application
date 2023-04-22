@@ -134,7 +134,7 @@ export const elements = {
 };
 
 export const dashboardElements = {
-    lastUpdated: () => document.querySelector('.highlights .card-lg #highlights-label'),
+    lastUpdated: () => [document.querySelector('#last-updated'), document.querySelector('#last-updated-hourly')],
 
     currentImg: () => document.querySelector('.current-weather .weapper img'),
     currentTemp: () => document.querySelector('.current-weather .weapper .heading'),
