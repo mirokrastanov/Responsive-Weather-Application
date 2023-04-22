@@ -18,6 +18,11 @@
         margin: 0;
     }
 
+    #last-updated-hourly {
+        left: 25px;
+        top: 17px;
+    }
+
     .hour-section .label,
     .info-group div:nth-of-type(2) {
         margin: 5px;

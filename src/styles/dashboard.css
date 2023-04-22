@@ -564,6 +564,18 @@ article.container::before {
     color: var(--color-on-surface-variant);
 }
 
+#last-updated,
+#last-updated-hourly {
+    z-index: 90;
+    position: absolute;
+    top: 0px;
+    font-size: 1.2rem;
+}
+
+#last-updated-hourly {
+    left: 40px;
+}
+
 .badge {
     position: absolute;
     top: 16px;
@@ -732,6 +744,7 @@ article.container::before {
     width: 100%;
     text-align: center;
     border-spacing: 0;
+    margin-top: 10px;
 }
 
 .hour-row {
