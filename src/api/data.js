@@ -141,20 +141,31 @@ export function renderWeather(page, { current, daily, hourly }) {
     renderHourlyWeather(page, hourly);
 }
 
+// updates ALL the info every 10 minutes
+export function updateWeatherInfo(page, { current, daily, hourly }) {
+    setInterval(function () {
+        renderWeather(page, { current, daily, hourly });
+    }, 600000);
+}
+
 function setValue(element, value, addin = false) {
+    if (!element) return; // prevents errors - continuous func
     element.textContent = value;
     if (addin) render(addin, element); // adjust if necessary
 }
 
 function setImage(element, path) {
+    if (!element) return; // prevents errors - continuous func
     element.setAttribute('src', path);
 }
 
 function updateDashboardTimeNow() { // updates timeNow every second
     setInterval(function () {
         let [hNow, mNow, sNow] = [timeParser.hours24(), timeParser.min(), timeParser.sec()];
-        setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
         // console.log(sNow);
+        if (dashboardElements.highTimeNow()) {
+            setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        }
     }, 1000);
 }
 
@@ -166,7 +177,7 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
-        // CONTINUE HERE - Only London, GB left to change, when I implement search api
+        // TODO HERE - Only London, GB left to change, when I implement search api
 
 
         // TODAYS HIGHLIGHTS
