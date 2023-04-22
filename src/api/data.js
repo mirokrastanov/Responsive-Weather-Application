@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements, monthsShort, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { dashboardElements, daysFull, daysShortObj, monthsShort, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -158,7 +158,7 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
 
-        // CONTINUE HERE 
+        // CONTINUE HERE - Only London, GB left to change, when I implement search api
     } else if (page == 'hourly') {
 
     }
@@ -168,8 +168,18 @@ function renderDailyWeather(page, daily) {
     if (page == 'dashboard') {
         dashboardElements.dailyImg().forEach((el, i) => {
             setImage(el, daily[i].weatherImage);
-            console.log(el);
         });
+        dashboardElements.dailyTemp().forEach((el, i) => {
+            setValue(el, daily[i].temp, html`&deg;<sup>c</sup>`);
+        });
+        dashboardElements.dailyDateMonth().forEach((el, i) => {
+            let template = `${new Date(daily[i].timestamp).getDate()} ${monthsShort[new Date(daily[i].timestamp).getMonth()]}`
+            setValue(el, template);
+        });
+        dashboardElements.dailyDay().forEach((el, i) => {
+            setValue(el, `${daysShortObj[new Date(daily[i].timestamp).getDay()]}`);
+        });
+
 
     } else if (page == 'hourly') {
 

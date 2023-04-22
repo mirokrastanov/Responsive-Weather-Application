@@ -5,10 +5,15 @@ export const navElements = [
     document.querySelector('header nav a:nth-of-type(4)')
 ];
 
-export const daysFull = [
-    'Monday', 'Tuesday', 'Wednesday',
-    'Thursday', 'Friday', 'Saturday', 'Sunday'
-];
+export const daysFull = {
+    1: 'Monday', 2: 'Tuesday', 3: 'Wednesday',
+    4: 'Thursday', 5: 'Friday', 6: 'Saturday', 0: 'Sunday',
+};
+
+export const daysShortObj = {
+    1: 'Mon', 2: 'Tue', 3: 'Wed',
+    4: 'Thu', 5: 'Fri', 6: 'Sat', 0: 'Sun',
+};
 
 export const daysShort = [
     'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
@@ -134,8 +139,8 @@ export const dashboardElements = {
 
     dailyImg: () => document.querySelectorAll('.forecast .card-item .icon-wrapper img'),
     dailyTemp: () => document.querySelectorAll('.forecast .card-item .icon-wrapper .title-2'),
-    dailyDateMonth: () => document.querySelectorAll('.forecast .card-item p:nth-of-type(1)'),
-    dailyDay: () => document.querySelectorAll('.forecast .card-item p:nth-of-type(2)'),
+    dailyDateMonth: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(1)'),
+    dailyDay: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(2)'),
 
 
 };
