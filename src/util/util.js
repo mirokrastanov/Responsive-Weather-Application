@@ -129,6 +129,13 @@ export const dashboardElements = {
     currentImg: () => document.querySelector('.current-weather .weapper img'),
     currentTemp: () => document.querySelector('.current-weather .weapper .heading'),
     currentText: () => document.querySelector('.current-weather .body-3'),
-    currentDateDay: () => document.querySelector('.current-weather .meta-list .meta-item .meta-text'),
+    currentDateDay: () => document.querySelector('.current-weather .meta-list .meta-item:nth-of-type(1) .meta-text'),
+    currentLocation: () => document.querySelector('.current-weather .meta-list .meta-item:nth-of-type(2) .meta-text'),
+
+    dailyImg: () => document.querySelectorAll('.forecast .card-item .icon-wrapper img'),
+    dailyTemp: () => document.querySelectorAll('.forecast .card-item .icon-wrapper .title-2'),
+    dailyDateMonth: () => document.querySelectorAll('.forecast .card-item p:nth-of-type(1)'),
+    dailyDay: () => document.querySelectorAll('.forecast .card-item p:nth-of-type(2)'),
+
 
 };

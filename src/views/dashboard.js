@@ -197,7 +197,7 @@ const dashboardTemplate = (items = {}) => html`
             
             <!-- FORECAST -->
             <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast>
-                <h2 class="title-2" id="forecast-label">Weekly Forecast</h2>
+                <h2 class="title-2" id="forecast-label">Daily Forecast</h2>
 
                 <div class="card card-lg forecast-card">
                     <ul>

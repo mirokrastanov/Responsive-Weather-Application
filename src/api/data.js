@@ -166,6 +166,10 @@ function renderCurrentWeather(page, current) {
 
 function renderDailyWeather(page, daily) {
     if (page == 'dashboard') {
+        dashboardElements.dailyImg().forEach((el, i) => {
+            setImage(el, daily[i].weatherImage);
+            console.log(el);
+        });
 
     } else if (page == 'hourly') {
 
