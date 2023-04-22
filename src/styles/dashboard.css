@@ -450,9 +450,9 @@ article.container::before {
     align-items: center;
 }
 
-.current-weather-card .weather-icon {
+/* .current-weather-card .weather-icon {
     margin-inline: auto;
-}
+} */
 
 .current-weather-card>.body-3 {
     text-transform: capitalize;
