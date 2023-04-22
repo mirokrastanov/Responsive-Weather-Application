@@ -35,14 +35,6 @@
     font-size: 3rem;
 }
 
-.error-overlay:before {
-    content: 'Error getting weather data...';
-}
-
-.error-overlay:hover:before {
-    content: 'Click to Reload';
-}
-
 .error-overlay:hover {
     transform: scale(1.1);
     cursor: pointer;
