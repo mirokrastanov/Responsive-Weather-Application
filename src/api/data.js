@@ -10,10 +10,11 @@ export function removeBlur(element) {
     element.classList.remove('blurred');
 }
 
-export function createErrorOverlay() {
+export function createErrorOverlay(message) { // Content dynamically added via CSS
     let errorOverlay = document.createElement('a');
     errorOverlay.href = '/dashboard';
     errorOverlay.classList.add('error-overlay');
+    errorOverlay.textContent = message;
     return errorOverlay;
 }
 
@@ -28,10 +29,14 @@ export async function getCurrentLocationCoords() {
             navigator.geolocation.getCurrentPosition(resolve, reject);
         });
     }
-    let res = await getPosition();
-    // console.log(res);
-    // TODO - error getting your location - please allow us  to use your location...
-    return [res.coords.latitude, res.coords.longitude];
+    let res;
+    try {
+        res = await getPosition();
+        // console.log(res);
+        return [res.coords.latitude, res.coords.longitude];
+    } catch (error) {
+        return ['no access', error.message];
+    }
 }
 
 function returnDayLONG() {
