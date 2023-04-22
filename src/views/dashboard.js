@@ -1,5 +1,8 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData, removeBlur, renderWeather } from '../api/data.js';
+import {
+    applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
+    removeBlur, renderWeather, updateWeatherInfo
+} from '../api/data.js';
 import { elements } from '../util/util.js';
 
 // import from api
@@ -27,7 +30,7 @@ export async function dashboardPage(ctx) {
                 return;
             }
             // GETS location coords successfully
-            defaultCoords.push(currentCoords[0]); 
+            defaultCoords.push(currentCoords[0]);
             defaultCoords.push(currentCoords[1]);
         }
         // WITHOUT ELSE --> the defaultCoords will be filled during the search onClick
@@ -36,6 +39,10 @@ export async function dashboardPage(ctx) {
         // defaultCoords = [42.7, 23.32]; 
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
+        updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 minutes
+        // --------------------------------------------------------------
+        // GORNOTO da go invoke-vam pri vseki render na nekuv page !!!!
+        // --------------------------------------------------------------
         console.log(weatherInfo);
 
 
