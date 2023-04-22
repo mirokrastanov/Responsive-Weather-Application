@@ -135,13 +135,17 @@ export async function getParsedWeatherData(coords) {
     return result;
 }
 
-export function renderWeather(page, { current, daily, hourly }) {
+// invoked every 10m by updateWeatherInfo()
+export function renderWeather(page, { current, daily, hourly }) { 
     renderCurrentWeather(page, current);
     renderDailyWeather(page, daily);
     renderHourlyWeather(page, hourly);
+    dashboardElements.lastUpdated().forEach(x => {
+        setValue(x, `Last updated: ${timeParser.hours24()[0]}:${timeParser.min()} ${timeParser.hours24()[1]}`);
+    });
 }
 
-// updates ALL the info every 10 minutes
+// invokes renderWeather() every 10m
 export function updateWeatherInfo(page, { current, daily, hourly }) {
     setInterval(function () {
         renderWeather(page, { current, daily, hourly });
@@ -193,7 +197,10 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highTimeSunset(), `${hSet[0]}:${mSet} ${hSet[1]}`);
         updateDashboardTimeNow(); // continuous time update
 
-
+        // CONTINUE HERE TOMORROW -> from Feels Like section
+        // za precip , ako e 0, da go zakruglq prosto na 0, da go naprava taka
+        // the hourly na 3h da go oformq s logika v iznesena funkcia, koqto da 
+        // mi vru6ta gotov array sus every 3rd element
 
     } else if (page == 'hourly') {
 
