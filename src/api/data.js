@@ -150,9 +150,11 @@ function setImage(element, path) {
     element.setAttribute('src', path);
 }
 
-function updateDashboardTimeNow(hNow, mNow) { // updates timeNow every second
+function updateDashboardTimeNow() { // updates timeNow every second
     setInterval(function () {
+        let [hNow, mNow, sNow] = [timeParser.hours24(), timeParser.min(), timeParser.sec()];
         setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        // console.log(sNow);
     }, 1000);
 }
 
@@ -178,7 +180,7 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
         setValue(dashboardElements.highTimeSunrise(), `${hRise[0]}:${mRise} ${hRise[1]}`);
         setValue(dashboardElements.highTimeSunset(), `${hSet[0]}:${mSet} ${hSet[1]}`);
-        updateDashboardTimeNow(hNow, mNow); // continuous time update
+        updateDashboardTimeNow(); // continuous time update
 
 
 
