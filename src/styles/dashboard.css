@@ -496,7 +496,7 @@ article.container::before {
 }
 
 .forecast-card .icon-wrapper {
-    gap: 8px;
+    gap: 4px;
 }
 
 .forecast-card .label-1 {
