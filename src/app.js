@@ -32,7 +32,7 @@ function updateNav(path) {
 }
 
 function mainMiddleware(ctx, next) {
-    console.log(ctx);
+    // console.log(ctx);
     ctx.render = (content) => render(content, root);
     ctx.updateNav = updateNav(ctx.path);
     next();

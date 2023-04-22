@@ -12,13 +12,10 @@ export async function dashboardPage(ctx) {
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
-    console.log(defaultCoords);
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
     applyBlur(elements.main());
     try {
-        defaultCoords = [5, 6];
-        return;
         if (defaultCoords.length == 0) { // IMA LI COORDS, ve4e save-nati v search-a
             let currentCoords = await getCurrentLocationCoords();
             if (currentCoords[0] == 'no access') { // DAVA LI LOCATION ACCESS
@@ -29,13 +26,14 @@ export async function dashboardPage(ctx) {
                 // console.log(currentCoords[1] == 'User denied Geolocation');
                 return;
             }
-            defaultCoords.push(currentCoords[0]);
+            // GETS location coords successfully
+            defaultCoords.push(currentCoords[0]); 
             defaultCoords.push(currentCoords[1]);
         }
         // WITHOUT ELSE --> the defaultCoords will be filled during the search onClick
         // function --> when that is implemented - REMOVE the below coords array adn 
         // adjust weatherInfo to take the defaultCoords 
-        defaultCoords = [42.7, 23.32]; 
+        // defaultCoords = [42.7, 23.32]; 
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         console.log(weatherInfo);
@@ -47,9 +45,6 @@ export async function dashboardPage(ctx) {
         // Finally, render with the items object fed as a parameter to the template
         removeBlur(elements.main());
     } catch (error) {
-        if (error instanceof GeolocationPositionError) {
-            console.log('da ne dade');
-        }
         console.log('Error details: ', { ...error, 'stack': error.stack });
         alert('Error getting weather data!');
         elements.dotHeader().appendChild(createErrorOverlay());
@@ -60,6 +55,8 @@ export async function dashboardPage(ctx) {
 
 async function hourlyDetails(e) {
     e.preventDefault();
+    // TVA DA SE PRERABOTI po obrazec na dashboarda kato go naprava nego
+
 
     context.render(hourlyTemplate());
     document.querySelector('article.container').style.display = 'block';
