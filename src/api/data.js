@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements, daysFull, daysShortObj, monthsShort, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { dashboardElements, daysFull, daysShortObj, monthsShort, timeParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -150,15 +150,38 @@ function setImage(element, path) {
     element.setAttribute('src', path);
 }
 
+function updateDashboardTimeNow(hNow, mNow) { // updates timeNow every second
+    setInterval(function () {
+        setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+    }, 1000);
+}
+
 function renderCurrentWeather(page, current) {
     if (page == 'dashboard') {
+        // CURRENT CARD
         setImage(dashboardElements.currentImg(), current.weatherImage);
         setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>c</sup>`);
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
-
         // CONTINUE HERE - Only London, GB left to change, when I implement search api
+
+
+        // TODAYS HIGHLIGHTS
+        let [hNow, mNow, hRise, mRise, hSet, mSet] = [
+            timeParser.hours24(), timeParser.min(),
+            timeParser.hours24(new Date(current.sunrise)),
+            timeParser.min(new Date(current.sunrise)),
+            timeParser.hours24(new Date(current.sunset)),
+            timeParser.min(new Date(current.sunset)),
+        ];
+        setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        setValue(dashboardElements.highTimeSunrise(), `${hRise[0]}:${mRise} ${hRise[1]}`);
+        setValue(dashboardElements.highTimeSunset(), `${hSet[0]}:${mSet} ${hSet[1]}`);
+        updateDashboardTimeNow(hNow, mNow); // continuous time update
+
+
+
     } else if (page == 'hourly') {
 
     }
@@ -166,6 +189,7 @@ function renderCurrentWeather(page, current) {
 
 function renderDailyWeather(page, daily) {
     if (page == 'dashboard') {
+        // DAILY FORECAST - 7 days
         dashboardElements.dailyImg().forEach((el, i) => {
             setImage(el, daily[i].weatherImage);
         });
@@ -181,7 +205,6 @@ function renderDailyWeather(page, daily) {
         dashboardElements.dailyDay().forEach(el => {
             el.parentElement.removeChild(el);
         });
-        
 
     } else if (page == 'hourly') {
 
