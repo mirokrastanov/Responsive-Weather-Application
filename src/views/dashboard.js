@@ -5,20 +5,39 @@ import { elements } from '../util/util.js';
 // import from api
 
 let context = null;
+let defaultCoords = [];
 export async function dashboardPage(ctx) {
     context = ctx;
     // let itemsArray = await getAllItems(); // TO ADD in API
     // if (!itemsArray) itemsArray = [];
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
-
+    console.log(defaultCoords);
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
     applyBlur(elements.main());
     try {
-        let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
-        let weatherInfo = await getParsedWeatherData(coords);
-        renderWeather('dashboard', weatherInfo); // DYNAMIC DATA is pulled from here
+        defaultCoords = [5, 6];
+        return;
+        if (defaultCoords.length == 0) { // IMA LI COORDS, ve4e save-nati v search-a
+            let currentCoords = await getCurrentLocationCoords();
+            if (currentCoords[0] == 'no access') { // DAVA LI LOCATION ACCESS
+                elements.dotHeader().appendChild(
+                    createErrorOverlay(`Please allow us to use your Geolocation
+                    or Search for another location above.`));
+                // console.log(currentCoords);
+                // console.log(currentCoords[1] == 'User denied Geolocation');
+                return;
+            }
+            defaultCoords.push(currentCoords[0]);
+            defaultCoords.push(currentCoords[1]);
+        }
+        // WITHOUT ELSE --> the defaultCoords will be filled during the search onClick
+        // function --> when that is implemented - REMOVE the below coords array adn 
+        // adjust weatherInfo to take the defaultCoords 
+        defaultCoords = [42.7, 23.32]; 
+        let weatherInfo = await getParsedWeatherData(defaultCoords);
+        renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         console.log(weatherInfo);
 
 
@@ -28,6 +47,9 @@ export async function dashboardPage(ctx) {
         // Finally, render with the items object fed as a parameter to the template
         removeBlur(elements.main());
     } catch (error) {
+        if (error instanceof GeolocationPositionError) {
+            console.log('da ne dade');
+        }
         console.log('Error details: ', { ...error, 'stack': error.stack });
         alert('Error getting weather data!');
         elements.dotHeader().appendChild(createErrorOverlay());
@@ -45,7 +67,7 @@ async function hourlyDetails(e) {
     try {
         let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
         let weatherInfo = await getParsedWeatherData(coords);
-        renderWeather('hourly', weatherInfo); // DYNAMIC DATA is pulled from here
+        renderWeather('hourly', weatherInfo); // DYNAMIC DATA being added to the Front End
         console.log(weatherInfo);
 
 
@@ -57,18 +79,28 @@ async function hourlyDetails(e) {
         // }, 1000);
         removeBlur(elements.main());
     } catch (error) {
+        let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
-        alert('Error getting weather data!');
-        elements.dotHeader().appendChild(createErrorOverlay());
+        alert(message);
+        elements.dotHeader().appendChild(createErrorOverlay(message));
         // APPLY LOADING ANIMATION as well
         applyBlur(elements.main());
     }
 }
 
 async function onCurrentLocationClick(e) { // add the listener
-    e.preventDefault();
-    let coords = await getCurrentLocationCoords();
-    console.log(coords);
+    // e.preventDefault();
+    try {
+        let coords = await getCurrentLocationCoords();
+        console.log(coords);
+    } catch (error) {
+        let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
+        // console.log(message);
+        // alert(message);
+        // elements.dotHeader().appendChild(createErrorOverlay(message));
+        // APPLY LOADING ANIMATION as well
+        applyBlur(elements.main());
+    }
     // render based on those coords - FIGURE IT OUT :)
 }
 
