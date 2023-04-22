@@ -122,6 +122,11 @@ export const weatherImgRoutesNIGHT = {
     99: '/src/images/weather-icons/11n.png',
 };
 
+export const timeParser = {
+    hours24: (x = new Date()) => x.getHours() > 12 ? [x.getHours() % 12, 'PM'] : [x.getHours(), 'AM'],
+    min: (x = new Date()) => x.getMinutes(),
+};
+
 export const elements = {
     // get it each time -> invoke on reuse
     main: () => document.querySelector('#main #main-ctr main'),
@@ -142,5 +147,8 @@ export const dashboardElements = {
     dailyDateMonth: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(1)'),
     dailyDay: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(2)'),
 
+    highTimeNow: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(1) .title-1'),
+    highTimeSunrise: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(2) .title-1'),
+    highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(3) .title-1'),
 
 };
