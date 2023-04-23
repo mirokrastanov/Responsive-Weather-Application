@@ -156,4 +156,5 @@ export const dashboardElements = {
     highTimeSunrise: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(2) .title-1'),
     highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(3) .title-1'),
 
+    highFeelsLike: () => document.querySelector('.highlight-list div:nth-of-type(3).card-sm.highlight-card .wrapper .title-1'),
 };

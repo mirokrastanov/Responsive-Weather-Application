@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements, daysFull, daysShort, monthsShort, timeParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { dashboardElements, daysFull, daysShort, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -136,7 +136,7 @@ export async function getParsedWeatherData(coords) {
 }
 
 // invoked every 10m by updateWeatherInfo()
-export function renderWeather(page, { current, daily, hourly }) { 
+export function renderWeather(page, { current, daily, hourly }) {
     renderCurrentWeather(page, current);
     renderDailyWeather(page, daily);
     renderHourlyWeather(page, hourly);
@@ -197,8 +197,7 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highTimeSunset(), `${hSet[0]}:${mSet} ${hSet[1]}`);
         updateDashboardTimeNow(); // continuous time update
 
-        // CONTINUE HERE TOMORROW -> from Feels Like section
-        // za precip , ako e 0, da go zakruglq prosto na 0, da go naprava taka
+        setValue(dashboardElements.highFeelsLike(), current.feelsLikeTemp, html`&deg;<sup>c</sup>`);
         // the hourly na 3h da go oformq s logika v iznesena funkcia, koqto da 
         // mi vru6ta gotov array sus every 3rd element
 
