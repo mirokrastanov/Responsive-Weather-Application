@@ -161,4 +161,7 @@ export const dashboardElements = {
     highHumidity: () => document.querySelector('.highlight-list div:nth-of-type(5).card-sm.highlight-card .wrapper .title-1'),
     highPrecip: () => document.querySelector('.highlight-list div:nth-of-type(6).card-sm.highlight-card .wrapper .title-1'),
     highVisibility: () => document.querySelector('.highlight-list div:nth-of-type(7).card-sm.highlight-card .wrapper .title-1'),
+    highPressure: () => document.querySelector('.highlight-list div:nth-of-type(8).card-sm.highlight-card .wrapper .title-1'),
+
+    
 };

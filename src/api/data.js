@@ -203,6 +203,10 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highPrecip(), current.precip, html` <sub>mm</sub>`);
         let visSmart = valueParser.visibility(current.visibility);
         setValue(dashboardElements.highVisibility(), visSmart[0], html` <sub>${visSmart[1]}</sub>`);
+        setValue(dashboardElements.highPressure(), current.pressure, html` <sub>hPa</sub>`);
+
+
+        // CONTINUE HERE TOMORROW -> hourly forecast (in the Dashboard)
         // the hourly na 3h da go oformq s logika v iznesena funkcia, koqto da 
         // mi vru6ta gotov array sus every 3rd element
 
