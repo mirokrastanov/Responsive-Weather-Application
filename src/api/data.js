@@ -201,6 +201,8 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highWind(), current.windSpeed, html` <sub>m/s</sub>`);
         setValue(dashboardElements.highHumidity(), current.humidity, html` <sub>%</sub>`);
         setValue(dashboardElements.highPrecip(), current.precip, html` <sub>mm</sub>`);
+        let visSmart = valueParser.visibility(current.visibility);
+        setValue(dashboardElements.highVisibility(), visSmart[0], html` <sub>${visSmart[1]}</sub>`);
         // the hourly na 3h da go oformq s logika v iznesena funkcia, koqto da 
         // mi vru6ta gotov array sus every 3rd element
 
