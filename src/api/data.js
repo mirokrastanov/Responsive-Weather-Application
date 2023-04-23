@@ -199,6 +199,7 @@ function renderCurrentWeather(page, current) {
 
         setValue(dashboardElements.highFeelsLike(), current.feelsLikeTemp, html`&deg;<sup>c</sup>`);
         setValue(dashboardElements.highWind(), current.windSpeed, html` <sub>m/s</sub>`);
+        setValue(dashboardElements.highHumidity(), current.humidity, html` <sub>%</sub>`);
         // the hourly na 3h da go oformq s logika v iznesena funkcia, koqto da 
         // mi vru6ta gotov array sus every 3rd element
 

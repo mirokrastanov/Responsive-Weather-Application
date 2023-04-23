@@ -158,4 +158,5 @@ export const dashboardElements = {
 
     highFeelsLike: () => document.querySelector('.highlight-list div:nth-of-type(3).card-sm.highlight-card .wrapper .title-1'),
     highWind: () => document.querySelector('.highlight-list div:nth-of-type(4).card-sm.highlight-card .wrapper .title-1'),
+    highHumidity: () => document.querySelector('.highlight-list div:nth-of-type(5).card-sm.highlight-card .wrapper .title-1'),
 };
