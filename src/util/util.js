@@ -125,6 +125,11 @@ export const timeParser = {
     sec: (x = new Date()) => x.getSeconds(),
 };
 
+export const valueParser = {
+    visibility: (x) => x > 1000 ? [(x / 1000), 'km'] : [x, 'm']
+
+};
+
 export const elements = {
     // get it each time -> invoke on reuse
     main: () => document.querySelector('#main #main-ctr main'),
