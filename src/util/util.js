@@ -135,11 +135,9 @@ export const valueParser = {
 
 export const arrayParser = {
     arr3parser: (arr) => {
-        let filtered = arr.filter((x, i) => i % 3 == 0 ? x : null);
-        filtered.length % 2 == 0 ? null : filtered.pop();
-        let slider1 = filtered.splice(0, (filtered.length / 2));
-        let slider2 = filtered.slice();
-        return [slider1, slider2];
+        let slider = arr.slice(0, 30).filter((x, i) => (i - 1) % 3 == 0 ? x : null);
+        slider.length % 2 == 0 ? null : slider.pop();
+        return slider;
     },
 
 }
@@ -177,8 +175,8 @@ export const dashboardElements = {
     highVisibility: () => document.querySelector('.highlight-list div:nth-of-type(7).card-sm.highlight-card .wrapper .title-1'),
     highPressure: () => document.querySelector('.highlight-list div:nth-of-type(8).card-sm.highlight-card .wrapper .title-1'),
 
-    dashHSlider1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'), 
-    dashHSlider2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'), 
+    dashHSlider1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'),
+    dashHSlider2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'),
 
-    
+
 };

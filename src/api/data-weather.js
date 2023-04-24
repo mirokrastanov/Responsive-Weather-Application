@@ -1,6 +1,6 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { arrayParser, dashboardElements, daysFull, daysShort, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
-import { dashboardHourlyCardUpper } from '../views/dashboard.js';
+import { dashboardHourlyCardLower, dashboardHourlyCardUpper } from '../views/dashboard.js';
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -239,16 +239,23 @@ function renderDailyWeather(page, daily) {
 
 function renderHourlyWeather(page, hourly) {
     if (page == 'dashboard') {
-        let sliderArrays = arrayParser.arr3parser(hourly.slice());
+        let sliders = arrayParser.arr3parser(hourly.slice());
         dashboardElements.dashHSlider1().replaceChildren();
-        sliderArrays[0].forEach((x, i) => {
+        sliders.forEach((x, i) => {
             let t = timeParser.hours24(new Date(x.timestamp));
-            let el = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
-            let li = document.createElement('li');
-            li.classList.add('slider-item');
-            li.setAttribute('data-info', i);
-            render(el, li);
-            dashboardElements.dashHSlider1().appendChild(li);
+            let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
+            // let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
+            // TODO LOWER CARD after I implement a wind direction rotator for the arrow png
+            let li1 = document.createElement('li');
+            li1.classList.add('slider-item');
+            li1.setAttribute('data-info-upper', i);
+            render(upperCard, li1);
+            dashboardElements.dashHSlider1().appendChild(li1);
+            // let li2 = document.createElement('li');
+            // li2.classList.add('slider-item');
+            // li2.setAttribute('data-info-lower', i);
+            // render(upperCard, li2);
+            // dashboardElements.dashHSlider2().appendChild(li2);
         });
 
 
