@@ -239,7 +239,9 @@ function renderDailyWeather(page, daily) {
 function renderHourlyWeather(page, hourly) {
     if (page == 'dashboard') {
         let sliderArrays = arrayParser.arr3parser(hourly.slice());
-        // arrayEvery3rd.forEach(x => setValue())
+        sliderArrays[0].forEach(x => {
+        });
+
 
     } else if (page == 'hourly') {
 

@@ -177,5 +177,8 @@ export const dashboardElements = {
     highVisibility: () => document.querySelector('.highlight-list div:nth-of-type(7).card-sm.highlight-card .wrapper .title-1'),
     highPressure: () => document.querySelector('.highlight-list div:nth-of-type(8).card-sm.highlight-card .wrapper .title-1'),
 
+    dashHSlider1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'), 
+    dashHSlider2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'), 
 
+    
 };
