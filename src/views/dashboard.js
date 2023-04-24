@@ -1,4 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { searchOnTyping } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, renderWeather, updateWeatherInfo
@@ -14,7 +15,7 @@ export async function dashboardPage(ctx) {
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
     addEventOnElements(dashboardElements.searchTogglers(), 'click', searchUtility.toggleSearch);
-    
+    dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
         if (defaultCoords.length == 0) { // IMA LI COORDS, ve4e save-nati v search-a

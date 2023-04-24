@@ -235,6 +235,9 @@ export const dashboardElements = {
 
     searchView: () => document.querySelector('[data-search-view]'),
     searchTogglers: () => document.querySelectorAll('[data-search-toggler]'),
-
+    
+    searchField: () => document.querySelector('[data-search-field]'),
+    searchResult: () => document.querySelector('[data-search-result]'),
+    
 
 };
