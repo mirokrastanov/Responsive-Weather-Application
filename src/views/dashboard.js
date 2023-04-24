@@ -3,7 +3,7 @@ import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
-import { elements } from '../util/util.js';
+import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
 
 // import from api
 
@@ -11,12 +11,9 @@ let context = null;
 let defaultCoords = [];
 export async function dashboardPage(ctx) {
     context = ctx;
-    // let itemsArray = await getAllItems(); // TO ADD in API
-    // if (!itemsArray) itemsArray = [];
-    // // let itemsArray = [];
-    // ctx.render(itemsTemplate(itemsArray));
     ctx.render(dashboardTemplate());
     document.querySelector('article.container').style.display = 'grid';
+    addEventOnElements(dashboardElements.searchTogglers(), 'click', searchUtility.toggleSearch);
     applyBlur(elements.main());
     try {
         if (defaultCoords.length == 0) { // IMA LI COORDS, ve4e save-nati v search-a
@@ -63,6 +60,8 @@ export async function dashboardPage(ctx) {
 
 async function hourlyDetails(e) {
     e.preventDefault();
+    // HOURLY TREA DA POMNI LOCACIATA, koqto e izbrana!!!
+
     // TVA DA SE PRERABOTI po obrazec na dashboarda kato go naprava nego
 
 
@@ -109,14 +108,6 @@ async function onCurrentLocationClick(e) { // add the listener
     // render based on those coords - FIGURE IT OUT :)
 }
 
-
-// array(7) = daily
-const weeklyForecastTemplate = (items = []) => html``;
-
-
-// array(16) = hourly*
-// hourly* = cut only 0, 2, 5, 8, 11, etc INDICES for every 3h and stop after 16 elems
-const dashboardHourlyTemplate = (items = []) => html``;
 
 
 // main.blurred applied - remove with removeBlur() function as needed
@@ -674,7 +665,6 @@ const dashboardTemplate = (items = {}) => html`
 </main>
 `;
 
-
 // main.blurred applied - remove with removeBlur() function as needed
 const hourlyTemplate = (items = {}) => html`
 <div class="header">
@@ -740,7 +730,6 @@ const hourlyTemplate = (items = {}) => html`
     </article>
 </main>
 `;
-
 
 const hourRowTemplate = (item = {}) => html`
 <tr class="hour-row">
@@ -814,7 +803,6 @@ const hourRowTemplate = (item = {}) => html`
     </td>
 </tr>
 `;
-
 
 export const dashboardHourlyCardUpper = (time, img, temp) => html`
 <div class="card card-sm slider-card">

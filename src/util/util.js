@@ -189,6 +189,22 @@ export const elements = {
     dotHeader: () => document.querySelector('.header'),
 };
 
+export function addEventOnElements(elements, eventType, callback) {
+    for (const el of elements) el.addEventListener(eventType, callback);
+}
+
+export const searchUtility = {
+    toggleSearch: () => {
+        dashboardElements.searchView().classList.toggle('active');
+        let arr2 = [dashboardElements.lastUpdated()[0], dashboardElements.lastUpdated()[1]];
+        arr2[0] ? arr2[0].classList.toggle('hidden-el') : null;
+        arr2[1] ? arr2[1].classList.toggle('hidden-el') : null;
+    },
+
+}
+
+
+
 export const dashboardElements = {
     lastUpdated: () => [document.querySelector('#last-updated'), document.querySelector('#last-updated-hourly')],
 
@@ -219,6 +235,6 @@ export const dashboardElements = {
 
     searchView: () => document.querySelector('[data-search-view]'),
     searchTogglers: () => document.querySelectorAll('[data-search-toggler]'),
-    
+
 
 };
