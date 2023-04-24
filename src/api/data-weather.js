@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements, daysFull, daysShort, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { arrayParser, dashboardElements, daysFull, daysShort, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -206,9 +206,6 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highPressure(), current.pressure, html` <sub>hPa</sub>`);
 
 
-        // CONTINUE HERE TOMORROW -> hourly forecast (in the Dashboard)
-        // the hourly na 3h da go oformq s logika v iznesena funkcia, koqto da 
-        // mi vru6ta gotov array sus every 3rd element
 
     } else if (page == 'hourly') {
 
@@ -241,6 +238,8 @@ function renderDailyWeather(page, daily) {
 
 function renderHourlyWeather(page, hourly) {
     if (page == 'dashboard') {
+        let sliderArrays = arrayParser.arr3parser(hourly.slice());
+        // arrayEvery3rd.forEach(x => setValue())
 
     } else if (page == 'hourly') {
 
