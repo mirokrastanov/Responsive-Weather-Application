@@ -120,7 +120,9 @@ export const weatherImgRoutesNIGHT = {
 };
 
 export const timeParser = {
-    hours24: (x = new Date()) => x.getHours() > 12 ? [x.getHours() % 12, 'PM'] : [x.getHours(), 'AM'],
+    hours24: (x = new Date().getHours()) => {
+        return x > 12 ? [x % 12, 'PM'] : (x == 12 ? [x, 'PM'] : [x, 'AM']);
+    },
     min: (x = new Date()) => x.getMinutes() < 10 ? `0${x.getMinutes()}` : x.getMinutes(),
     sec: (x = new Date()) => x.getSeconds(),
 };
@@ -163,5 +165,5 @@ export const dashboardElements = {
     highVisibility: () => document.querySelector('.highlight-list div:nth-of-type(7).card-sm.highlight-card .wrapper .title-1'),
     highPressure: () => document.querySelector('.highlight-list div:nth-of-type(8).card-sm.highlight-card .wrapper .title-1'),
 
-    
+
 };
