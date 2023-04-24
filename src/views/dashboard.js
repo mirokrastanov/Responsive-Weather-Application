@@ -817,27 +817,24 @@ const hourRowTemplate = (item = {}) => html`
 
 
 export const dashboardHourlyCardUpper = (time, img, temp) => html`
- <li class="slider-item">
-    <div class="card card-sm slider-card">
-        <p class="body-3">${time}</p>
+<div class="card card-sm slider-card">
+    <p class="body-3">${time}</p>
 
-        <img src="${img}" width="48" height="48"
-        loading="lazy" alt="hourly-forecast-img" class="weather-icon" title="">
+    <img src="${img}" width="48" height="48"
+    loading="lazy" alt="hourly-forecast-img" class="weather-icon" title="">
 
-        <p class="body-3">${temp}&deg;</p>
-    </div>
-</li>
+    <p class="body-3">${temp}&deg;</p>
+</div>
 `;
 
 export const dashboardHourlyCardLower = (time, img, windSpeed) => html`
-<li class="slider-item">
-    <div class="card card-sm slider-card">
-        <p class="body-3">${time}</p>
+<div class="card card-sm slider-card">
+    <p class="body-3">${time}</p>
 
-        <img src="${img}" width="48" height="48"
-        loading="lazy" alt="" class="weather-icon" title="">
+    <img src="${img}" width="48" height="48"
+    loading="lazy" alt="" class="weather-icon" title="">
 
-        <p class="body-3">${windSpeed} m/s</p>
-    </div>
-</li>
+    <p class="body-3">${windSpeed} m/s</p>
+</div>
 `;
+

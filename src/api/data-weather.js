@@ -1,5 +1,6 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { arrayParser, dashboardElements, daysFull, daysShort, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { dashboardHourlyCardUpper } from '../views/dashboard.js';
 import { getWeather } from "./api.js";
 
 export function applyBlur(element) {
@@ -239,7 +240,15 @@ function renderDailyWeather(page, daily) {
 function renderHourlyWeather(page, hourly) {
     if (page == 'dashboard') {
         let sliderArrays = arrayParser.arr3parser(hourly.slice());
-        sliderArrays[0].forEach(x => {
+        dashboardElements.dashHSlider1().replaceChildren();
+        sliderArrays[0].forEach((x, i) => {
+            let t = timeParser.hours24(new Date(x.timestamp));
+            let el = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
+            let li = document.createElement('li');
+            li.classList.add('slider-item');
+            li.setAttribute('data-info', i);
+            render(el, li);
+            dashboardElements.dashHSlider1().appendChild(li);
         });
 
 
