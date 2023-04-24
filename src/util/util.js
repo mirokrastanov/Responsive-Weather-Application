@@ -120,8 +120,9 @@ export const weatherImgRoutesNIGHT = {
 };
 
 export const timeParser = {
-    hours24: (x = new Date().getHours()) => {
-        return x > 12 ? [x % 12, 'PM'] : (x == 12 ? [x, 'PM'] : [x, 'AM']);
+    hours24: (x = new Date()) => {
+        let h = x.getHours();
+        return h > 12 ? [h % 12, 'PM'] : (h == 12 ? [h, 'PM'] : [h, 'AM']);
     },
     min: (x = new Date()) => x.getMinutes() < 10 ? `0${x.getMinutes()}` : x.getMinutes(),
     sec: (x = new Date()) => x.getSeconds(),
@@ -131,6 +132,17 @@ export const valueParser = {
     visibility: (x) => x > 1000 ? [(x / 1000), 'km'] : [x, 'm']
 
 };
+
+export const arrayParser = {
+    arr3parser: (arr) => {
+        let filtered = arr.filter((x, i) => i % 3 == 0 ? x : null);
+        filtered.length % 2 == 0 ? null : filtered.pop();
+        let slider1 = filtered.splice(0, (filtered.length / 2));
+        let slider2 = filtered.slice();
+        return [slider1, slider2];
+    },
+
+}
 
 export const elements = {
     // get it each time -> invoke on reuse
