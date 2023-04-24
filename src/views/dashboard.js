@@ -1,5 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { searchOnTyping } from '../api/data-search.js';
+import { getLocation, searchOnTyping } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, renderWeather, updateWeatherInfo
@@ -7,6 +7,7 @@ import {
 import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
 
 // import from api
+
 
 let context = null;
 let defaultCoords = [];
@@ -18,6 +19,9 @@ export async function dashboardPage(ctx) {
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
+        let test = window.place; // tva moje i v local storage da go paza.. :D
+        if (test) console.log(window.place);
+        // defaultCoords = [41.8781136, -87.6297982]; // Chicago 
         if (defaultCoords.length == 0) { // IMA LI COORDS, ve4e save-nati v search-a
             let currentCoords = await getCurrentLocationCoords();
             if (currentCoords[0] == 'no access') { // DAVA LI LOCATION ACCESS
