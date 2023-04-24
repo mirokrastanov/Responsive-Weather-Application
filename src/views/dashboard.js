@@ -2,7 +2,7 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, renderWeather, updateWeatherInfo
-} from '../api/data.js';
+} from '../api/data-weather.js';
 import { elements } from '../util/util.js';
 
 // import from api
