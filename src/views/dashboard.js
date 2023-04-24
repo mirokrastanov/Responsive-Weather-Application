@@ -815,3 +815,17 @@ const hourRowTemplate = (item = {}) => html`
 </tr>
 `;
 
+
+export const dashboardHourlyCardUpper = (time, img, temp) => html`
+ <li class="slider-item">
+    <div class="card card-sm slider-card">
+        <p class="body-3">${time}</p>
+
+        <img src="${img}" width="48" height="48"
+        loading="lazy" alt="hourly-forecast-img" class="weather-icon" title="">
+
+        <p class="body-3">${temp}&deg;</p>
+    </div>
+</li>
+`;
+
