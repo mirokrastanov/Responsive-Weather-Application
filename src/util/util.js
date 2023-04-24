@@ -217,5 +217,8 @@ export const dashboardElements = {
     dashHSlider1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'),
     dashHSlider2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'),
 
+    searchView: () => document.querySelector('[data-search-view]'),
+    searchTogglers: () => document.querySelectorAll('[data-search-toggler]'),
+    
 
 };
