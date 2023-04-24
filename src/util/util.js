@@ -26,6 +26,45 @@ export const monthsShort = {
     6: 'Jul', 7: 'Aug', 8: 'Sep', 9: 'Oct', 10: 'Nov', 11: 'Dec'
 };
 
+export const aqiDataParser = {
+    1: {
+        level: 'Good',
+        messageGeneralPop: 'The air quality is good. Enjoy your usual outdoor activities.',
+        messageSensitivePop: 'The air quality is good. Enjoy your usual outdoor activities.',
+        range: [],
+    },
+    2: {
+        level: 'Fair',
+        messageGeneralPop: 'Enjoy your usual outdoor activities.',
+        messageSensitivePop: 'Enjoy your usual outdoor activities.',
+        range: [],
+    },
+    3: {
+        level: 'Moderate',
+        messageGeneralPop: 'Enjoy your usual outdoor activities',
+        messageSensitivePop: 'Consider reducing intense outdoor activities, if you experience symptoms.',
+        range: [],
+    },
+    4: {
+        level: 'Poor',
+        messageGeneralPop: 'Consider reducing intense activities outdoors, if you experience symptoms such as sore eyes, a cough or sore throat.',
+        messageSensitivePop: 'Consider reducing physical activities, particularly outdoors, especially if you experience symptoms.',
+        range: [],
+    },
+    5: {
+        level: 'Very poor',
+        messageGeneralPop: 'Consider reducing intense activities outdoors, if you experience symptoms such as sore eyes, a cough or sore throat.',
+        messageSensitivePop: 'Reduce physical activities, particularly outdoors, especially if you experience symptoms.',
+        range: [],
+    },
+    6: {
+        level: 'Extremely poor',
+        messageGeneralPop: 'Reduce physical activities outdoor.',
+        messageSensitivePop: 'Avoid physical activities outdoors.',
+        range: [],
+    },
+}
+
 export const weatherCodes = {
     0: 'Clear sky',
     1: 'Mainly clear',
