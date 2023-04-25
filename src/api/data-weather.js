@@ -183,10 +183,15 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
         let fullAddress = localStorage.getItem('full-address');
+        let myLatitude = localStorage.getItem('my-lat');
         if (fullAddress) {
             setValue(dashboardElements.currentLocation(), fullAddress);
             dashboardElements.currentLocation().setAttribute('title', fullAddress);
+        } else if (myLatitude) {
+            setValue(dashboardElements.currentLocation(), 'Current Location');
+            //TODO: user openweather api to fetch current location address
         }
+        
 
         // TODAYS HIGHLIGHTS
         let [hNow, mNow, hRise, mRise, hSet, mSet] = [
