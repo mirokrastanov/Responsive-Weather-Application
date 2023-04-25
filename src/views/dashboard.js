@@ -1,5 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { getLocation, reverseGeocoding, searchOnTyping } from '../api/data-search.js';
+import { searchOnTyping } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, renderWeather, updateWeatherInfo
@@ -29,8 +29,7 @@ export async function dashboardPage(ctx) {
             return;
         } else {
             // GETS location coords successfully
-            let myAddress = await reverseGeocoding(currentCoords[0], currentCoords[1]);
-            console.log(myAddress);
+            // tyka da sloja ot open weather api - reverse geocoding address-a
             localStorage.setItem('my-lat', currentCoords[0]);
             localStorage.setItem('my-lng', currentCoords[1]);
             defaultCoords = [currentCoords[0], currentCoords[1]];
