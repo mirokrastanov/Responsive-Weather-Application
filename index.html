@@ -43,14 +43,6 @@
     </div>
 
 
-
-
-
-
-
-
-
-
     <!-- Search script -->
     <script>
         async function initMap() {
@@ -69,22 +61,6 @@
                         window.getLocation(place); // feeds the result to api.js !!!
                         // console.log(place);
                     });
-
-
-                    let myLat = localStorage.getItem('my-lat');
-                    let myLng = localStorage.getItem('my-lng');
-                    let latlng = {
-                        lat: Number(myLat),
-                        lng: Number(myLng),
-                    };
-
-                    let geocoder = new google.maps.Geocoder();
-                    let displayWindow = document.querySelector('.current-weather .meta-list .meta-item:nth-of-type(2) .meta-text')
-                    geocoder.geocode({ location: latlng })
-                    .then(res => console.log(res))
-
-
-
                 });
             } catch (error) {
                 console.log(error);
