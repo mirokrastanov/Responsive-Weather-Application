@@ -182,16 +182,12 @@ export const arrayParser = {
         return slider;
     },
     addressParser: (str, name) => {
-        let cityRegExp = /locality">(?<g1>[A-Za-z0-9]+)<\/span>/g;
-        let countryRegExp = /country-name">(?<g2>[A-Za-z0-9]+)<\/span>/g;
-        let [city, country] = [null, null];
-        if (str.includes('locality">')) city = cityRegExp.exec(str).groups.g1;
-        else city = name;
-        if (str.includes('country-name">')) country = countryRegExp.exec(str).groups.g2;
-        if (!city) return country;
-        if (country.length < 4) return [city, country].join(', ');
-        countryListAllIsoData.find(x => x.name == country ? country = x.code : null);
-        return [city, country].join(', ');
+        let arr = str.split(', ');
+        let country = arr[arr.length - 1];
+        if (country.length >= 3) {
+            countryListAllIsoData.find(x => x.name == country ? country = x.code : null);
+        }
+        return [name, country].join(', ');
     },
 
 }
@@ -217,6 +213,13 @@ export const searchUtility = {
     },
 
 }
+
+export const stateAbbreviationsUSA = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
+    'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS',
+    'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV',
+    'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR',
+    'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'
+];
 
 
 
