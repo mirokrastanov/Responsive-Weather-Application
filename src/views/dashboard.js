@@ -19,6 +19,8 @@ export async function dashboardPage(ctx) {
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
+        //=> 6te zarejda v localStorage place obj
+
         let test = window.place; // tva moje i v local storage da go paza.. :D
         if (test) console.log(window.place);
         // defaultCoords = [41.8781136, -87.6297982]; // Chicago 
@@ -817,7 +819,7 @@ export const dashboardHourlyCardUpper = (time, img, temp) => html`
     <img src="${img}" width="48" height="48"
     loading="lazy" alt="hourly-forecast-img" class="weather-icon" title="">
 
-    <p class="body-3">${temp}&deg;</p>
+    <p class="body-3">${temp}&deg;<sup>C</sup></p>
 </div>
 `;
 
