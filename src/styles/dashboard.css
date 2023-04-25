@@ -568,6 +568,10 @@ article.container::before {
     color: var(--color-on-surface-variant);
 }
 
+.card.card-sm.highlight-card.two {
+    height: fit-content;
+}
+
 #last-updated,
 #last-updated-hourly {
     z-index: 90;

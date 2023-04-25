@@ -169,6 +169,10 @@
         gap: 24px;
     }
 
+    .card.card-sm.highlight-card.two {
+        height: fit-content;
+    }
+
     .content-left {
         position: sticky;
         top: 0;
