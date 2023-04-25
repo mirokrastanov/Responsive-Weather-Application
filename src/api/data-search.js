@@ -1,17 +1,24 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { dashboardElements } from '../util/util.js';
+import { arrayParser, dashboardElements } from '../util/util.js';
 
 
 let placeGlobal = null;
-// API       key=AIzaSyDmBG4n4aLo7d3AsdgTJyONlli7WLIot0s
-// src link  https://maps.googleapis.com/maps/api/js?key=AIzaSyDmBG4n4aLo7d3AsdgTJyONlli7WLIot0s&callback=initAutocomplete&libraries=places&v=weekly"
-export async function getLocation(place) {
+export function getLocation(place) {
+    if (place == null) return;
+    delete place.utc_offset; // utc_offser is deprecated and throws errors
+    console.log(place);
     placeGlobal = place;
-    getCoords(place); // moje i da ne trea i tyka da go svur6a i gotovo
-    // console.log(place);
-    // console.log(place.geometry.location.lat(), place.geometry.location.lng());
-    window.place = place; // moje i v local storage da go paza tva 100% !!! do it tomor
-    return place;
+    const coords = getCoords(place);
+    console.log(coords);
+    window.place = place;
+    let info = [coords[0], coords[1], place.formatted_address, place];
+    let address = arrayParser.addressParser(place.adr_address, place.name);  
+    console.log(address);
+    localStorage.setItem('lat', coords[0]);
+    localStorage.setItem('lng', coords[1]);
+    localStorage.setItem('address', address);
+    localStorage.setItem('place', JSON.stringify(place));
+    return info;
 }
 window.getLocation = getLocation; // allows the use of it inside the index.html !!!
 
@@ -24,7 +31,7 @@ export function searchOnTyping(e) {
 
     if (!dashboardElements.searchField().value) {
         dashboardElements.searchResult().classList.remove('active');
-        dashboardElements.searchResult(). innerHTML = '';
+        dashboardElements.searchResult().innerHTML = '';
         dashboardElements.searchField().classList.remove('searching');
     } else {
         dashboardElements.searchField().classList.add('searching');
@@ -36,13 +43,13 @@ export function searchOnTyping(e) {
             // get a returned api URL from an api call
             // fetch it (figure out how to render it using what I've got)
 
-            
+
             dashboardElements.searchResult().classList.add('active');
             dashboardElements.searchField().classList.remove('searching');
-            
+
 
             // fill out with found locations - and render it with lit-html, not innerHTML
-            
+
             // dashboardElements.searchResult(). innerHTML = `
             // <ul class="view-list" data-search-list>
             //     <li class="view-item">
@@ -57,7 +64,7 @@ export function searchOnTyping(e) {
             // </ul>
             // `;
 
-        });
+        }, searchTimeoutDuration);
     }
 
 }
@@ -65,6 +72,5 @@ export function searchOnTyping(e) {
 
 
 export function getCoords(place) {
-    console.log(place);
-    console.log(place.geometry.location.lat(), place.geometry.location.lng());
+    return [place.geometry.location.lat(), place.geometry.location.lng()];
 }
