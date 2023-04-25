@@ -1,12 +1,10 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { getLocation, searchOnTyping } from '../api/data-search.js';
+import { getLocation, reverseGeocoding, searchOnTyping } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
 import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
-
-// import from api
 
 
 let context = null;
@@ -19,35 +17,27 @@ export async function dashboardPage(ctx) {
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
-        //=> 6te zarejda v localStorage place obj
-
-        let test = window.place; // tva moje i v local storage da go paza.. :D
-        if (test) console.log(window.place);
-        // defaultCoords = [41.8781136, -87.6297982]; // Chicago 
-        if (defaultCoords.length == 0) { // IMA LI COORDS, ve4e save-nati v search-a
-            let currentCoords = await getCurrentLocationCoords();
-            if (currentCoords[0] == 'no access') { // DAVA LI LOCATION ACCESS
-                elements.dotHeader().appendChild(
-                    createErrorOverlay(`Please allow us to use your Geolocation
-                    or Search for another location above.`));
-                // console.log(currentCoords);
-                // console.log(currentCoords[1] == 'User denied Geolocation');
-                return;
-            }
-            // GETS location coords successfully
-            defaultCoords.push(currentCoords[0]);
-            defaultCoords.push(currentCoords[1]);
+        if (localStorage.getItem('lat') && localStorage.getItem('lng')) {
+            defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lng')];
+            console.log(JSON.parse(localStorage.getItem('place')));
         }
-        // WITHOUT ELSE --> the defaultCoords will be filled during the search onClick
-        // function --> when that is implemented - REMOVE the below coords array adn 
-        // adjust weatherInfo to take the defaultCoords 
-        // defaultCoords = [42.7, 23.32]; 
+        let currentCoords = await getCurrentLocationCoords();
+        if (currentCoords[0] == 'no access') { // if access was NOT allowed
+            elements.dotHeader().appendChild(
+                createErrorOverlay(`Please allow us to use your Geolocation
+                or Search for another location above.`));
+            return;
+        } else {
+            // GETS location coords successfully
+            let myAddress = await reverseGeocoding(currentCoords[0], currentCoords[1]);
+            console.log(myAddress);
+            localStorage.setItem('my-lat', currentCoords[0]);
+            localStorage.setItem('my-lng', currentCoords[1]);
+            defaultCoords = [currentCoords[0], currentCoords[1]];
+        }
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
-        updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 minutes
-        // --------------------------------------------------------------
-        // GORNOTO da go invoke-vam pri vseki render na nekuv page !!!!
-        // --------------------------------------------------------------
+        updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         console.log(weatherInfo);
 
 
