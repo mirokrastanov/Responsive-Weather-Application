@@ -2,11 +2,12 @@ import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { arrayParser, dashboardElements } from '../util/util.js';
 
 
-export async function reverseGeocoding(lat, lng) {
-    let res = await fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&featureTypes=&location=${lat},${lng}`);
-    let data = await res.json();
-    return data;
-}
+// RE-IMPLEMENT THIS using open weather's api !!!
+// export async function reverseGeocoding(lat, lng) {
+//     let res = await fetch(`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=json&featureTypes=&location=${lat},${lng}`);
+//     let data = await res.json();
+//     return data;
+// }
 
 let placeGlobal = null;
 export function getLocation(place) {
