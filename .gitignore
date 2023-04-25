@@ -24,3 +24,7 @@ jspm_packages/
 
 # JS private templates & misc
 _templates/
+
+
+# API KEYS & private variables
+_private/
