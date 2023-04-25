@@ -182,8 +182,11 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
-        // TODO HERE - Only London, GB left to change, when I implement search api
-
+        let fullAddress = localStorage.getItem('full-address');
+        if (fullAddress) {
+            setValue(dashboardElements.currentLocation(), fullAddress);
+            dashboardElements.currentLocation().setAttribute('title', fullAddress);
+        }
 
         // TODAYS HIGHLIGHTS
         let [hNow, mNow, hRise, mRise, hSet, mSet] = [
