@@ -164,7 +164,7 @@
 
     article.container {
         padding-block-start: 0;
-        grid-template-columns: 200px minmax(0, 1fr);
+        grid-template-columns: 208px minmax(0, 1fr);
         align-items: flex-start;
         gap: 24px;
     }
