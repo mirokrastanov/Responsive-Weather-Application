@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="/src/styles/main.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmBG4n4aLo7d3AsdgTJyONlli7WLIot0s&callback=initAutocomplete&libraries=places&v=weekly"
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmBG4n4aLo7d3AsdgTJyONlli7WLIot0s&libraries=places&callback=initMap"
         type="module"></script>
     <script src="/src/app.js" type="module"></script>
     <link rel="shortcut icon" href="/src/images/favicon.svg" type="image/x-icon">
@@ -53,7 +53,7 @@
 
     <!-- Search script -->
     <script>
-        async function initAutocomplete() { // added as callback for the script liking google maps API
+        async function initMap() {
             try {
                 $(document).ready(function () {
                     let autocomplete =
@@ -61,6 +61,7 @@
                             .querySelector('[data-search-field]')), {
                             types: ['geocode'],
                         });
+                    window.autocomplete = autocomplete;
 
                     // upon searching
                     autocomplete.addListener('place_changed', function () {
