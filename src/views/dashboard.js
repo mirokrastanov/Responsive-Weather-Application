@@ -20,19 +20,21 @@ export async function dashboardPage(ctx) {
         if (localStorage.getItem('lat') && localStorage.getItem('lng')) {
             defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lng')];
             console.log(JSON.parse(localStorage.getItem('place')));
-        }
-        let currentCoords = await getCurrentLocationCoords();
-        if (currentCoords[0] == 'no access') { // if access was NOT allowed
-            elements.dotHeader().appendChild(
-                createErrorOverlay(`Please allow us to use your Geolocation
-                or Search for another location above.`));
-            return;
         } else {
-            // GETS location coords successfully
-            // tyka da sloja ot open weather api - reverse geocoding address-a
-            localStorage.setItem('my-lat', currentCoords[0]);
-            localStorage.setItem('my-lng', currentCoords[1]);
-            defaultCoords = [currentCoords[0], currentCoords[1]];
+            let currentCoords = await getCurrentLocationCoords();
+            if (currentCoords[0] == 'no access') { // if access was NOT allowed
+                elements.dotHeader().appendChild(
+                    createErrorOverlay(`Please allow us to use your Geolocation
+                    or Search for another location above.`));
+                return;
+            } else {
+                // GETS location coords successfully
+                // tyka da sloja ot open weather api - reverse geocoding address-a
+                // moje da se naloji da izleze ot tozi scope
+                localStorage.setItem('my-lat', currentCoords[0]);
+                localStorage.setItem('my-lng', currentCoords[1]);
+                defaultCoords = [currentCoords[0], currentCoords[1]];
+            }
         }
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
