@@ -474,6 +474,10 @@ article.container::before {
     margin-block-end: 12px;
 }
 
+.current-weather-card .meta-item:last-child p {
+    width: 80%; /* to fit long addresses */
+}
+
 .current-weather-card .meta-text {
     color: var(--color-on-surface-variant);
 }
