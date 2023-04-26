@@ -1,5 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { arrayParser, dashboardElements, daysFull, daysShort, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import { arrayParser, dashboardElements, daysFull, daysShort, elements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper } from '../views/dashboard.js';
 import { getWeather } from "./api.js";
 
@@ -17,6 +17,10 @@ export function createErrorOverlay(message) { // Content dynamically added via C
     errorOverlay.classList.add('error-overlay');
     errorOverlay.textContent = message;
     return errorOverlay;
+}
+
+export function renderErrorOverlay(message) {
+    elements.dotHeader().appendChild(createErrorOverlay(message));
 }
 
 export function getCurrentTimeZone() {
@@ -182,6 +186,9 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
+
+
+        // adjust usin the new geo api
         let fullAddress = localStorage.getItem('full-address');
         let myLatitude = localStorage.getItem('my-lat');
         if (fullAddress) {
@@ -191,7 +198,7 @@ function renderCurrentWeather(page, current) {
             setValue(dashboardElements.currentLocation(), 'Current Location');
             //TODO: user openweather api to fetch current location address
         }
-        
+
 
         // TODAYS HIGHLIGHTS
         let [hNow, mNow, hRise, mRise, hSet, mSet] = [

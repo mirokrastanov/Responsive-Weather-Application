@@ -3,7 +3,7 @@ import { getGeolocation, reverseGeolocation } from '../api/api.js';
 import { searchOnTyping } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
-    removeBlur, renderWeather, updateWeatherInfo
+    removeBlur, renderErrorOverlay, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
 import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
 
@@ -28,9 +28,9 @@ export async function dashboardPage(ctx) {
         } else {
             let currentCoords = await getCurrentLocationCoords();
             if (currentCoords[0] == 'no access') { // if access was NOT allowed
-                elements.dotHeader().appendChild(
-                    createErrorOverlay(`Please allow us to use your Geolocation
-                    or Search for another location above.`));
+                let message = `Please allow us to use your Geolocation
+                or Search for another location above.`;
+                renderErrorOverlay(message);
                 return;
             } else {
                 // GETS location coords successfully
@@ -56,7 +56,7 @@ export async function dashboardPage(ctx) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
         alert(message);
-        elements.dotHeader().appendChild(createErrorOverlay(message));
+        renderErrorOverlay(message);
         // APPLY LOADING ANIMATION as well
         applyBlur(elements.main());
     }
@@ -90,7 +90,7 @@ async function hourlyDetails(e) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
         alert(message);
-        elements.dotHeader().appendChild(createErrorOverlay(message));
+        renderErrorOverlay(message);
         // APPLY LOADING ANIMATION as well
         applyBlur(elements.main());
     }
