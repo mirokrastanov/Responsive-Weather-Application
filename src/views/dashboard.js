@@ -3,7 +3,7 @@ import { getGeolocation, reverseGeolocation } from '../api/api.js';
 import { searchOnTyping, onSearchClick } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
-    removeBlur, renderErrorOverlay, renderNotificationOverlay, renderWeather, updateWeatherInfo
+    removeBlur, removeErrorOverlay, renderErrorOverlay, renderNotificationOverlay, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
 import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
 
@@ -37,14 +37,11 @@ export async function dashboardPage(ctx) {
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
-        // renderNotificationOverlay();
+        removeErrorOverlay();
+        renderNotificationOverlay();
         console.log(weatherInfo);
 
-
-
-        // IF NO ITEMS - enable blur and show alert - no data , or something
-
-        // Finally, render with the items object fed as a parameter to the template
+        // REMOVE loading, kogato go add-na purvo nali - lel 
         removeBlur(elements.main());
     } catch (error) {
         let message = 'Error getting weather data!';
@@ -107,6 +104,8 @@ async function onCurrentLocationClick(e) {
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
+        removeBlur(elements.main());
+        removeErrorOverlay();
         renderNotificationOverlay();
     } catch (error) {
         let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
