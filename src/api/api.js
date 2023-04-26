@@ -19,10 +19,12 @@ export async function getWeather(lat, lon, timezone) {
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 export async function getGeolocation(searched) {
     // city | city, country | city, state(US), country | 
-    let res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${searched}&limit=5&appid=${apiKey}`);
-    let data = await res; // returns JSON straight away
-
-    return data;
+    try {
+        if (searched == '') return null; // prevents errors on faster input
+        let res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${searched}&limit=5&appid=${apiKey}`);
+        let data = await res; // returns JSON straight away
+        return data;
+    } catch (error) { }
 }
 
 
