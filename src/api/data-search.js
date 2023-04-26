@@ -79,5 +79,13 @@ const searchItemTemplate = (name, nameString, lat, lon) => html`
 
 
 
+export async function onSearchClick(e) {
+    e.preventDefault();
+    let isValid = true;
+    let [lat, lon] = [e.target.parentElement.dataset.lat, e.target.parentElement.dataset.lon];
+    if (!lat || !lon) isValid = false;
+    if (!isValid) { // the default London list item
+        lat = 51.5073219;
+        lon = -0.1276474;
     }
 }
