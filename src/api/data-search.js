@@ -1,7 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { arrayParser, dashboardElements, searchUtility } from '../util/util.js';
+import { arrayParser, dashboardElements, elements, searchUtility } from '../util/util.js';
 import { getGeolocation } from './api.js';
-import { getParsedWeatherData, renderWeather } from './data-weather.js';
+import { getParsedWeatherData, removeBlur, removeErrorOverlay, renderNotificationOverlay, renderWeather } from './data-weather.js';
 
 
 let searchTimeout = null;
@@ -90,7 +90,11 @@ export async function onSearchClick(e) {
     }
     localStorage.setItem('lat', lat);
     localStorage.setItem('lon', lon);
+    // location.href = '/dashboard';
     let weatherInfo = await getParsedWeatherData([lat, lon]);
     renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
     if (isValid) searchUtility.toggleSearch();
+    removeBlur(elements.main());
+    removeErrorOverlay();
+    renderNotificationOverlay();
 }
