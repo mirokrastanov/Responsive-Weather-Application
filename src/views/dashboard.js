@@ -3,7 +3,7 @@ import { getGeolocation, reverseGeolocation } from '../api/api.js';
 import { searchOnTyping, onSearchClick } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
-    removeBlur, renderErrorOverlay, renderWeather, updateWeatherInfo
+    removeBlur, renderErrorOverlay, renderNotificationOverlay, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
 import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
 
@@ -18,23 +18,17 @@ export async function dashboardPage(ctx) {
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
-        // let geoL = await getGeolocation('naples, fl, us');
-        // console.log(geoL);
-        // let revGeoL = await reverseGeolocation(42.6977082, 23.3218675);
-        // console.log(revGeoL);
+        renderNotificationOverlay();
         if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
             defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lon')];
         } else {
             let currentCoords = await getCurrentLocationCoords();
-            if (currentCoords[0] == 'no access') { // if access was NOT allowed
+            if (currentCoords[0] == 'no access') {
                 let message = `Please allow us to use your Geolocation
                 or Search for another location above.`;
                 renderErrorOverlay(message);
                 return;
             } else {
-                // GETS location coords successfully
-                // tyka da sloja ot open weather api - reverse geocoding address-a
-                // moje da se naloji da izleze ot tozi scope
                 localStorage.setItem('lat', currentCoords[0]);
                 localStorage.setItem('lon', currentCoords[1]);
                 defaultCoords = [currentCoords[0], currentCoords[1]];
@@ -43,6 +37,7 @@ export async function dashboardPage(ctx) {
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
+        // renderNotificationOverlay();
         console.log(weatherInfo);
 
 
@@ -94,11 +89,11 @@ async function hourlyDetails(e) {
     }
 }
 
-async function onCurrentLocationClick(e) { 
+async function onCurrentLocationClick(e) {
     e.preventDefault();
     try {
         let currentCoords = await getCurrentLocationCoords();
-        if (currentCoords[0] == 'no access') { 
+        if (currentCoords[0] == 'no access') {
             let message = `Please allow us to use your Geolocation
             or Search for another location above.`;
             renderErrorOverlay(message);
@@ -108,9 +103,11 @@ async function onCurrentLocationClick(e) {
             localStorage.setItem('lon', currentCoords[1]);
             defaultCoords = [currentCoords[0], currentCoords[1]];
         }
+        // location.href = '/dashboard';
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
+        renderNotificationOverlay();
     } catch (error) {
         let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -127,7 +124,8 @@ const dashboardTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
 
-        <a href="javascript:void(0)" class="logo">
+        <a href="javascript:void(0)" class="logo"
+        title="Powered by: open-meteo.com & openweathermap.org">
             <img src="/src/images/logo.gif" alt="logo" width="364" height="58">
         </a>
 
@@ -666,6 +664,10 @@ const dashboardTemplate = (items = {}) => html`
                     target="_blank" rel="noopener">
                         <img src="/src/images/open-meteo.gif" width="150px" height="30px"
                         loading="lazy" alt="Open-Meteo">
+                    </a> and <a href="https://openweathermap.org/" title="Weather & Geo API"
+                    target="_blank" rel="noopener">
+                        <img src="/src/images/openweather.png" width="150px" height="30px"
+                        loading="lazy" alt="Open-Meteo">
                     </a>
                 </p>
             </footer>
@@ -682,7 +684,8 @@ const hourlyTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
 
-        <a href="javascript:void(0)" class="logo">
+        <a href="javascript:void(0)" class="logo"
+        title="Powered by: open-meteo.com & openweathermap.org">
             <img src="/src/images/logo.gif" alt="logo" width="364" height="58">
         </a>
 
@@ -734,7 +737,10 @@ const hourlyTemplate = (items = {}) => html`
                         target="_blank" rel="noopener">
                             <img src="/src/images/open-meteo.gif" width="150px" height="30px"
                             loading="lazy" alt="Open-Meteo">
-                        </a>
+                        </a> and <a href="https://openweathermap.org/" title="Weather & Geo API"
+                        target="_blank" rel="noopener">
+                            <img src="/src/images/openweather.png" width="150px" height="30px"
+                            loading="lazy" alt="Open-Meteo"></a>
                     </p>
                 </footer>
             </div>
@@ -748,7 +754,7 @@ const hourRowTemplate = (item = {}) => html`
     <td>
         <div class="info-group">
             <div class="label">Thursday, May 17</div>
-            <div>3 PM</div>
+            <div>${item.test ?? '3 PM'}</div> <!-- DO THIS FOR ALL -->
         </div>
     </td>
     <td>
