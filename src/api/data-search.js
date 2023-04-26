@@ -88,4 +88,9 @@ export async function onSearchClick(e) {
         lat = 51.5073219;
         lon = -0.1276474;
     }
+    localStorage.setItem('lat', lat);
+    localStorage.setItem('lon', lon);
+    let weatherInfo = await getParsedWeatherData([lat, lon]);
+    renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
+    if (isValid) searchUtility.toggleSearch();
 }
