@@ -446,8 +446,8 @@ article.container::before {
 .current-weather-card .weapper {
     margin-block: 12px;
     display: flex;
-    gap: 2px;
-    align-items: center;
+    gap: 8px;
+    justify-content: center;
 }
 
 /* .current-weather-card .weather-icon {

@@ -2,6 +2,10 @@
 
 
 @media all and (max-width: 767px) {
+    .current-weather-card .weapper {
+        justify-content: left;
+    }
+
     .h-forecast-title {
         font-size: 1.7rem;
     }
@@ -411,7 +415,8 @@
     }
 
     .current-weather .weapper {
-        justify-content: space-between;
+        justify-content: center;
+        gap: 10px;
     }
 
     .current-weather .weather-icon {
