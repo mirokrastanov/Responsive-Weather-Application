@@ -10,10 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/main.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js" type="module"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmBG4n4aLo7d3AsdgTJyONlli7WLIot0s&libraries=places&callback=initMap"
-        type="module"></script>
     <script src="/src/app.js" type="module"></script>
     <link rel="shortcut icon" href="/src/images/favicon.svg" type="image/x-icon">
     <title>Responsive Weather Dashboard</title>
@@ -41,32 +37,6 @@
 
         </div>
     </div>
-
-
-    <!-- Search script -->
-    <script>
-        async function initMap() {
-            try {
-                $(document).ready(function () {
-                    let autocomplete =
-                        new google.maps.places.Autocomplete((document
-                            .querySelector('[data-search-field]')), {
-                            types: ['geocode'],
-                        });
-                    window.autocomplete = autocomplete;
-
-                    // upon searching
-                    autocomplete.addListener('place_changed', function () {
-                        let place = autocomplete.getPlace();
-                        window.getLocation(place); // feeds the result to api.js !!!
-                        // console.log(place);
-                    });
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    </script>
 </body>
 
 </html>
