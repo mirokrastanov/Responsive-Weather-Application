@@ -256,6 +256,7 @@ export const dashboardElements = {
 
     searchField: () => document.querySelector('[data-search-field]'),
     searchResult: () => document.querySelector('[data-search-result]'),
-
+    searchList: () => document.querySelector('[data-search-list]'),
+    
 
 };
