@@ -187,8 +187,16 @@ export function updateWeatherInfo(page, { current, daily, hourly }) {
 
 function setValue(element, value, addin = false) {
     if (!element) return; // prevents errors - continuous func
-    element.textContent = value;
-    if (addin) render(addin, element); // adjust if necessary
+    if (addin) {
+        // temp element is needed to prevent lit-html bug when re-rendering on top of
+        // already rendered element without reloading the page - couldn't find another fix
+        let temp = document.createElement('div');
+        temp.textContent = value;
+        render(addin, temp);
+        element.innerHTML = temp.innerHTML; // prevents addins missing on nth re-render
+    } else {
+        element.textContent = value;
+    }
 }
 
 function setImage(element, path) {
