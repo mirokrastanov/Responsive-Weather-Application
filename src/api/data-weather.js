@@ -1,7 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { arrayParser, dashboardElements, daysFull, daysShort, elements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper } from '../views/dashboard.js';
-import { getWeather } from "./api.js";
+import { getWeather, reverseGeolocation } from "./api.js";
 
 export function applyBlur(element) {
     element.classList.add('blurred');
@@ -178,7 +178,7 @@ function updateDashboardTimeNow() { // updates timeNow every second
     }, 1000);
 }
 
-function renderCurrentWeather(page, current) {
+async function renderCurrentWeather(page, current) {
     if (page == 'dashboard') {
         // CURRENT CARD
         setImage(dashboardElements.currentImg(), current.weatherImage);
@@ -186,17 +186,17 @@ function renderCurrentWeather(page, current) {
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
-
-
-        // adjust usin the new geo api
-        let fullAddress = localStorage.getItem('full-address');
-        let myLatitude = localStorage.getItem('my-lat');
-        if (fullAddress) {
-            setValue(dashboardElements.currentLocation(), fullAddress);
-            dashboardElements.currentLocation().setAttribute('title', fullAddress);
-        } else if (myLatitude) {
-            setValue(dashboardElements.currentLocation(), 'Current Location');
-            //TODO: user openweather api to fetch current location address
+        // Location (current card)
+        let lat = localStorage.getItem('lat');
+        let lon = localStorage.getItem('lon');
+        if (lat && lon) {
+            let revGeoL = await reverseGeolocation(lat, lon);
+            let x = revGeoL.data[0];
+            let nameString = x.name;
+            nameString = x.state ? `${nameString}, ${x.state}` : nameString;
+            nameString = x.country ? `${nameString}, ${x.country}` : nameString;
+            localStorage.setItem('address', nameString);
+            setValue(dashboardElements.currentLocation(), nameString);
         }
 
 
