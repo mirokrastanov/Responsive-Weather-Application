@@ -93,6 +93,7 @@ export async function onSearchClick(e) {
     // location.href = '/dashboard';
     let weatherInfo = await getParsedWeatherData([lat, lon]);
     renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
+    updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
     if (isValid) searchUtility.toggleSearch();
     removeBlur(elements.main());
     removeErrorOverlay();

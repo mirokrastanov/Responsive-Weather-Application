@@ -48,7 +48,7 @@ export async function dashboardPage(ctx) {
         console.log('Error details: ', { ...error, 'stack': error.stack });
         alert(message);
         renderErrorOverlay(message);
-        // APPLY LOADING ANIMATION as well
+        // APPLY LOADING ANIMATION as well - check vid
         applyBlur(elements.main());
     }
 }
@@ -482,7 +482,10 @@ const dashboardTemplate = (items = {}) => html`
             <section class="section hourly-forecast" aria-label="hourly forecast"
                 data-hourly-forecast>
                 
-                <h2 class="title-2">Hourly Forecast</h2>
+                <div id="h2s">
+                    <h2 class="title-2">Hourly Forecast</h2>
+                    <h2 @click=${hourlyDetails} class="title-2" id="h-info">Detailed Hourly Info</h2>
+                </div>
                 
                 <div class="slider-container">
                     <ul class="slider-list" data-temp>
@@ -646,8 +649,6 @@ const dashboardTemplate = (items = {}) => html`
                         </li>
 
                     </ul>
-
-                    <h2 @click=${hourlyDetails} class="title-2" id="h-info">Detailed Hourly Info</h2>
 
                 </div>
 

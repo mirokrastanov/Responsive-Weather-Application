@@ -11,7 +11,7 @@ export function removeBlur(element) {
     element.classList.remove('blurred');
 }
 
-export function createErrorOverlay(message) { // Content dynamically added via CSS
+export function createErrorOverlay(message) { 
     let errorOverlay = document.createElement('a');
     errorOverlay.classList.add('error-overlay');
     errorOverlay.textContent = message;
@@ -29,7 +29,7 @@ export function removeErrorOverlay() {
     }
 }
 
-export function createNotificationOverlay() { // Content dynamically added via CSS
+export function createNotificationOverlay() { 
     let message = 'Information updated';
     let errorOverlay = document.createElement('a');
     errorOverlay.classList.add('notif-overlay');
@@ -311,7 +311,7 @@ function renderHourlyWeather(page, hourly) {
 
 
     } else if (page == 'hourly') {
-
+        // TODO - CONTINUE from the wind direction arrow - figure out how to rotate them
     }
 }
 
