@@ -31,6 +31,30 @@ export function searchOnTyping(e) {
                 dashboardElements.searchResult().classList.add('active');
                 dashboardElements.searchResult().replaceChildren();
 
+                let items = geoL.data;
+                let ul = document.createElement('ul');
+                ul.classList.add('view-list');
+                ul.setAttribute('data-search-list', '');
+                render(searchItemsTemplate(items), ul);
+                dashboardElements.searchResult().appendChild(ul);
+            } catch (error) {
+                console.log(error);
+            }
+        }, searchTimeoutDuration);
+    }
+}
+
+const searchItemsTemplate = (items) => html`
+    ${items.length != 0 ?
+        items.map(x => {
+            let nameString = x.name;
+            nameString = x.state ? `${nameString}, ${x.state}` : nameString;
+            nameString = x.country ? `${nameString}, ${x.country}` : nameString;
+            return searchItemTemplate(x.name, nameString, x.lat, x.lon);
+        })
+        : noItemsTemplate()
+    }
+`;
 
 const noItemsTemplate = () => html`
 <li class="view-item">
