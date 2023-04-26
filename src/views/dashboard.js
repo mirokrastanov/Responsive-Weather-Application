@@ -1,4 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { getGeolocation, reverseGeolocation } from '../api/api.js';
 import { searchOnTyping } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
@@ -17,6 +18,10 @@ export async function dashboardPage(ctx) {
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
+        // let geoL = await getGeolocation('naples, fl, us');
+        // console.log(geoL);
+        // let revGeoL = await reverseGeolocation(42.6977082, 23.3218675);
+        // console.log(revGeoL);
         if (localStorage.getItem('lat') && localStorage.getItem('lng')) {
             defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lng')];
             console.log(JSON.parse(localStorage.getItem('place')));
