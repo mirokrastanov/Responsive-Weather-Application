@@ -721,7 +721,7 @@ article.container::before {
     cursor: pointer;
     background-color: rgba(119, 119, 119, 0.582);
     color: #fff;
-    box-shadow: inset 200px 0 0 0 #54b3d6;
+    box-shadow: inset 220px 0 0 0 #54b3d6;
 }
 
 #h2s {

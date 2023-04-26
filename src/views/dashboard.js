@@ -361,7 +361,7 @@ const dashboardTemplate = (items = {}) => html`
                                 </ul>
                             </div>
 
-                            <a href="/air-quality" id="aqi-link" title="aqi more info">More Info</a>
+                            <a href="/air-quality" id="aqi-link" title="aqi more info">More Info ➥</a>
                             <span class="badge aqi-1 label-1" title="aqi message">Good</span>
 
                         </div>
@@ -484,7 +484,7 @@ const dashboardTemplate = (items = {}) => html`
                 
                 <div id="h2s">
                     <h2 class="title-2">Hourly Forecast</h2>
-                    <h2 @click=${hourlyDetails} class="title-2" id="h-info">Detailed Hourly Info</h2>
+                    <h2 @click=${hourlyDetails} class="title-2" id="h-info">Detailed Hourly Info ➥</h2>
                 </div>
                 
                 <div class="slider-container">
