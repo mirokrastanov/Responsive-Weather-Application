@@ -397,12 +397,14 @@ body {
         rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.header-actions a.btn-primary {
+.header-actions a.btn-primary,
+.header-actions button.icon-btn {
     box-shadow: inset 0 0 0 0 #54b3d6;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
-.header-actions a.btn-primary:hover {
+.header-actions a.btn-primary:hover,
+.header-actions button.icon-btn:hover {
     cursor: pointer;
     color: #fff;
     box-shadow: inset 200px 0 0 0 #54b3d6;
@@ -667,11 +669,14 @@ article.container::before {
 
 .slider-container {
     overflow-x: auto;
+    padding-bottom: 10px;
     margin-inline: -16px;
 }
 
 .slider-container::-webkit-scrollbar {
-    display: none;
+    cursor: pointer;
+    height: 16px;
+    background-color: var(--color-surface);
 }
 
 .slider-list {
@@ -709,16 +714,32 @@ article.container::before {
     padding: 6px 2rem;
     border-radius: var(--radius-pill);
     background-color: rgba(119, 119, 119, 0.315);
-    transition: var(--transition-300ms)
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
 #h-info:hover {
     cursor: pointer;
-    transform: scale(1.1);
     background-color: rgba(119, 119, 119, 0.582);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    color: #fff;
+    box-shadow: inset 200px 0 0 0 #54b3d6;
+}
+
+#h2s {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#h2s h2 {
+    height: fit-content;
+    margin: 10px 5px;
+    padding: 2px 16px;
+}
+
+#h2s h2:nth-of-type(2) {
+    font-weight: 100;
 }
 
 
