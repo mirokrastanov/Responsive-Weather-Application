@@ -13,14 +13,42 @@ export function removeBlur(element) {
 
 export function createErrorOverlay(message) { // Content dynamically added via CSS
     let errorOverlay = document.createElement('a');
-    errorOverlay.href = '/dashboard';
     errorOverlay.classList.add('error-overlay');
     errorOverlay.textContent = message;
     return errorOverlay;
 }
 
 export function renderErrorOverlay(message) {
+    removeErrorOverlay();
     elements.dotHeader().appendChild(createErrorOverlay(message));
+}
+
+export function removeErrorOverlay() {
+    if (document.querySelector('.error-overlay')) {
+        document.querySelector('.error-overlay').remove();
+    }
+}
+
+export function createNotificationOverlay() { // Content dynamically added via CSS
+    let message = 'Information updated';
+    let errorOverlay = document.createElement('a');
+    errorOverlay.classList.add('notif-overlay');
+    errorOverlay.textContent = message;
+    return errorOverlay;
+}
+
+export function renderNotificationOverlay() {
+    removeNotificationOverlay();
+    elements.dotHeader().appendChild(createNotificationOverlay());
+    setTimeout(() => {
+        removeNotificationOverlay();
+    }, 2000);
+}
+
+export function removeNotificationOverlay() {
+    if (document.querySelector('.notif-overlay')) {
+        document.querySelector('.notif-overlay').remove();
+    }
 }
 
 export function getCurrentTimeZone() {
