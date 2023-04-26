@@ -32,7 +32,26 @@ export function searchOnTyping(e) {
                 dashboardElements.searchResult().replaceChildren();
 
 
+const noItemsTemplate = () => html`
+<li class="view-item">
+    <span class="m-icon">location_on</span>
+    <div>
+        <p class="item-title">No Results.</p>
+        <p class="label-2 item-subtitle">...</p>
+    </div>
+</li>
+`;
 
+const searchItemTemplate = (name, nameString, lat, lon) => html`
+<li class="view-item" data-lat=${lat} data-lon=${lon}>
+    <span class="m-icon">location_on</span>
+    <div>
+        <p class="item-title">${name}</p>
+        <p class="label-2 item-subtitle">${nameString}</p>
+    </div>
+    <a @click=${onSearchClick} class="item-link has-state" data-search-toggler></a>
+</li>
+`;
 
 
 
