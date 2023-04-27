@@ -18,7 +18,6 @@ export async function dashboardPage(ctx) {
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
     applyBlur(elements.main());
     try {
-        renderNotificationOverlay();
         if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
             defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lon')];
         } else {
@@ -38,7 +37,6 @@ export async function dashboardPage(ctx) {
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
-        renderNotificationOverlay();
         console.log(weatherInfo);
 
     } catch (error) {
@@ -102,7 +100,6 @@ async function onCurrentLocationClick(e) {
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
-        renderNotificationOverlay();
     } catch (error) {
         let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -164,6 +161,8 @@ const dashboardTemplate = (items = {}) => html`
         </div>
 
     </div> <!-- div.container ends here -->
+    <div class="loading" data-loading></div>
+
 </div> <!-- div.header ends here -->
 
 <main>
@@ -668,7 +667,6 @@ const dashboardTemplate = (items = {}) => html`
             </footer>
         </div> <!-- div.content-right ends here -->
 
-        <div class="loading" data-loading></div>
         
     </article> <!-- article.container ends here -->
 </main>
