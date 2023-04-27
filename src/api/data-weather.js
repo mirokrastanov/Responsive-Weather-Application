@@ -42,11 +42,13 @@ export function createNotificationOverlay() {
 }
 
 export function renderNotificationOverlay() {
-    removeNotificationOverlay();
-    elements.dotHeader().appendChild(createNotificationOverlay());
     setTimeout(() => {
         removeNotificationOverlay();
-    }, 2000);
+        elements.dotHeader().appendChild(createNotificationOverlay());
+        setTimeout(() => {
+            removeNotificationOverlay();
+        }, 2000);
+    }, 500); // execute the whole render after 1 sec (for loading to clear out)
 }
 
 export function removeNotificationOverlay() {
@@ -172,6 +174,14 @@ export async function getParsedWeatherData(coords) {
     return result;
 }
 
+export function applyLoading() {
+    elements.loading().style.display = 'grid';
+}
+
+export function removeLoading() {
+    elements.loading().style.display = 'none';
+}
+
 // invoked every 10m by updateWeatherInfo()
 export function renderWeather(page, { current, daily, hourly }) {
     renderCurrentWeather(page, current);
@@ -181,9 +191,12 @@ export function renderWeather(page, { current, daily, hourly }) {
         setValue(x, `Last updated: ${timeParser.hours24()[0]}:${timeParser.min()} ${timeParser.hours24()[1]}`);
     });
     applyBlur(elements.main());
+    applyLoading();
+    renderNotificationOverlay();
     setTimeout(() => {
         removeBlur(elements.main());
-    }, 1000);
+        removeLoading();
+    }, 500);
 }
 
 // invokes renderWeather() every 10m
