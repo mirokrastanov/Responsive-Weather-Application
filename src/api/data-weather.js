@@ -4,7 +4,7 @@ import {
     arrayParser, dashboardElements, daysFull, daysShort,
     elements, hourlyElements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
 } from "../util/util.js";
-import { dashboardHourlyCardLower, dashboardHourlyCardUpper, hourlyTemplate } from '../views/dashboard.js';
+import { dashboardHourlyCardLower, dashboardHourlyCardUpper, dynamicHourlyTemplate } from '../views/dashboard.js';
 import { getWeather, reverseGeolocation } from "./api.js";
 
 export function applyBlur(element) {
@@ -151,6 +151,8 @@ function parseHourlyWeather(data) {
             cloudCover: hourly.cloudcover[index],
             hour: returnHour().format(time * 1000),
             dayLong: returnDayLONG().format(time * 1000),
+            date: new Date().getDate(),
+            monthShort: monthsShort[new Date().getMonth()],
         }
     }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000);
     // filter only the hours from current hour to after 7 days
@@ -327,10 +329,11 @@ function renderHourlyWeather(page, hourly) {
             dashboardElements.dashHSlider2().appendChild(li2);
         });
     } else if (page == 'hourly') {
-        let root = hourlyElements.root();
-        let mock = document.createElement('div');
-        // render(hourlyTemplate(hourly), mock);
-
+        let mockArray = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+        let root = hourlyElements.articleCtr();
+        root.setAttribute('id', 'hourly-render');
+        root.replaceChildren();
+        render(dynamicHourlyTemplate(hourly, mockArray), root);
     }
 }
 
