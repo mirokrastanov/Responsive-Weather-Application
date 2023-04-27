@@ -223,8 +223,6 @@ export const stateAbbreviationsUSA = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
     'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'
 ];
 
-
-
 export const dashboardElements = {
     lastUpdated: () => [document.querySelector('#last-updated'), document.querySelector('#last-updated-hourly')],
 
@@ -264,6 +262,9 @@ export const dashboardElements = {
     sliderWrapper: () => document.querySelector('#slider-wrapper'),
     sliderList1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'),
     sliderList2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'),
-    
-
 };
+
+export const hourlyElements = {
+    hourSection: () => document.querySelector('table.hour-section'),
+    root: () => document.querySelector('body #main #main-ctr'),
+}

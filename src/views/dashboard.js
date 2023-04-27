@@ -674,7 +674,8 @@ const dashboardTemplate = (items = {}) => html`
 `;
 
 // main.blurred applied - remove with removeBlur() function as needed
-const hourlyTemplate = (items = {}) => html`
+export const hourlyTemplate = (items = [],
+    mock = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => html`
 <div class="header">
     <div class="container">
 
@@ -700,26 +701,11 @@ const hourlyTemplate = (items = {}) => html`
                 <table class="hour-section">
                     <tbody data-hour-section>
                         <h4 id="last-updated-hourly">Last updated: 12:17 AM</h4>
-                        <!-- add dynamic info to each row -->
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
-                        ${html`${hourRowTemplate()}`}
+                        
+        ${items.length == 0
+            ? mock.map(x => html`${hourRowTemplate()}`)
+            : items.map(item => html`${hourRowTemplate(item)}`)}
                     
-                        <!-- AND condition for no items shown -->
                     </tbody>
                 </table>
 

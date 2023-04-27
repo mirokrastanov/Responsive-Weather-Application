@@ -2,9 +2,9 @@ import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { touchSlider } from '../util/slider.js';
 import {
     arrayParser, dashboardElements, daysFull, daysShort,
-    elements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
+    elements, hourlyElements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
 } from "../util/util.js";
-import { dashboardHourlyCardLower, dashboardHourlyCardUpper } from '../views/dashboard.js';
+import { dashboardHourlyCardLower, dashboardHourlyCardUpper, hourlyTemplate } from '../views/dashboard.js';
 import { getWeather, reverseGeolocation } from "./api.js";
 
 export function applyBlur(element) {
@@ -150,6 +150,7 @@ function parseHourlyWeather(data) {
             visibility: Math.round(hourly.visibility[index] * 100) / 100,
             cloudCover: hourly.cloudcover[index],
             hour: returnHour().format(time * 1000),
+            dayLong: returnDayLONG().format(time * 1000),
         }
     }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000);
     // filter only the hours from current hour to after 7 days
@@ -277,11 +278,8 @@ async function renderCurrentWeather(page, current) {
         let visSmart = valueParser.visibility(current.visibility);
         setValue(dashboardElements.highVisibility(), visSmart[0], html` <sub>${visSmart[1]}</sub>`);
         setValue(dashboardElements.highPressure(), current.pressure, html` <sub>hPa</sub>`);
-
-
-
     } else if (page == 'hourly') {
-
+        // remains in case its needed at a later point
     }
 }
 
@@ -303,9 +301,8 @@ function renderDailyWeather(page, daily) {
         dashboardElements.dailyDay().forEach(el => {
             el.parentElement.removeChild(el);
         });
-
     } else if (page == 'hourly') {
-
+        // remains in case its needed at a later point
     }
 }
 
@@ -329,10 +326,11 @@ function renderHourlyWeather(page, hourly) {
             render(lowerCard, li2);
             dashboardElements.dashHSlider2().appendChild(li2);
         });
-
-
     } else if (page == 'hourly') {
-        // TODO - CONTINUE from the wind direction arrow - figure out how to rotate them
+        let root = hourlyElements.root();
+        let mock = document.createElement('div');
+        // render(hourlyTemplate(hourly), mock);
+
     }
 }
 
