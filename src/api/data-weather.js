@@ -204,20 +204,22 @@ export function renderWeather(page, { current, daily, hourly }, flag = true) {
     }
 }
 
-let prevInterval = [];
+let prevIntervals = [null, null];
+// intervals for:
+// [0]: updateWeatherInfo()
+// [1]: updateDashboardTimeNow()
+
+
 // invokes renderWeather() every 10m
 export function updateWeatherInfo(page, { current, daily, hourly }) {
-    if (prevInterval.length != 0) {
-        console.log(prevInterval);
-        prevInterval.forEach(x => clearInterval(x));
+    if (prevIntervals[0]) {
+        clearInterval(prevIntervals[0]);
+        prevIntervals[0] = null;
     }
-    while (prevInterval.length > 0) prevInterval.pop();
     let interval = setInterval(function () {
-        console.log(page);
         renderWeather(page, { current, daily, hourly }, false);
     }, 2000);
-    console.log(interval);
-    prevInterval.push(interval);
+    prevIntervals[0] = interval;
 }
 
 function setValue(element, value, addin = false) {
@@ -240,13 +242,18 @@ function setImage(element, path) {
 }
 
 function updateDashboardTimeNow() { // updates timeNow every second
-    setInterval(function () {
+    if (prevIntervals[1]) {
+        clearInterval(prevIntervals[1]);
+        prevIntervals[1] = null;
+    }
+    let interval = setInterval(function () {
         let [hNow, mNow, sNow] = [timeParser.hours24(), timeParser.min(), timeParser.sec()];
         // console.log(sNow);
         if (dashboardElements.highTimeNow()) {
             setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
         }
     }, 1000);
+    prevIntervals[1] = interval;
 }
 
 async function renderCurrentWeather(page, current) {
@@ -354,8 +361,3 @@ function renderHourlyWeather(page, hourly, flag) {
 
 
 
-
-// ADD conversion / parser for the times (maybe after checking/filtering)
-
-// maybe add last updated at ${the time of the index=0 element in the hourly array}
-// or whenever it was - do the math tomorrow
