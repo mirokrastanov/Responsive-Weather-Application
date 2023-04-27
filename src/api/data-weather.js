@@ -186,27 +186,38 @@ export function removeLoading() {
 }
 
 // invoked every 10m by updateWeatherInfo()
-export function renderWeather(page, { current, daily, hourly }) {
+export function renderWeather(page, { current, daily, hourly }, flag = true) {
     renderCurrentWeather(page, current);
     renderDailyWeather(page, daily);
-    renderHourlyWeather(page, hourly);
+    renderHourlyWeather(page, hourly, flag);
     dashboardElements.lastUpdated().forEach(x => {
         setValue(x, `Last updated: ${timeParser.hours24()[0]}:${timeParser.min()} ${timeParser.hours24()[1]}`);
     });
-    applyBlur(elements.main());
-    applyLoading();
-    renderNotificationOverlay();
-    setTimeout(() => {
-        removeBlur(elements.main());
-        removeLoading();
-    }, 500);
+    if (flag) {
+        applyBlur(elements.main());
+        applyLoading();
+        renderNotificationOverlay();
+        setTimeout(() => {
+            removeBlur(elements.main());
+            removeLoading();
+        }, 500);
+    }
 }
 
+let prevInterval = [];
 // invokes renderWeather() every 10m
 export function updateWeatherInfo(page, { current, daily, hourly }) {
-    setInterval(function () {
-        renderWeather(page, { current, daily, hourly });
-    }, 600000);
+    if (prevInterval.length != 0) {
+        console.log(prevInterval);
+        prevInterval.forEach(x => clearInterval(x));
+    }
+    while (prevInterval.length > 0) prevInterval.pop();
+    let interval = setInterval(function () {
+        console.log(page);
+        renderWeather(page, { current, daily, hourly }, false);
+    }, 2000);
+    console.log(interval);
+    prevInterval.push(interval);
 }
 
 function setValue(element, value, addin = false) {
@@ -308,31 +319,35 @@ function renderDailyWeather(page, daily) {
     }
 }
 
-function renderHourlyWeather(page, hourly) {
+function renderHourlyWeather(page, hourly, flag) {
     if (page == 'dashboard') {
-        let sliders = arrayParser.arr3parser(hourly.slice());
-        dashboardElements.dashHSlider1().replaceChildren();
-        dashboardElements.dashHSlider2().replaceChildren();
-        sliders.forEach((x, i) => {
-            let t = timeParser.hours24(new Date(x.timestamp));
-            let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
-            let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, '/src/images/weather-icons/direction.png', x.windSpeed, x.windDirection);
-            let li1 = document.createElement('li');
-            li1.classList.add('slider-item');
-            li1.setAttribute('data-info-upper', i);
-            render(upperCard, li1);
-            dashboardElements.dashHSlider1().appendChild(li1);
-            let li2 = document.createElement('li');
-            li2.classList.add('slider-item');
-            li2.setAttribute('data-info-lower', i);
-            render(lowerCard, li2);
-            dashboardElements.dashHSlider2().appendChild(li2);
-        });
+        if (flag) {
+            let sliders = arrayParser.arr3parser(hourly.slice());
+            dashboardElements.dashHSlider1().replaceChildren();
+            dashboardElements.dashHSlider2().replaceChildren();
+            sliders.forEach((x, i) => {
+                let t = timeParser.hours24(new Date(x.timestamp));
+                let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
+                let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, '/src/images/weather-icons/direction.png', x.windSpeed, x.windDirection);
+                let li1 = document.createElement('li');
+                li1.classList.add('slider-item');
+                li1.setAttribute('data-info-upper', i);
+                render(upperCard, li1);
+                dashboardElements.dashHSlider1().appendChild(li1);
+                let li2 = document.createElement('li');
+                li2.classList.add('slider-item');
+                li2.setAttribute('data-info-lower', i);
+                render(lowerCard, li2);
+                dashboardElements.dashHSlider2().appendChild(li2);
+            });
+        }
     } else if (page == 'hourly') {
         let root = hourlyElements.articleCtr();
+        let temp = document.createElement('div');
         root.setAttribute('id', 'hourly-render');
         root.replaceChildren();
-        render(dynamicHourlyTemplate(hourly), root);
+        render(dynamicHourlyTemplate(hourly), temp);
+        root.innerHTML = temp.innerHTML;
     }
 }
 
