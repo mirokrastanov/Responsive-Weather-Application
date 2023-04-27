@@ -267,4 +267,6 @@ export const dashboardElements = {
 export const hourlyElements = {
     hourSection: () => document.querySelector('table.hour-section'),
     root: () => document.querySelector('body #main #main-ctr'),
+    articleCtr: () => document.querySelector('body #main #main-ctr main article.container'),
+    
 }

@@ -427,6 +427,10 @@ article.container {
     overflow-y: overlay;
 }
 
+#hourly-render::-webkit-scrollbar {
+    width: 16px;
+}
+
 article.container::-webkit-scrollbar-thumb {
     background-color: transparent;
 }
@@ -437,6 +441,10 @@ article.container:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
 
 article.container::-webkit-scrollbar-button {
     height: 10px;
+}
+
+#hourly-render::-webkit-scrollbar-thumb {
+    border-radius: 5px;
 }
 
 article.container::before {
