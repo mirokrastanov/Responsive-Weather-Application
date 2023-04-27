@@ -204,12 +204,14 @@ export function renderWeather(page, { current, daily, hourly }, flag = true) {
     }
 }
 
-let prevIntervals = [null, null];
+
+
+
+
 // intervals for:
 // [0]: updateWeatherInfo()
 // [1]: updateDashboardTimeNow()
-
-
+let prevIntervals = [null, null];
 // invokes renderWeather() every 10m
 export function updateWeatherInfo(page, { current, daily, hourly }) {
     if (prevIntervals[0]) {
