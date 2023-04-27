@@ -112,7 +112,6 @@ async function onCurrentLocationClick(e) {
 
 
 
-// main.blurred applied - remove with removeBlur() function as needed
 const dashboardTemplate = (items = {}) => html`
 <div class="header">
     <div class="container">
@@ -673,9 +672,8 @@ const dashboardTemplate = (items = {}) => html`
 </main>
 `;
 
-// main.blurred applied - remove with removeBlur() function as needed
-export const hourlyTemplate = (items = [],
-    mock = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => html`
+// mockup hourly - for initial render or if no dynamic data is present
+const hourlyTemplate = () => html`
 <div class="header">
     <div class="container">
 
@@ -701,11 +699,24 @@ export const hourlyTemplate = (items = [],
                 <table class="hour-section">
                     <tbody data-hour-section>
                         <h4 id="last-updated-hourly">Last updated: 12:17 AM</h4>
-                        
-        ${items.length == 0
-            ? mock.map(x => html`${hourRowTemplate()}`)
-            : items.map(item => html`${hourRowTemplate(item)}`)}
-                    
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
+                        ${html`${hourRowTemplate()}`}
                     </tbody>
                 </table>
 
@@ -730,12 +741,44 @@ export const hourlyTemplate = (items = [],
 </main>
 `;
 
-const hourRowTemplate = (item = {}) => html`
+export const dynamicHourlyTemplate = (items = [], mock = []) => html`
+    <div class="content-middle">
+        <div class="blurred">
+            <table class="hour-section">
+                <tbody data-hour-section>
+                    <h4 id="last-updated-hourly">Last updated: 12:17 AM</h4>
+    ${items.length == 0
+        ? mock.map(x => html`${hourRowTemplate()}`)
+        : items.map(item => html`${hourRowTemplate(item)}`)}
+                
+                </tbody>
+            </table>
+            <footer class="footer">
+                <p class="body-3">
+                    Author: Miro Krastanov. Extra credits in the About section.
+                </p>
+                <p class="body-3">
+                    Powered By <a href="https://open-meteo.com/" title="Free Weather API"
+                    target="_blank" rel="noopener">
+                        <img src="/src/images/open-meteo.gif" width="150px" height="30px"
+                        loading="lazy" alt="Open-Meteo">
+                    </a> and <a href="https://openweathermap.org/" title="Weather & Geo API"
+                    target="_blank" rel="noopener">
+                        <img src="/src/images/openweather.png" width="150px" height="30px"
+                        loading="lazy" alt="Open-Meteo"></a>
+                </p>
+            </footer>
+        </div>
+    </div>
+`;
+
+// used in both the initial and the dynamically filled templates
+const hourRowTemplate = (item = { test: true }) => html`
 <tr class="hour-row">
     <td>
         <div class="info-group">
-            <div class="label">Thursday, May 17</div>
-            <div>${item.test ?? '3 PM'}</div> <!-- DO THIS FOR ALL -->
+            <div class="label">${item.test ? 'Thursday, May 17' : `${item.dayLong}, ${item.monthShort} ${item.date}`}</div>
+            <div>${item.test ? '3 PM' : item.hour}</div> <!-- DO THIS FOR ALL -->
         </div>
     </td>
     <td>
