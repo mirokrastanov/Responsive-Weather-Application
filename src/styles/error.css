@@ -47,7 +47,7 @@
 .notif-overlay {
     z-index: 100;
     position: absolute;
-    top: 12%;
+    top: 13%;
     left: 50%;
     transform: translateX(-50%);
     width: fit-content;
