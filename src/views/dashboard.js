@@ -5,7 +5,7 @@ import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
     removeBlur, removeErrorOverlay, renderErrorOverlay, renderNotificationOverlay, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
-import { addEventOnElements, dashboardElements, elements, searchUtility } from '../util/util.js';
+import { addEventOnElements, dashboardElements, elements, searchUtility, valueParser } from '../util/util.js';
 
 
 let context = null;
@@ -782,65 +782,67 @@ const hourRowTemplate = (item = { test: true }) => html`
         </div>
     </td>
     <td>
-        <img src="/src/images/weather-icons/09n.png" class="weather-icon"
+        <img src=${item.test ? "/src/images/weather-icons/09n.png" : item.weatherImage} class="weather-icon"
         height="60px" width="60px" />
     </td>
     <td>
         <div class="info-group">
             <div class="label">Precip</div>
-            <div>0.02 mm</div>
+            <div>${item.test ? '02' : item.precip} mm</div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Wind</div>
-            <div>26 m/s</div>
+            <div>${item.test ? '26' : item.windSpeed} m/s</div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Humidity</div>
-            <div>84 %</div>
+            <div>${item.test ? '84' : item.humidity} %</div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Visibility</div>
-            <div>14 km</div>
+            <div>${item.test ? '14 km' : `${valueParser.visibility(item.visibility)[0]
+        } ${valueParser.visibility(item.visibility)[1]}`}</div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Temp</div>
-            <div>31&deg;</div>
+            <div>${item.test ? '31' : item.temp}&deg;<sup>c</sup></div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">FL Temp</div>
-            <div>25&deg;</div>
+            <div>${item.test ? '25' : item.feelsLikeTemp}&deg;<sup>c</sup></div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Precip %</div>
-            <div>25 %</div>
+            <div>${item.test ? '25' : item.precipProbability} %</div>
         </div>
     </td>
     <td>
         <img src="/src/images/weather-icons/direction.png" class="weather-icon"
-        height="40px" width="40px" />
+        height="40px" width="40px" style="transform: rotate(
+        ${item.test ? '0' : (item.windDirection - 180)}deg)" />
     </td>
     <td>
         <div class="info-group">
             <div class="label">Pressure</div>
-            <div>1011 hPa</div>
+            <div>${item.test ? '1011' : item.pressure} hPa</div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">Cloud cover</div>
-            <div>65 %</div>
+            <div>${item.test ? '65' : item.cloudCover} %</div>
         </div>
     </td>
 </tr>
