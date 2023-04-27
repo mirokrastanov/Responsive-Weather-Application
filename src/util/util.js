@@ -198,6 +198,8 @@ export const elements = {
     mainCtr: () => document.querySelector('#main-ctr'),
     body: () => document.querySelector('body'),
     dotHeader: () => document.querySelector('.header'),
+    headerActions: () => document.querySelector('.header-actions'),
+    loading: () => document.querySelector('[data-loading]'),
 };
 
 export function addEventOnElements(elements, eventType, callback) {
@@ -263,5 +265,5 @@ export const dashboardElements = {
     sliderList1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'),
     sliderList2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'),
     
-    
+
 };
