@@ -681,6 +681,8 @@ article.container::before {
 .slider-list {
     display: flex;
     gap: 12px;
+    cursor: grab;
+    user-select: none;
 }
 
 .slider-list:first-child {
@@ -705,6 +707,10 @@ article.container::before {
 .slider-item .weather-icon {
     margin-inline: auto;
     margin-block: 12px;
+}
+
+.grabbing {
+    cursor: grabbing;
 }
 
 #h-info {

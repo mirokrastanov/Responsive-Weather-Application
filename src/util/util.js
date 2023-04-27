@@ -258,5 +258,9 @@ export const dashboardElements = {
     searchResult: () => document.querySelector('[data-search-result]'),
     searchList: () => document.querySelector('[data-search-list]'),
     
+    sliderCtr: () => document.querySelector('.slider-container'),
+    sliderList1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'),
+    sliderList2: () => document.querySelector('.slider-container ul:nth-of-type(2).slider-list'),
+    
 
 };
