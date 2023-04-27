@@ -832,12 +832,13 @@ export const dashboardHourlyCardUpper = (time, img, temp) => html`
 </div>
 `;
 
-export const dashboardHourlyCardLower = (time, img, windSpeed) => html`
+export const dashboardHourlyCardLower = (time, img, windSpeed, windDirection) => html`
 <div class="card card-sm slider-card">
     <p class="body-3">${time}</p>
 
     <img src="${img}" width="48" height="48"
-    loading="lazy" alt="" class="weather-icon" title="">
+    loading="lazy" alt="" class="weather-icon" title="wind-direction"
+    style="transform: rotate(${windDirection - 180}deg)">
 
     <p class="body-3">${windSpeed} m/s</p>
 </div>

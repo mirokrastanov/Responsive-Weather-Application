@@ -300,7 +300,7 @@ function renderHourlyWeather(page, hourly) {
         sliders.forEach((x, i) => {
             let t = timeParser.hours24(new Date(x.timestamp));
             let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
-            let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, '/src/images/weather-icons/direction.png', x.windSpeed);
+            let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, '/src/images/weather-icons/direction.png', x.windSpeed, x.windDirection);
             let li1 = document.createElement('li');
             li1.classList.add('slider-item');
             li1.setAttribute('data-info-upper', i);
