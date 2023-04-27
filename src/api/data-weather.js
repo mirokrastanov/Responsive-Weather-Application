@@ -180,6 +180,10 @@ export function renderWeather(page, { current, daily, hourly }) {
     dashboardElements.lastUpdated().forEach(x => {
         setValue(x, `Last updated: ${timeParser.hours24()[0]}:${timeParser.min()} ${timeParser.hours24()[1]}`);
     });
+    applyBlur(elements.main());
+    setTimeout(() => {
+        removeBlur(elements.main());
+    }, 1000);
 }
 
 // invokes renderWeather() every 10m

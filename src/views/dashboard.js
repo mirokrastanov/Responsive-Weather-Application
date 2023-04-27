@@ -41,8 +41,6 @@ export async function dashboardPage(ctx) {
         renderNotificationOverlay();
         console.log(weatherInfo);
 
-        // REMOVE loading, kogato go add-na purvo nali - lel 
-        removeBlur(elements.main());
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -76,7 +74,6 @@ async function hourlyDetails(e) {
         // setTimeout(() => {
         //     removeBlur(elements.main());
         // }, 1000);
-        removeBlur(elements.main());
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -104,7 +101,6 @@ async function onCurrentLocationClick(e) {
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
-        removeBlur(elements.main());
         removeErrorOverlay();
         renderNotificationOverlay();
     } catch (error) {
