@@ -1,4 +1,5 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { touchSlider } from '../util/slider.js';
 import { arrayParser, dashboardElements, daysFull, daysShort, elements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper } from '../views/dashboard.js';
 import { getWeather, reverseGeolocation } from "./api.js";
@@ -11,7 +12,7 @@ export function removeBlur(element) {
     element.classList.remove('blurred');
 }
 
-export function createErrorOverlay(message) { 
+export function createErrorOverlay(message) {
     let errorOverlay = document.createElement('a');
     errorOverlay.classList.add('error-overlay');
     errorOverlay.textContent = message;
@@ -29,7 +30,7 @@ export function removeErrorOverlay() {
     }
 }
 
-export function createNotificationOverlay() { 
+export function createNotificationOverlay() {
     let message = 'Information updated';
     let errorOverlay = document.createElement('a');
     errorOverlay.classList.add('notif-overlay');

@@ -672,8 +672,14 @@ article.container::before {
     margin-inline: -16px;
 }
 
+#slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
 .slider-container::-webkit-scrollbar {
-    cursor: pointer;
+    cursor: grab;
     height: 16px;
     background-color: var(--color-surface);
 }
@@ -681,8 +687,6 @@ article.container::before {
 .slider-list {
     display: flex;
     gap: 12px;
-    cursor: grab;
-    user-select: none;
 }
 
 .slider-list:first-child {
