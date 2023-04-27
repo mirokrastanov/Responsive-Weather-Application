@@ -750,7 +750,6 @@ export const dynamicHourlyTemplate = (items = [], mock = [1, 1, 1, 1, 1, 1, 1]) 
     ${items.length == 0
         ? mock.map(x => html`${hourRowTemplate()}`)
         : items.map(item => html`${hourRowTemplate(item)}`)}
-                
                 </tbody>
             </table>
             <footer class="footer">
@@ -778,7 +777,7 @@ const hourRowTemplate = (item = { test: true }) => html`
     <td>
         <div class="info-group">
             <div class="label">${item.test ? 'Thursday, May 17' : `${item.dayLong}, ${item.monthShort} ${item.date}`}</div>
-            <div>${item.test ? '3 PM' : item.hour}</div> <!-- DO THIS FOR ALL -->
+            <div>${item.test ? '3 PM' : item.hour}</div>
         </div>
     </td>
     <td>

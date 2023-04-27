@@ -151,8 +151,8 @@ function parseHourlyWeather(data) {
             cloudCover: hourly.cloudcover[index],
             hour: returnHour().format(time * 1000),
             dayLong: returnDayLONG().format(time * 1000),
-            date: new Date().getDate(),
-            monthShort: monthsShort[new Date().getMonth()],
+            date: new Date(time * 1000).getDate(),
+            monthShort: monthsShort[new Date(time * 1000).getMonth()],
         }
     }).filter(({ timestamp }) => timestamp >= current_weather.time * 1000);
     // filter only the hours from current hour to after 7 days
