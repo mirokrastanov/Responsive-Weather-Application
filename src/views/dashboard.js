@@ -38,40 +38,41 @@ export async function dashboardPage(ctx) {
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
         console.log(weatherInfo);
-
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
         alert(message);
         renderErrorOverlay(message);
-        // APPLY LOADING ANIMATION as well - check vid
         applyBlur(elements.main());
     }
 }
 
 async function hourlyDetails(e) {
     e.preventDefault();
-    // HOURLY TREA DA POMNI LOCACIATA, koqto e izbrana!!!
-
-    // TVA DA SE PRERABOTI po obrazec na dashboarda kato go naprava nego
-
-
     context.render(hourlyTemplate());
     document.querySelector('article.container').style.display = 'block';
     applyBlur(elements.main());
     try {
-        let coords = [42.7, 23.32]; // ADD them from the search API, when implemented
-        let weatherInfo = await getParsedWeatherData(coords);
-        renderWeather('hourly', weatherInfo); // DYNAMIC DATA being added to the Front End
+        if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
+            defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lon')];
+        } else {
+            let currentCoords = await getCurrentLocationCoords();
+            if (currentCoords[0] == 'no access') {
+                let message = `Please allow us to use your Geolocation
+                or Search for another location above.`;
+                renderErrorOverlay(message);
+                return;
+            } else {
+                localStorage.setItem('lat', currentCoords[0]);
+                localStorage.setItem('lon', currentCoords[1]);
+                defaultCoords = [currentCoords[0], currentCoords[1]];
+            }
+        }
+        let weatherInfo = await getParsedWeatherData(defaultCoords);
+        renderWeather('hourly', weatherInfo); // dynamic data is fed to DOM elems
+        updateWeatherInfo('hourly', weatherInfo); // updates everything every 10 min
+        removeErrorOverlay();
         console.log(weatherInfo);
-
-
-        // IF NO ITEMS - enable blur and show alert - no data , or something
-
-        // Finally, render with the items object fed as a parameter to the template
-        // setTimeout(() => {
-        //     removeBlur(elements.main());
-        // }, 1000);
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -689,6 +690,7 @@ const hourlyTemplate = (items = {}) => html`
         </div>
 
     </div> <!-- div.container ends here -->
+    <div class="loading" data-loading></div>
 </div> <!-- div.header ends here -->
 
 <main>
