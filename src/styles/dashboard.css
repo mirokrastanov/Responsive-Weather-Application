@@ -672,12 +672,6 @@ article.container::before {
     margin-inline: -16px;
 }
 
-#slider-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}
-
 .slider-container::-webkit-scrollbar {
     cursor: grab;
     height: 16px;

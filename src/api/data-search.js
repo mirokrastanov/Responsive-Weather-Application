@@ -1,7 +1,10 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { arrayParser, dashboardElements, elements, searchUtility } from '../util/util.js';
 import { getGeolocation } from './api.js';
-import { getParsedWeatherData, removeBlur, removeErrorOverlay, renderNotificationOverlay, renderWeather } from './data-weather.js';
+import {
+    getParsedWeatherData, removeBlur, removeErrorOverlay, renderNotificationOverlay,
+    renderWeather, updateWeatherInfo
+} from './data-weather.js';
 
 
 let searchTimeout = null;

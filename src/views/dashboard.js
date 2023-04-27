@@ -488,7 +488,6 @@ const dashboardTemplate = (items = {}) => html`
                 </div>
                 
                 <div class="slider-container">
-                    <div id="slider-wrapper">
                     <ul class="slider-list" data-temp>
 
                         <li class="slider-item">
@@ -650,7 +649,6 @@ const dashboardTemplate = (items = {}) => html`
                         </li>
 
                     </ul>
-                    </div>
                 </div>
 
             </section> <!-- div.section.hourly-forecast ends here -->

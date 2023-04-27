@@ -1,6 +1,9 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { touchSlider } from '../util/slider.js';
-import { arrayParser, dashboardElements, daysFull, daysShort, elements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT } from "../util/util.js";
+import {
+    arrayParser, dashboardElements, daysFull, daysShort,
+    elements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
+} from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper } from '../views/dashboard.js';
 import { getWeather, reverseGeolocation } from "./api.js";
 
@@ -293,21 +296,21 @@ function renderHourlyWeather(page, hourly) {
     if (page == 'dashboard') {
         let sliders = arrayParser.arr3parser(hourly.slice());
         dashboardElements.dashHSlider1().replaceChildren();
+        dashboardElements.dashHSlider2().replaceChildren();
         sliders.forEach((x, i) => {
             let t = timeParser.hours24(new Date(x.timestamp));
             let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
-            // let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
-            // TODO LOWER CARD after I implement a wind direction rotator for the arrow png
+            let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, '/src/images/weather-icons/direction.png', x.windSpeed);
             let li1 = document.createElement('li');
             li1.classList.add('slider-item');
             li1.setAttribute('data-info-upper', i);
             render(upperCard, li1);
             dashboardElements.dashHSlider1().appendChild(li1);
-            // let li2 = document.createElement('li');
-            // li2.classList.add('slider-item');
-            // li2.setAttribute('data-info-lower', i);
-            // render(upperCard, li2);
-            // dashboardElements.dashHSlider2().appendChild(li2);
+            let li2 = document.createElement('li');
+            li2.classList.add('slider-item');
+            li2.setAttribute('data-info-lower', i);
+            render(lowerCard, li2);
+            dashboardElements.dashHSlider2().appendChild(li2);
         });
 
 
