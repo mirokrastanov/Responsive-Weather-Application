@@ -329,11 +329,10 @@ function renderHourlyWeather(page, hourly) {
             dashboardElements.dashHSlider2().appendChild(li2);
         });
     } else if (page == 'hourly') {
-        let mockArray = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
         let root = hourlyElements.articleCtr();
         root.setAttribute('id', 'hourly-render');
         root.replaceChildren();
-        render(dynamicHourlyTemplate(hourly, mockArray), root);
+        render(dynamicHourlyTemplate(hourly), root);
     }
 }
 

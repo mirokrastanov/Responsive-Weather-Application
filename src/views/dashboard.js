@@ -741,7 +741,7 @@ const hourlyTemplate = () => html`
 </main>
 `;
 
-export const dynamicHourlyTemplate = (items = [], mock = []) => html`
+export const dynamicHourlyTemplate = (items = [], mock = [1, 1, 1, 1, 1, 1, 1]) => html`
     <div class="content-middle">
         <div class="blurred">
             <table class="hour-section">
@@ -772,7 +772,7 @@ export const dynamicHourlyTemplate = (items = [], mock = []) => html`
     </div>
 `;
 
-// used in both the initial and the dynamically filled templates
+// used in both the initial and the dynamically filled templates (can work with dynamic data)
 const hourRowTemplate = (item = { test: true }) => html`
 <tr class="hour-row">
     <td>
