@@ -251,8 +251,8 @@ function updateDashboardTimeNow() { // updates timeNow every second
     let interval = setInterval(function () {
         let [hNow, mNow, sNow] = [timeParser.hours24(), timeParser.min(), timeParser.sec()];
         // console.log(sNow);
-        if (dashboardElements.highTimeNow()) {
-            setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        if (dashboardElements.highYourTime()) {
+            setValue(dashboardElements.highYourTime(), `${hNow[0]}:${mNow} ${hNow[1]}`);
         }
     }, 1000);
     prevIntervals[1] = interval;
@@ -288,7 +288,8 @@ async function renderCurrentWeather(page, current) {
             timeParser.hours24(new Date(current.sunset)),
             timeParser.min(new Date(current.sunset)),
         ];
-        setValue(dashboardElements.highTimeNow(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        setValue(dashboardElements.highYourTime(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        // time at location - display - difference i da go upd i nego s time now
         setValue(dashboardElements.highTimeSunrise(), `${hRise[0]}:${mRise} ${hRise[1]}`);
         setValue(dashboardElements.highTimeSunset(), `${hSet[0]}:${mSet} ${hSet[1]}`);
         updateDashboardTimeNow(); // continuous time update
