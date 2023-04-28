@@ -285,6 +285,32 @@ async function renderCurrentWeather(page, current) {
 
         // TODAYS HIGHLIGHTS
         let yourOffset = timeParser.yourOffset(new Date().getTimezoneOffset());
+        let locOffset = current.timeZoneGMTdiff / 60;
+        let offsetDiff = timeParser.offsetDiff(yourOffset, locOffset);
+        let locBehind = yourOffset > locOffset;
+        let [hoursDiff, diffIcon] = [null, null];
+        if (yourOffset == locOffset) {
+            hoursDiff = 'same time';
+            diffIcon = 'nest_clock_farsight_analog';
+        } else {
+            hoursDiff = !locBehind ? `${offsetDiff / 60}h behind` : `${offsetDiff / 60}h ahead`;
+            diffIcon = !locBehind ? 'history' : 'update';
+        }
+        let myTime = timeParser.getLocationTime(0, locBehind);
+        let locTime = timeParser.getLocationTime(offsetDiff, locBehind);
+        let locRise = timeParser.getLocationTime(offsetDiff, locBehind, new Date(current.sunrise));
+        let locSet = timeParser.getLocationTime(offsetDiff, locBehind, new Date(current.sunset));
+        // console.log(myTime, locTime, locRise, locSet);
+
+        // LOCATION TIMES
+        setValue(dashboardElements.highTimeNow(), `${locTime[0]}:${locTime[1]} ${locTime[2]}`); // UP*
+        setValue(dashboardElements.highTimeSunrise(), `${locRise[0]}:${locRise[1]} ${locRise[2]}`);
+        setValue(dashboardElements.highTimeSunset(), `${locSet[0]}:${locSet[1]} ${locSet[2]}`);
+        // MY TIME & time difference
+        setValue(dashboardElements.highYourTime(), `${myTime[0]}:${myTime[1]} ${myTime[2]}`); // UP*
+        setValue(dashboardElements.highTimeDiffIcon(), diffIcon);
+        setValue(dashboardElements.highTimeDiff(), hoursDiff);
+        // UP* ==> these lines are being updated each second from the function below
 
         setValue(dashboardElements.highFeelsLike(), current.feelsLikeTemp, html`&deg;<sup>c</sup>`);
         setValue(dashboardElements.highWind(), current.windSpeed, html` <sub>m/s</sub>`);
