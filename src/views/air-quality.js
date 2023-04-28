@@ -30,4 +30,6 @@ const noItemsTemplate = () => html`
 
 const initialTemplate = () => html`
 <div>TEST - Air Quality Page</div>
+<span class="error-overlay">Do not gold-plate it!!!</span>
 `;
+
