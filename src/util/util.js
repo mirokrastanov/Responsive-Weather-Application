@@ -168,6 +168,25 @@ export const timeParser = {
     },
     min: (x = new Date()) => x.getMinutes() < 10 ? `0${x.getMinutes()}` : x.getMinutes(),
     sec: (x = new Date()) => x.getSeconds(),
+    raw: (x = new Date()) => x,
+    dateSumHours: (date, hours) => date.setHours(date.getHours() + hours),
+    dateSumMins: (date, mins) => new Date(date.setMinutes(date.getMinutes() + mins)),
+    yourOffset: (x) => x > 0 ? - Math.abs(x) : Math.abs(x),
+    offsetDiff: (o1, o2) => {
+        if (o1 > 0 && o2 > 0) {
+            if (o1 > o2) return o1 - o2;
+            else return o2 - o1;
+        } else if (o1 < 0 && o2 < 0) {
+            if (o1 > o2) return Math.abs(o2 - o1);
+            else return Math.abs(o1 - o2);
+        } else return Math.abs(o1) + Math.abs(o2);
+    },
+    getLocationTime: (offset, behind, d = new Date()) => {
+        if (behind) d = d.getTime() - offset * 60000;
+        else d = d.getTime() + offset * 60000;
+        let r = new Date(d);
+        return [timeParser.hours24(r)[0], timeParser.min(r), timeParser.hours24(r)[1]];
+    },
 };
 
 export const valueParser = {
@@ -260,7 +279,7 @@ export const dashboardElements = {
     searchField: () => document.querySelector('[data-search-field]'),
     searchResult: () => document.querySelector('[data-search-result]'),
     searchList: () => document.querySelector('[data-search-list]'),
-    
+
     sliderCtr: () => document.querySelector('.slider-container'),
     sliderWrapper: () => document.querySelector('#slider-wrapper'),
     sliderList1: () => document.querySelector('.slider-container ul:nth-of-type(1).slider-list'),
@@ -271,5 +290,5 @@ export const hourlyElements = {
     hourSection: () => document.querySelector('table.hour-section'),
     root: () => document.querySelector('body #main #main-ctr'),
     articleCtr: () => document.querySelector('body #main #main-ctr main article.container'),
-    
+
 }
