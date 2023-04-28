@@ -284,32 +284,7 @@ async function renderCurrentWeather(page, current) {
 
 
         // TODAYS HIGHLIGHTS
-        let [hNow, mNow, hRise, mRise, hSet, mSet] = [
-            timeParser.hours24(), timeParser.min(),
-            timeParser.hours24(new Date(current.sunrise)),
-            timeParser.min(new Date(current.sunrise)),
-            timeParser.hours24(new Date(current.sunset)),
-            timeParser.min(new Date(current.sunset)),
-        ];
-        // console.log(timeParser.raw().getTime());
-        let yourTime = [hNow[0], mNow, hNow[1]];
         let yourOffset = timeParser.yourOffset(new Date().getTimezoneOffset());
-        let locationOffset = current.timeZoneGMTdiff / 60;
-        let offsetDiff = timeParser.offsetDiff(yourOffset, locationOffset);
-        let locationIsBehind = yourOffset > locationOffset;
-
-
-        let utcTime = timeParser.getLocationTime(offsetDiff, locationIsBehind);
-        console.log(yourOffset, locationOffset, offsetDiff, locationIsBehind);
-        console.log(yourTime, utcTime);
-
-        // console.log(timeParser.dateSumMins(new Date(), current.timeZoneGMTdiff / 60));
-
-        setValue(dashboardElements.highYourTime(), `${hNow[0]}:${mNow} ${hNow[1]}`);
-        // time at location - display - difference i da go upd i nego s time now
-        setValue(dashboardElements.highTimeSunrise(), `${hRise[0]}:${mRise} ${hRise[1]}`);
-        setValue(dashboardElements.highTimeSunset(), `${hSet[0]}:${mSet} ${hSet[1]}`);
-        // updateDashboardTimeNow(); // continuous time update
 
         setValue(dashboardElements.highFeelsLike(), current.feelsLikeTemp, html`&deg;<sup>c</sup>`);
         setValue(dashboardElements.highWind(), current.windSpeed, html` <sub>m/s</sub>`);
