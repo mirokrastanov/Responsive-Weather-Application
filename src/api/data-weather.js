@@ -5,7 +5,7 @@ import {
     elements, hourlyElements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
 } from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper, dynamicHourlyTemplate } from '../views/dashboard.js';
-import { getWeather, reverseGeolocation } from "./api.js";
+import { getTimeZoneWeather, getWeather, reverseGeolocation } from "./api.js";
 
 export function applyBlur(element) {
     element.classList.add('blurred');
@@ -167,6 +167,9 @@ function generateImage(isDay, weatherCode) {
 export async function getParsedWeatherData(coords) {
     // let testRaw = await getWeather(42.7, 23.32, getCurrentTimeZone());
     let data = await getWeather(coords[0], coords[1], getCurrentTimeZone());
+    let extraData = await getTimeZoneWeather(coords[0], coords[1]);
+    let locationTimeZone = extraData.data.timezone;
+    console.log(locationTimeZone);
     let result = {
         raw: data,
         current: parseCurrentWeather(data),
@@ -174,6 +177,7 @@ export async function getParsedWeatherData(coords) {
         hourly: parseHourlyWeather(data),
     };
     result.current.is_day = result.hourly[0].is_day;
+    result.current.timezoneGMTdiff = locationTimeZone;
     return result;
 }
 

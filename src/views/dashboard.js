@@ -101,6 +101,7 @@ async function onCurrentLocationClick(e) {
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
+        console.log(weatherInfo);
     } catch (error) {
         let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
         console.log('Error details: ', { ...error, 'stack': error.stack });
