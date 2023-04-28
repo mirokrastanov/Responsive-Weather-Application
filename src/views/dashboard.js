@@ -416,7 +416,7 @@ const dashboardTemplate = (items = {}) => html`
                                     <span class="m-icon">update</span> <!-- or history -->
 
                                     <div>
-                                        <p class="label-1">Time Difference</p>
+                                        <p class="label-1">You are</p>
                                         
                                         <p class="title-1">+ 5h</p>
                                     </div>
