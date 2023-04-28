@@ -237,9 +237,12 @@ export const dashboardElements = {
     dailyDateMonth: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(1)'),
     dailyDay: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(2)'),
 
-    highTimeNow: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(1) .title-1'),
-    highTimeSunrise: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(2) .title-1'),
-    highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two .card-item:nth-of-type(3) .title-1'),
+    highTimeNow: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(1) .title-1'),
+    highTimeSunrise: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(2) .title-1'),
+    highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(3) .title-1'),
+    highYourTime: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(1) .title-1'),
+    highTimeDiff: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(2) .title-1'),
+
 
     highFeelsLike: () => document.querySelector('.highlight-list div:nth-of-type(3).card-sm.highlight-card .wrapper .title-1'),
     highWind: () => document.querySelector('.highlight-list div:nth-of-type(4).card-sm.highlight-card .wrapper .title-1'),
