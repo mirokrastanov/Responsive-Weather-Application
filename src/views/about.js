@@ -9,7 +9,8 @@ export async function aboutPage(ctx) {
 const aboutTemplate = () => html`
 <div>TEST - ABOUT</div>
 <span class="error-overlay">Read ALL notes from the last month 
-    to fill the Credits PROPERLY and to not miss something!!!</span>
+    to fill the Credits PROPERLY and to not miss something!!!
+    --- _templates/about.md --- read that for the img credits</span>
 `; 
 
 
