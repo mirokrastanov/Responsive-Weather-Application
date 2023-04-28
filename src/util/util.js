@@ -174,11 +174,9 @@ export const timeParser = {
     yourOffset: (x) => x > 0 ? - Math.abs(x) : Math.abs(x),
     offsetDiff: (o1, o2) => {
         if (o1 > 0 && o2 > 0) {
-            if (o1 > o2) return o1 - o2;
-            else return o2 - o1;
+            return o1 > o2 ? o1 - o2 : o2 - o1;
         } else if (o1 < 0 && o2 < 0) {
-            if (o1 > o2) return Math.abs(o2 - o1);
-            else return Math.abs(o1 - o2);
+            return o1 > o2 ? Math.abs(o2 - o1) : Math.abs(o1 - o2);
         } else return Math.abs(o1) + Math.abs(o2);
     },
     getLocationTime: (offset, behind, d = new Date()) => {
@@ -261,7 +259,7 @@ export const dashboardElements = {
     highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(3) .title-1'),
     highYourTime: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(1) .title-1'),
     highTimeDiff: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(2) .title-1'),
-
+    highTimeDiffIcon: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(2) .m-icon'),
 
     highFeelsLike: () => document.querySelector('.highlight-list div:nth-of-type(3).card-sm.highlight-card .wrapper .title-1'),
     highWind: () => document.querySelector('.highlight-list div:nth-of-type(4).card-sm.highlight-card .wrapper .title-1'),
@@ -291,4 +289,7 @@ export const hourlyElements = {
     root: () => document.querySelector('body #main #main-ctr'),
     articleCtr: () => document.querySelector('body #main #main-ctr main article.container'),
 
-}
+};
+
+
+
