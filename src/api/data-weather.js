@@ -246,17 +246,29 @@ function setImage(element, path) {
     element.setAttribute('src', path);
 }
 
-function updateDashboardTimeNow() { // updates timeNow every second
+function updateDashboardTimeNow(current) { // updates timeNow every second
     if (prevIntervals[1]) {
         clearInterval(prevIntervals[1]);
         prevIntervals[1] = null;
     }
     let interval = setInterval(function () {
-        let [hNow, mNow, sNow] = [timeParser.hours24(), timeParser.min(), timeParser.sec()];
-        // console.log(sNow);
-        if (dashboardElements.highYourTime()) {
-            setValue(dashboardElements.highYourTime(), `${hNow[0]}:${mNow} ${hNow[1]}`);
+        let yourOffset = timeParser.yourOffset(new Date().getTimezoneOffset());
+        let locOffset = current.timeZoneGMTdiff / 60;
+        let offsetDiff = timeParser.offsetDiff(yourOffset, locOffset);
+        let locBehind = yourOffset > locOffset;
+        let myTime = timeParser.getLocationTime(0, locBehind);
+        let locTime = timeParser.getLocationTime(offsetDiff, locBehind);
+        let sec = new Date().getSeconds();
+        let secParsed = sec > 9 ? sec : `0${sec}`;
+        // console.log(myTime, locTime);
+
+        if (dashboardElements.highTimeNow()) {
+            // LOCATION TIME
+            setValue(dashboardElements.highTimeNow(), `${locTime[0]}:${locTime[1]} ${locTime[2]}`);
+            // MY TIME
+            setValue(dashboardElements.highYourTime(), `${myTime[0]}:${myTime[1]}:${secParsed} ${myTime[2]}`);
         }
+
     }, 1000);
     prevIntervals[1] = interval;
 }
@@ -311,6 +323,7 @@ async function renderCurrentWeather(page, current) {
         setValue(dashboardElements.highTimeDiffIcon(), diffIcon);
         setValue(dashboardElements.highTimeDiff(), hoursDiff);
         // UP* ==> these lines are being updated each second from the function below
+        updateDashboardTimeNow(current);
 
         setValue(dashboardElements.highFeelsLike(), current.feelsLikeTemp, html`&deg;<sup>c</sup>`);
         setValue(dashboardElements.highWind(), current.windSpeed, html` <sub>m/s</sub>`);
