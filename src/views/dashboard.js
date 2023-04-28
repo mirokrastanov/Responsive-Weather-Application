@@ -364,9 +364,9 @@ const dashboardTemplate = (items = {}) => html`
                         <div class="card card-sm highlight-card two">
                             
                             <h3 class="title-3">Sunrise & Sunset</h3>
+                            <h3 class="title-3">Location Time</h3>
 
                             <div class="card-list">
-
                                 <div class="card-item">
                                     <span class="m-icon">nest_clock_farsight_analog</span>
 
@@ -396,8 +396,30 @@ const dashboardTemplate = (items = {}) => html`
                                         <p class="title-1">5:54 PM</p>
                                     </div>
                                 </div>
+                            </div>
 
+                            <br />
+                            <h3 class="title-3">Your Time</h3>
 
+                            <div class="card-list">
+                                <div class="card-item">
+                                    <span class="m-icon">nest_clock_farsight_analog</span>
+
+                                    <div>
+                                        <p class="label-1">Now</p>
+                                        
+                                        <p class="title-1">9:30 AM</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <span class="m-icon">update</span> <!-- or history -->
+
+                                    <div>
+                                        <p class="label-1">Time Difference</p>
+                                        
+                                        <p class="title-1">+ 5h</p>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
