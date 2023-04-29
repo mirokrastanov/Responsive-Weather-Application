@@ -20,6 +20,7 @@
 
     .hour-row td {
         padding: 0;
+        margin: 1px;
     }
 
     .hour-row td .info-group div {
@@ -342,7 +343,6 @@
 
     tr td:nth-of-type(1) .label {
         font-size: 1.2rem;
-        ;
     }
 
     tr td:nth-of-type(1) .info-group div:nth-of-type(2) {
@@ -357,6 +357,11 @@
         transform: scale(1.2);
     }
 
+    .hour-section .hour-row td:nth-of-type(1) .info-group > * {
+        letter-spacing: 2px;
+        font-weight: 900;
+        transform: scale(1.1);
+    }
 }
 
 @media all and (min-width: 1200px) {
@@ -555,6 +560,10 @@
         font-size: 1.8rem;
     }
 
+    .hour-section .hour-row td:nth-of-type(1) .info-group > * {
+        transform: scale(1.2);
+    }
+
     html body #main #main-ctr .header .error-overlay {
         top: 200px;
     }
@@ -583,5 +592,9 @@
 
     .h-forecast-title {
         font-size: 4rem;
+    }
+
+    .hour-section .hour-row td:nth-of-type(1) .info-group > * {
+        transform: scale(1.3);
     }
 }
