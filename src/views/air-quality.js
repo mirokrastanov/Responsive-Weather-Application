@@ -6,15 +6,14 @@ import { getCurrentTimeZone } from '../api/data-weather.js';
 let context = null;
 export async function airQualityPage(ctx) {
     context = ctx;
-    // let itemsArray = await getMyItems(); // TO ADD in API
-    // if (!itemsArray) itemsArray = [];
-    // // let itemsArray = [];
-    // ctx.render(itemsTemplate(itemsArray));
     ctx.render(initialTemplate());
-    let testData = await getAQI(42, 23, getCurrentTimeZone());
+    let testData = await getAQI(42, 23, getCurrentTimeZone()); // ADJUST with supportive func
     console.log(testData);
     document.querySelector('#aqi-ctr').style.display = 'flex'; // REMOVE when page gets dynamic
 }
+
+// TODO - no hourly, just dynamic dashboard with current data and btn for refresh data
+// also buttons for more info for each, with links to the wiki pages & maybe meteo's
 
 async function onDetails(e) {
     e.preventDefault();
