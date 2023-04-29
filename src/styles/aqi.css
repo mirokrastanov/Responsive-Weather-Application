@@ -1,0 +1,74 @@
+@import url('/src/styles/main.css');
+
+#aqi-ctr {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#aqi-wrapper {
+    background-color: var(--color-surface);
+    width: 96%;
+    height: 94%;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aqi-h2 {
+    display: block;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+#aqi-flex {
+    padding: 2rem;
+    border-radius: inherit;
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 200px);
+    /* ADJUST AS DYNAMIC DATA is implemented */
+    overflow: scroll;
+
+}
+
+.aqi-box {
+    border-radius: 10px;
+    margin: auto;
+    background-color: var(--color-background);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.aqi-title {
+    font-size: 2rem;
+    color: var(--color-on-surface-variant);
+}
+
+.aqi-content {
+    font-size: 2.5rem;
+}
+
+.aqi-box:nth-of-type(1) {
+    grid-column: 1 / 4;
+}
+
+.aqi-box:nth-of-type(2) {
+    grid-row: 2 / 4;
+}
+
+
