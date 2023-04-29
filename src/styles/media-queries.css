@@ -307,7 +307,7 @@
         height: 20px;
     }
 
-    
+
 
 
 
@@ -351,6 +351,10 @@
 
     tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
         font-size: 1.5rem;
+    }
+
+    tr td:nth-of-type(2) img {
+        transform: scale(1.2);
     }
 
 }
