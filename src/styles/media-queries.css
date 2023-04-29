@@ -52,6 +52,12 @@
     .notif-overlay {
         top: 8%;
     }
+
+    .aqi-box {
+        grid-column: 1 / 4;
+    }
+
+
 }
 
 
