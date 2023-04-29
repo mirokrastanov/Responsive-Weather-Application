@@ -1,4 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { getAQI } from '../api/api.js';
+import { getCurrentTimeZone } from '../api/data-weather.js';
 // import from api
 
 let context = null;
@@ -9,6 +11,9 @@ export async function airQualityPage(ctx) {
     // // let itemsArray = [];
     // ctx.render(itemsTemplate(itemsArray));
     ctx.render(initialTemplate());
+    let testData = await getAQI(42, 23, getCurrentTimeZone());
+    console.log(testData);
+    document.querySelector('#aqi-ctr').style.display = 'flex'; // REMOVE when page gets dynamic
 }
 
 async function onDetails(e) {
@@ -29,7 +34,6 @@ const noItemsTemplate = () => html`
 `;
 
 const initialTemplate = () => html`
-<div>TEST - Air Quality Page</div>
-<span class="error-overlay">Do not gold-plate it!!!</span>
+
 `;
 
