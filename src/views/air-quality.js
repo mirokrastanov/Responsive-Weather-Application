@@ -9,7 +9,6 @@ export async function airQualityPage(ctx) {
     ctx.render(initialTemplate());
     let testData = await getAQI(42, 23, getCurrentTimeZone()); // ADJUST with supportive func
     console.log(testData);
-    document.querySelector('#aqi-ctr').style.display = 'flex'; // REMOVE when page gets dynamic
 }
 
 // TODO - no hourly, just dynamic dashboard with current data and btn for refresh data
