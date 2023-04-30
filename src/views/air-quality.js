@@ -8,12 +8,12 @@ let context = null;
 export async function airQualityPage(ctx) {
     context = ctx;
     ctx.render(initialTemplate());
-    let testData = await getParsedAQIData([42, 23]); // ADJUST with supportive func
+    let testData = await getParsedAQIData([41.8781, 87.6298]); // ADJUST LATER (now: chicago)
     console.log(testData);
+    // ADD the whole mechanism from dashboard to copy the logic to save time
 }
 
-// TODO - no hourly, just dynamic dashboard with current data and btn for refresh data
-// also buttons for more info for each, with links to the wiki pages & maybe meteo's
+// TODO - put hourly into a hidden div - chek the tab saved in chrome
 
 async function onDetails(e) {
     e.preventDefault();
