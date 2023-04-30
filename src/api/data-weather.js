@@ -78,15 +78,15 @@ export async function getCurrentLocationCoords() {
     }
 }
 
-function returnDayLONG() {
+export function returnDayLONG() {
     return new Intl.DateTimeFormat(undefined, { weekday: 'long' }); // has .format func
 }
 
-function returnDaySHORT() {
+export function returnDaySHORT() {
     return new Intl.DateTimeFormat(undefined, { weekday: 'short' }); // has .format func
 }
 
-function returnHour() {
+export function returnHour() {
     return new Intl.DateTimeFormat(undefined, { hour: 'numeric' }); // has .format func
 }
 
