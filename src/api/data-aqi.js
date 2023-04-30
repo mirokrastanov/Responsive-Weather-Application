@@ -11,7 +11,7 @@ import { getCurrentTimeZone, returnDayLONG, returnHour } from './data-weather.js
 
 
 function parseAQIData(data) {
-    let { hourly, hourly_units } = data;
+    let { hourly } = data;
     return hourly.time.map((time, index) => {
         return {
             timestamp: time * 1000,
