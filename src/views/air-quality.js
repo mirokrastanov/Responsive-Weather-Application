@@ -1,5 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getAQI } from '../api/api.js';
+import { getParsedAQIData } from '../api/data-aqi.js';
 import { getCurrentTimeZone } from '../api/data-weather.js';
 // import from api
 
@@ -7,7 +8,7 @@ let context = null;
 export async function airQualityPage(ctx) {
     context = ctx;
     ctx.render(initialTemplate());
-    let testData = await getAQI(42, 23, getCurrentTimeZone()); // ADJUST with supportive func
+    let testData = await getParsedAQIData([42, 23]); // ADJUST with supportive func
     console.log(testData);
 }
 
