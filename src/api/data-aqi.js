@@ -11,6 +11,49 @@ import { getAQI, getTimeZoneWeather, getWeather, reverseGeolocation } from "./ap
 import { getCurrentTimeZone, returnDayLONG, returnHour, setValue } from './data-weather.js';
 
 
+function generateTitleAndColor(text = 'Good') {
+    let obj = {
+        'Good': 1,
+        'Fair': 2,
+        'Moderate': 3,
+        'Poor': 4,
+        'Very poor': 5,
+        'Extremely poor': 6
+    };
+    let colorObj = {
+        c1: '--color-bg-aqi-1',
+        c1hover: '--color-bg-aqi-1-hover',
+        c1text: '--color-bg-aqi-1-text',
+        c2: '--color-bg-aqi-2',
+        c2hover: '--color-bg-aqi-2-hover',
+        c2text: '--color-bg-aqi-2-text',
+        c3: '--color-bg-aqi-3',
+        c3hover: '--color-bg-aqi-3-hover',
+        c3text: '--color-bg-aqi-3-text',
+        c4: '--color-bg-aqi-4',
+        c4hover: '--color-bg-aqi-4-hover',
+        c4text: '--color-bg-aqi-4-text',
+        c5: '--color-bg-aqi-5',
+        c5hover: '--color-bg-aqi-5-hover',
+        c5text: '--color-bg-aqi-5-text',
+        c6: '--color-bg-aqi-6',
+        c6hover: '--color-bg-aqi-6-hover',
+        c6text: '--color-bg-aqi-6-text',
+    };
+
+    let level = aqiParser[obj[text]];
+    let title = 'General Population:\n' + level.messageGeneralPop +
+        '\n\nSensitive Population:\n' + level.messageSensitivePop;
+    let [bg, hover, color] = [
+        colorObj[`c${obj[text]}`],
+        colorObj[`c${obj[text]}hover`],
+        colorObj[`c${obj[text]}text`],
+    ];
+
+
+    return [title, bg, hover, color];
+}
+
 function parseAQIData(data) {
     let { hourly } = data;
     // console.log(data);
