@@ -1,6 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { touchSlider } from '../util/slider.js';
 import {
+    aqiElements,
     aqiParser,
     arrayParser, dashboardElements, daysFull, daysShort,
     elements, hourlyElements, monthsShort, timeParser, valueParser,
@@ -8,7 +9,7 @@ import {
 } from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper, dynamicHourlyTemplate } from '../views/dashboard.js';
 import { getAQI, getTimeZoneWeather, getWeather, reverseGeolocation } from "./api.js";
-import { getCurrentTimeZone, returnDayLONG, returnHour, setValue } from './data-weather.js';
+import { getCurrentTimeZone, removeBlur, returnDayLONG, returnHour, setValue } from './data-weather.js';
 
 
 function generateTitleAndColor(text = 'Good') {
@@ -167,4 +168,5 @@ export function renderAQI(page, data) {
 
 
     }
+    if (aqiElements.aqiWrapper()) removeBlur(aqiElements.aqiWrapper());
 }

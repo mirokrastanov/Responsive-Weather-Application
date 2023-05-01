@@ -331,5 +331,9 @@ export const hourlyElements = {
 
 };
 
-
+export const aqiElements = {
+    aqiCtr: () => document.querySelector('#aqi-ctr'),
+    aqiWrapper: () => document.querySelector('#aqi-wrapper'),
+    
+};
 

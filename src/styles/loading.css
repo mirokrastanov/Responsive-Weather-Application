@@ -1,6 +1,6 @@
 @import url('/src/styles/main.css');
 
-#main #main-ctr main.blurred {
+.blurred {
     filter: blur(3px);
     overflow: hidden;
 }

@@ -1,6 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { touchSlider } from '../util/slider.js';
 import {
+    aqiElements,
     arrayParser, dashboardElements, daysFull, daysShort,
     elements, hourlyElements, monthsShort, timeParser, valueParser, weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
 } from "../util/util.js";
@@ -8,11 +9,11 @@ import { dashboardHourlyCardLower, dashboardHourlyCardUpper, dynamicHourlyTempla
 import { getTimeZoneWeather, getWeather, reverseGeolocation } from "./api.js";
 
 export function applyBlur(element) {
-    element.classList.add('blurred');
+    if (element) element.classList.add('blurred');
 }
 
 export function removeBlur(element) {
-    element.classList.remove('blurred');
+    if (element) element.classList.remove('blurred');
 }
 
 export function createErrorOverlay(message) {
@@ -24,7 +25,8 @@ export function createErrorOverlay(message) {
 
 export function renderErrorOverlay(message) {
     removeErrorOverlay();
-    elements.dotHeader().appendChild(createErrorOverlay(message));
+    if (elements.dotHeader()) elements.dotHeader().appendChild(createErrorOverlay(message));
+    if (aqiElements.aqiWrapper()) aqiElements.aqiWrapper().appendChild(createErrorOverlay(message));
 }
 
 export function removeErrorOverlay() {
