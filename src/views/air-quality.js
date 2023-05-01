@@ -1,4 +1,4 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { getAQI } from '../api/api.js';
 import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
 import { applyBlur, getCurrentTimeZone, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay } from '../api/data-weather.js';
@@ -7,6 +7,7 @@ import { aqiElements, elements } from '../util/util.js';
 
 let context = null;
 let defaultCoords = [];
+let currentAQIinfo = {};
 export async function airQualityPage(ctx) {
     context = ctx;
     ctx.render(initialTemplate());
@@ -29,7 +30,9 @@ export async function airQualityPage(ctx) {
         }
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         let aqiInfo = await getParsedAQIData(defaultCoords);
-        renderAQI('dashboard', aqiInfo);
+        currentAQIinfo = {};
+        currentAQIinfo = { ...aqiInfo };
+        renderAQI('air-quality', aqiInfo);
         removeErrorOverlay();
         console.log(aqiInfo);
     } catch (error) {
@@ -41,7 +44,7 @@ export async function airQualityPage(ctx) {
     }
 }
 
-// TODO - put hourly into a hidden div - chek the tab saved in chrome
+
 
 async function onDetails(e) {
     e.preventDefault();
