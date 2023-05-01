@@ -334,6 +334,10 @@ export const hourlyElements = {
 export const aqiElements = {
     aqiCtr: () => document.querySelector('#aqi-ctr'),
     aqiWrapper: () => document.querySelector('#aqi-wrapper'),
-    
+    aqiSTATE: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-content'),
+    aqiSTATEmessage: () => document.querySelector('.aqi-box:nth-of-type(1) #state-message'),
+    aqiBoxEAQI: () => document.querySelector('.aqi-box:nth-of-type(1)'),
+    aqiBoxEAQIdetails: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-box-details'),
+
 };
 
