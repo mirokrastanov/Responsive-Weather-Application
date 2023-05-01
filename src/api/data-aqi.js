@@ -115,18 +115,15 @@ function parseAQIData(data) {
             so2: generateTitleAndColor(hourObject.so2[2]),
         };
         let aqi = {
-            main: {
-                title: res.main[0],
-                bg: res.main[1],
-                hover: res.main[2],
-                color: res.main[3]
-            },
+            eAQI: { title: res.main[0], bg: res.main[1], hover: res.main[2], color: res.main[3], },
+            pm2_5: { title: res.pm2_5[0], bg: res.pm2_5[1], hover: res.pm2_5[2], color: res.pm2_5[3], },
+            pm10: { title: res.pm10[0], bg: res.pm10[1], hover: res.pm10[2], color: res.pm10[3], },
+            no2: { title: res.no2[0], bg: res.no2[1], hover: res.no2[2], color: res.no2[3], },
+            o3: { title: res.o3[0], bg: res.o3[1], hover: res.o3[2], color: res.o3[3], },
+            so2: { title: res.so2[0], bg: res.so2[1], hover: res.so2[2], color: res.so2[3], },
         };
-
-
+        Object.entries(aqi).forEach(x => hourObject[x[0]].push(x[1]));
     });
-
-
     return result;
 }
 
