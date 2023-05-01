@@ -254,6 +254,16 @@ export const dashboardElements = {
     dailyDateMonth: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(1)'),
     dailyDay: () => document.querySelectorAll('.forecast .card-item > p:nth-of-type(2)'),
 
+    highAQIstate: () => document.querySelector('.card.card-sm.highlight-card.one span.badge.aqi-1.label-1'),
+    highAQIlabel1: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(1).card-item .label-1'),
+    highAQItitle1: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(1).card-item .title-1'),
+    highAQIlabel2: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(2).card-item .label-1'),
+    highAQItitle2: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(2).card-item .title-1'),
+    highAQIlabel3: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(3).card-item .label-1'),
+    highAQItitle3: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(3).card-item .title-1'),
+    highAQIlabel4: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(4).card-item .label-1'),
+    highAQItitle4: () => document.querySelector('.card.card-sm.highlight-card.one .wrapper .card-list li:nth-of-type(4).card-item .title-1'),
+
     highTimeNow: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(1) .title-1'),
     highTimeSunrise: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(2) .title-1'),
     highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(3) .title-1'),
