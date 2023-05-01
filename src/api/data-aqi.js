@@ -64,28 +64,28 @@ function parseAQIData(data) {
             dayLong: returnDayLONG().format(time * 1000),
             date: new Date(time * 1000).getDate(),
             monthShort: monthsShort[new Date(time * 1000).getMonth()],
-            carbon_monoxide: [hourly.carbon_monoxide[index], "μg/m³"],
+            co: [hourly.carbon_monoxide[index], "μg/m³"],
             dust: [hourly.dust[index], "μg/m³"],
-            european_aqi: [hourly.european_aqi[index], "EAQI"],
-            nitrogen_dioxide: [hourly.nitrogen_dioxide[index], "μg/m³"],
-            ozone: [hourly.ozone[index], "μg/m³"],
+            eAQI: [hourly.european_aqi[index], "EAQI"],
+            no2: [hourly.nitrogen_dioxide[index], "μg/m³"],
+            o3: [hourly.ozone[index], "μg/m³"],
             pm2_5: [hourly.pm2_5[index], "μg/m³"],
             pm10: [hourly.pm10[index], "μg/m³"],
-            sulphur_dioxide: [hourly.sulphur_dioxide[index], "μg/m³"],
+            so2: [hourly.sulphur_dioxide[index], "μg/m³"],
         }
     }).filter(({ timestamp }) => timestamp >= new Date().getTime());
     // filters only the hours from the current hour to after 6 days
 
     result.forEach(hourObject => {
         Object.values(aqiParser).forEach(level => {
-            let aqiMAIN = hourObject.european_aqi;
+            let aqiMAIN = hourObject.eAQI;
             let pm2_5 = hourObject.pm2_5;
             let pm10 = hourObject.pm10;
-            let no2 = hourObject.nitrogen_dioxide;
-            let o3 = hourObject.ozone;
-            let so2 = hourObject.sulphur_dioxide;
+            let no2 = hourObject.no2;
+            let o3 = hourObject.o3;
+            let so2 = hourObject.so2;
             if (aqiMAIN[0] >= level.rangeEAQI[0] && aqiMAIN[0] < level.rangeEAQI[1]) {
-                hourObject.european_aqi.push(level.level);
+                hourObject.eAQI.push(level.level);
             }
             if (pm2_5[0] >= level.range_pm2_5[0] && pm2_5[0] < level.range_pm2_5[1]) {
                 hourObject.pm2_5.push(level.level);
@@ -94,21 +94,25 @@ function parseAQIData(data) {
                 hourObject.pm10.push(level.level);
             }
             if (no2[0] >= level.range_no2[0] && no2[0] < level.range_no2[1]) {
-                hourObject.nitrogen_dioxide.push(level.level);
+                hourObject.no2.push(level.level);
             }
             if (o3[0] >= level.range_o3[0] && o3[0] < level.range_o3[1]) {
-                hourObject.ozone.push(level.level);
+                hourObject.o3.push(level.level);
             }
             if (so2[0] >= level.range_so2[0] && so2[0] < level.range_so2[1]) {
-                hourObject.sulphur_dioxide.push(level.level);
+                hourObject.so2.push(level.level);
             }
         });
     });
 
     result.forEach(hourObject => {
         let res = {
-            main: generateTitleAndColor(hourObject.european_aqi[2]),
-
+            main: generateTitleAndColor(hourObject.eAQI[2]),
+            pm2_5: generateTitleAndColor(hourObject.pm2_5[2]),
+            pm10: generateTitleAndColor(hourObject.pm10[2]),
+            no2: generateTitleAndColor(hourObject.no2[2]),
+            o3: generateTitleAndColor(hourObject.o3[2]),
+            so2: generateTitleAndColor(hourObject.so2[2]),
         };
         let aqi = {
             main: {
@@ -119,11 +123,6 @@ function parseAQIData(data) {
             },
         };
 
-        // let pm2_5 = hourObject.pm2_5;
-        // let pm10 = hourObject.pm10;
-        // let no2 = hourObject.nitrogen_dioxide;
-        // let o3 = hourObject.ozone;
-        // let so2 = hourObject.sulphur_dioxide;
 
     });
 
@@ -155,11 +154,11 @@ export function renderDashboardAQI(page, data) {
     const { hourly, units } = data;
     if (page == 'dashboard') {
         let aqiState = {
-            text: data.hourly[0].european_aqi[2],
-            title: generateTitleAndColor(data.hourly[0].european_aqi[2])[0],
-            bg: generateTitleAndColor(data.hourly[0].european_aqi[2])[1],
-            hover: generateTitleAndColor(data.hourly[0].european_aqi[2])[2],
-            color: generateTitleAndColor(data.hourly[0].european_aqi[2])[3],
+            text: data.hourly[0].eAQI[2],
+            title: generateTitleAndColor(data.hourly[0].eAQI[2])[0],
+            bg: generateTitleAndColor(data.hourly[0].eAQI[2])[1],
+            hover: generateTitleAndColor(data.hourly[0].eAQI[2])[2],
+            color: generateTitleAndColor(data.hourly[0].eAQI[2])[3],
         };
         setValue(dashboardElements.highAQIstate(),
             aqiState.text, false, [['title', aqiState.title],
