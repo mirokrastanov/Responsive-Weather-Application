@@ -227,7 +227,7 @@ export function updateWeatherInfo(page, { current, daily, hourly }) {
     prevIntervals[0] = interval;
 }
 
-function setValue(element, value, addin = false) {
+export function setValue(element, value, addin = false, attributes = []) {
     if (!element) return; // prevents errors - continuous func
     if (addin) {
         // temp element is needed to prevent lit-html bug when re-rendering on top of
@@ -239,9 +239,14 @@ function setValue(element, value, addin = false) {
     } else {
         element.textContent = value;
     }
+    if (attributes.length > 0) {
+        for (const [atr, val] of attributes) {
+            element.setAttribute(atr, val);
+        }
+    }
 }
 
-function setImage(element, path) {
+export function setImage(element, path) {
     if (!element) return; // prevents errors - continuous func
     element.setAttribute('src', path);
 }
