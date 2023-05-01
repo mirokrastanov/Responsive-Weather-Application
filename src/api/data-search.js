@@ -1,6 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { arrayParser, dashboardElements, elements, searchUtility } from '../util/util.js';
 import { getGeolocation } from './api.js';
+import { getParsedAQIData, renderAQI } from './data-aqi.js';
 import {
     getParsedWeatherData, removeBlur, removeErrorOverlay, renderNotificationOverlay,
     renderWeather, updateWeatherInfo
@@ -95,10 +96,13 @@ export async function onSearchClick(e) {
     localStorage.setItem('lon', lon);
     // location.href = '/dashboard';
     let weatherInfo = await getParsedWeatherData([lat, lon]);
+    let aqiInfo = await getParsedAQIData([lat, lon]);
     renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
-    updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
+    renderAQI('dashboard', aqiInfo);
+    updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min    
     if (isValid) searchUtility.toggleSearch();
     removeErrorOverlay();
     renderNotificationOverlay();
     console.log(weatherInfo);
+    console.log(aqiInfo);
 }
