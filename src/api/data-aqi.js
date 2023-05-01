@@ -134,14 +134,12 @@ export async function getParsedAQIData(coords) {
     let data = await getAQI(coords[0], coords[1], getCurrentTimeZone());
     let parsedData = parseAQIData(data);
     let extraData = await getTimeZoneWeather(coords[0], coords[1]);
-    let locationTimeZone = extraData.data.timezone;
     let result = {
         raw: data,
         hourly: parsedData,
         units: data.hourly_units,
+        timeZoneGMTdiff: extraData.data.timezone,
     };
-    result.timeZoneGMTdiff = locationTimeZone;
-
     return result;
 }
 
@@ -149,18 +147,22 @@ export async function getParsedAQIData(coords) {
 export function renderDashboardAQI(page, data) {
     console.log(data);
     const { hourly, units } = data;
+    let [pm_2, no2, o3, so2] = [hourly[0].pm2_5, hourly[0].no2, hourly[0].o3, hourly[0].so2];
+    let aqiState = hourly[0].eAQI[3];
     if (page == 'dashboard') {
-        let aqiState = {
-            text: data.hourly[0].eAQI[2],
-            title: generateTitleAndColor(data.hourly[0].eAQI[2])[0],
-            bg: generateTitleAndColor(data.hourly[0].eAQI[2])[1],
-            hover: generateTitleAndColor(data.hourly[0].eAQI[2])[2],
-            color: generateTitleAndColor(data.hourly[0].eAQI[2])[3],
-        };
         setValue(dashboardElements.highAQIstate(),
-            aqiState.text, false, [['title', aqiState.title],
+            hourly[0].eAQI[2], false, [['title', `${aqiState.title}\n\nAll values are in: ${no2[1]}`],
             ['style', `background-color:var(${aqiState.bg});color:var(${aqiState.color});`],
             ['data-hover', aqiState.hover]]);
+        setValue(dashboardElements.highAQIlabel1(), 'PM', html`<sub>2.5</sub>`);
+        setValue(dashboardElements.highAQItitle1(), pm_2[0]);
+        setValue(dashboardElements.highAQIlabel2(), 'NO', html`<sub>2</sub>`);
+        setValue(dashboardElements.highAQItitle2(), no2[0]);
+        setValue(dashboardElements.highAQIlabel3(), 'O', html`<sub>3</sub>`);
+        setValue(dashboardElements.highAQItitle3(), o3[0]);
+        setValue(dashboardElements.highAQIlabel4(), 'SO', html`<sub>2</sub>`);
+        setValue(dashboardElements.highAQItitle4(), so2[0]);
+
 
     } else if (page == 'air-quality') {
 
