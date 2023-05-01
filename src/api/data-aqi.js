@@ -104,6 +104,30 @@ function parseAQIData(data) {
             }
         });
     });
+
+    result.forEach(hourObject => {
+        let res = {
+            main: generateTitleAndColor(hourObject.european_aqi[2]),
+
+        };
+        let aqi = {
+            main: {
+                title: res.main[0],
+                bg: res.main[1],
+                hover: res.main[2],
+                color: res.main[3]
+            },
+        };
+
+        // let pm2_5 = hourObject.pm2_5;
+        // let pm10 = hourObject.pm10;
+        // let no2 = hourObject.nitrogen_dioxide;
+        // let o3 = hourObject.ozone;
+        // let so2 = hourObject.sulphur_dioxide;
+
+    });
+
+
     return result;
 }
 
@@ -130,7 +154,17 @@ export function renderDashboardAQI(page, data) {
     console.log(data);
     const { hourly, units } = data;
     if (page == 'dashboard') {
-        // setValue(dashboardElements.highAQIstate(), )
+        let aqiState = {
+            text: data.hourly[0].european_aqi[2],
+            title: generateTitleAndColor(data.hourly[0].european_aqi[2])[0],
+            bg: generateTitleAndColor(data.hourly[0].european_aqi[2])[1],
+            hover: generateTitleAndColor(data.hourly[0].european_aqi[2])[2],
+            color: generateTitleAndColor(data.hourly[0].european_aqi[2])[3],
+        };
+        setValue(dashboardElements.highAQIstate(),
+            aqiState.text, false, [['title', aqiState.title],
+            ['style', `background-color:var(${aqiState.bg});color:var(${aqiState.color});`],
+            ['data-hover', aqiState.hover]]);
 
     } else if (page == 'air-quality') {
 
