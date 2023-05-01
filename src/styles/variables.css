@@ -59,7 +59,10 @@
 
     --transition-100ms: all 100ms ease;
     --transition-300ms: all 300ms ease;
+    --transition-300ms-bsh: color 0.3s ease-in-out, box-shadow .3s ease-in-out;
+    --transition-500ms-bsh: color 0.5s ease-in-out, box-shadow .5s ease-in-out;
     --transition-500ms: all 500ms ease-in-out;
+    --transition-700ms-bsh: color 0.7s ease-in-out, box-shadow .7s ease-in-out;
     --transition-1s: all 1s ease-in-out;
     --transition-2s: all 2s ease-in-out;
 }
