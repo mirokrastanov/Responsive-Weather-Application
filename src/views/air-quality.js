@@ -1,16 +1,44 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getAQI } from '../api/api.js';
-import { getParsedAQIData } from '../api/data-aqi.js';
-import { getCurrentTimeZone } from '../api/data-weather.js';
+import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
+import { applyBlur, getCurrentTimeZone, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay } from '../api/data-weather.js';
+import { aqiElements, elements } from '../util/util.js';
 // import from api
 
 let context = null;
+let defaultCoords = [];
 export async function airQualityPage(ctx) {
     context = ctx;
     ctx.render(initialTemplate());
-    let testData = await getParsedAQIData([41.8781, 87.6298]); // ADJUST LATER (now: chicago)
-    console.log(testData);
-    // ADD the whole mechanism from dashboard to copy the logic to save time
+    applyBlur(aqiElements.aqiWrapper());
+    try {
+        if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
+            defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lon')];
+        } else {
+            let currentCoords = await getCurrentLocationCoords();
+            if (currentCoords[0] == 'no access') {
+                let message = `Please allow us to use your Geolocation
+                or Search for another location above.`;
+                renderErrorOverlay(message);
+                return;
+            } else {
+                localStorage.setItem('lat', currentCoords[0]);
+                localStorage.setItem('lon', currentCoords[1]);
+                defaultCoords = [currentCoords[0], currentCoords[1]];
+            }
+        }
+        let weatherInfo = await getParsedWeatherData(defaultCoords);
+        let aqiInfo = await getParsedAQIData(defaultCoords);
+        renderAQI('dashboard', aqiInfo);
+        removeErrorOverlay();
+        console.log(aqiInfo);
+    } catch (error) {
+        let message = 'Error getting Air Quality data!';
+        console.log('Error details: ', { ...error, 'stack': error.stack });
+        alert(message);
+        renderErrorOverlay(message);
+        applyBlur(aqiElements.aqiWrapper());
+    }
 }
 
 // TODO - put hourly into a hidden div - chek the tab saved in chrome
