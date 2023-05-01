@@ -1,6 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { touchSlider } from '../util/slider.js';
 import {
+    aqiParser,
     arrayParser, dashboardElements, daysFull, daysShort,
     elements, hourlyElements, monthsShort, timeParser, valueParser,
     weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
@@ -13,7 +14,7 @@ import { getCurrentTimeZone, returnDayLONG, returnHour, setValue } from './data-
 function parseAQIData(data) {
     let { hourly } = data;
     // console.log(data);
-    return hourly.time.map((time, index) => {
+    let result = hourly.time.map((time, index) => {
         return {
             timestamp: time * 1000,
             hour: returnHour().format(time * 1000),
@@ -31,6 +32,36 @@ function parseAQIData(data) {
         }
     }).filter(({ timestamp }) => timestamp >= new Date().getTime());
     // filters only the hours from the current hour to after 6 days
+
+    result.forEach(hourObject => {
+        Object.values(aqiParser).forEach(level => {
+            let aqiMAIN = hourObject.european_aqi;
+            let pm2_5 = hourObject.pm2_5;
+            let pm10 = hourObject.pm10;
+            let no2 = hourObject.nitrogen_dioxide;
+            let o3 = hourObject.ozone;
+            let so2 = hourObject.sulphur_dioxide;
+            if (aqiMAIN[0] >= level.rangeEAQI[0] && aqiMAIN[0] < level.rangeEAQI[1]) {
+                hourObject.european_aqi.push(level.level);
+            }
+            if (pm2_5[0] >= level.range_pm2_5[0] && pm2_5[0] < level.range_pm2_5[1]) {
+                hourObject.pm2_5.push(level.level);
+            }
+            if (pm10[0] >= level.range_pm10[0] && pm10[0] < level.range_pm10[1]) {
+                hourObject.pm10.push(level.level);
+            }
+            if (no2[0] >= level.range_no2[0] && no2[0] < level.range_no2[1]) {
+                hourObject.nitrogen_dioxide.push(level.level);
+            }
+            if (o3[0] >= level.range_o3[0] && o3[0] < level.range_o3[1]) {
+                hourObject.ozone.push(level.level);
+            }
+            if (so2[0] >= level.range_so2[0] && so2[0] < level.range_so2[1]) {
+                hourObject.sulphur_dioxide.push(level.level);
+            }
+        });
+    });
+    return result;
 }
 
 
@@ -47,6 +78,7 @@ export async function getParsedAQIData(coords) {
         units: data.hourly_units,
     };
     result.timeZoneGMTdiff = locationTimeZone;
+
     return result;
 }
 
