@@ -19,8 +19,14 @@ function parseAQIData(data) {
             dayLong: returnDayLONG().format(time * 1000),
             date: new Date(time * 1000).getDate(),
             monthShort: monthsShort[new Date(time * 1000).getMonth()],
+            carbon_monoxide: hourly.carbon_monoxide[index],
+            dust: hourly.dust[index],
+            european_aqi: hourly.european_aqi[index],
+            nitrogen_dioxide: hourly.nitrogen_dioxide[index],
+            ozone: hourly.ozone[index],
             pm2_5: hourly.pm2_5[index],
-            // ADD the ALL the AQI DATA like the above line -- TODO
+            pm10: hourly.pm10[index],
+            sulphur_dioxide: hourly.sulphur_dioxide[index],
         }
     }).filter(({ timestamp }) => timestamp >= new Date().getTime());
     // filters only the hours from the current hour to after 6 days
@@ -43,4 +49,17 @@ export async function getParsedAQIData(coords) {
     result.timeZoneGMTdiff = locationTimeZone;
     // if time/clock is needed - check 298+ lines from data-weather
     return result;
+}
+
+
+export function renderDashboardAQI(page, data) {
+    // console.log(data);
+    const { hourly, units } = data;
+    if (page == 'dashboard') {
+
+
+    } else if (page == 'air-quality') {
+
+
+    }
 }
