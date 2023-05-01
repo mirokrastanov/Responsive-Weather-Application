@@ -2,6 +2,27 @@
 
 
 @media all and (max-width: 767px) {
+    .header {
+        height: 100px;
+    }
+
+    #aqi-header-ctr {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: space-around;
+    }
+
+    #aqi-header-ctr p,
+    #flex-row {
+        font-size: 80%;
+    }
+
+    #aqi-h-title {
+        font-size: 100%;
+    }
+    
     .current-weather-card .weapper {
         justify-content: left;
     }
@@ -86,6 +107,10 @@
 }
 
 @media all and (max-width: 450px) {
+    #aqi-header-ctr {
+        transform: scale(0.9);
+    }
+
     .container .logo img {
         height: 19px;
         width: 125px;
@@ -136,6 +161,10 @@
 }
 
 @media all and (min-width: 768px) {
+
+    .header {
+        height: 100px;
+    }
 
     .container {
         padding: 24px;
@@ -363,7 +392,7 @@
         transform: scale(1.2);
     }
 
-    .hour-section .hour-row td:nth-of-type(1) .info-group > * {
+    .hour-section .hour-row td:nth-of-type(1) .info-group>* {
         letter-spacing: 2px;
         font-weight: 900;
         transform: scale(1.1);
@@ -566,7 +595,7 @@
         font-size: 1.8rem;
     }
 
-    .hour-section .hour-row td:nth-of-type(1) .info-group > * {
+    .hour-section .hour-row td:nth-of-type(1) .info-group>* {
         transform: scale(1.2);
     }
 
@@ -600,7 +629,7 @@
         font-size: 4rem;
     }
 
-    .hour-section .hour-row td:nth-of-type(1) .info-group > * {
+    .hour-section .hour-row td:nth-of-type(1) .info-group>* {
         transform: scale(1.3);
     }
 }
