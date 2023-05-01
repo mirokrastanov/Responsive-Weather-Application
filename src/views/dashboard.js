@@ -1,6 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getGeolocation, reverseGeolocation } from '../api/api.js';
-import { getParsedAQIData, renderDashboardAQI } from '../api/data-aqi.js';
+import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
 import { searchOnTyping, onSearchClick } from '../api/data-search.js';
 import {
     applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
@@ -36,11 +36,12 @@ export async function dashboardPage(ctx) {
         }
         let weatherInfo = await getParsedWeatherData(defaultCoords);
         let aqiInfo = await getParsedAQIData(defaultCoords);
-        renderDashboardAQI('dashboard', aqiInfo);
+        renderAQI('dashboard', aqiInfo);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
         console.log(weatherInfo);
+        console.log(aqiInfo);
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -101,10 +102,13 @@ async function onCurrentLocationClick(e) {
         }
         // location.href = '/dashboard';
         let weatherInfo = await getParsedWeatherData(defaultCoords);
+        let aqiInfo = await getParsedAQIData(defaultCoords);
+        renderAQI('dashboard', aqiInfo);
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
         console.log(weatherInfo);
+        console.log(aqiInfo);
     } catch (error) {
         let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
         console.log('Error details: ', { ...error, 'stack': error.stack });

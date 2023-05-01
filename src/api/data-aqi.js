@@ -144,8 +144,7 @@ export async function getParsedAQIData(coords) {
 }
 
 
-export function renderDashboardAQI(page, data) {
-    console.log(data);
+export function renderAQI(page, data) {
     const { hourly, units } = data;
     let [pm_2, no2, o3, so2] = [hourly[0].pm2_5, hourly[0].no2, hourly[0].o3, hourly[0].so2];
     let aqiState = hourly[0].eAQI[3];
