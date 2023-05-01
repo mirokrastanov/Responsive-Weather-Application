@@ -32,88 +32,149 @@
         <div id="main-ctr">
             <!-- dynamic content -->
 
-            <div class="header">
-                <div class="container">
 
-                    <h1>PAGE TITLE</h1>
-            
+
+
+
+            <div class="header" id="aqi-top">
+                <div id="aqi-header-ctr">
+                    <div>
+                        <h1 id="aqi-h-title">Air Quality Details</h1>
+                    </div>
+                    <div>
+                        <p class="body-3">
+                            Author: Miro Krastanov. Extra credits in the About section.
+                        </p>
+                    </div>
+                    <div>
+                        <div id="flex-row">
+                            Powered By <a href="https://open-meteo.com/" title="Free Weather API" target="_blank"
+                                rel="noopener">
+                                <img src="/src/images/open-meteo.gif" width="150px" height="30px" loading="lazy"
+                                    alt="Open-Meteo">
+                            </a> and <a href="https://openweathermap.org/" title="Weather & Geo API" target="_blank"
+                                rel="noopener">
+                                <img src="/src/images/openweather.png" width="150px" height="30px" loading="lazy"
+                                    alt="Open-Meteo"></a>
+                        </div>
+                    </div>
                 </div> <!-- div.container ends here -->
                 <div class="loading" data-loading></div>
             </div> <!-- div.header ends here -->
 
-
-            <div id="aqi-ctr"> 
+            <div id="aqi-ctr">
                 <div id="aqi-wrapper">
                     <section id="aqi-flex">
 
                         <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
-                        </div>
-                        <div class="aqi-box">
-                            <p class="aqi-title">Item title</p>
-                            <p class="aqi-content">0.023 mm</p>
+                            <p class="aqi-title">European Air Quality Index</p>
+                            <p class="aqi-content">Good</p>
+                            <div id="state-message"></div>
+                            <label class="aqi-box-btn" for="toggle-1">Details</label>
+                            <input type="checkbox" id="toggle-1">
+                            <div class="aqi-box-text">
+                                <span>European Air Quality Index (AQI) calculated for different
+                                    particulate matter and gases individually. The consolidated european_aqi returns the
+                                    maximum of all individual indices. Ranges from 0-20 (good), 20-40 (fair), 40-60
+                                    (moderate), 60-80 (poor), 80-100 (very poor) and exceeds 100 for extremely poor
+                                    conditions.</span>
+                                <span>More information here: <a class="info-link-inline"
+                                        href="https://www.eea.europa.eu/en" target="_blank">EEA</a>
+                                    <a class="info-link-inline" href="https://en.wikipedia.org/wiki/Air_quality_index"
+                                        target="_blank">Wiki</a></span>
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
                         </div>
 
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Particles less than 2.5 µm (PM2.5)">
+                                PM<sub>2.5</sub></p>
+                            <p class="aqi-content" title="Particles less than 2.5 µm (PM2.5)">
+                                23 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-2">Details</label>
+                            <input type="checkbox" id="toggle-2">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
+
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Particles less than 10 µm (PM10)">
+                                PM<sub>10</sub></p>
+                            <p class="aqi-content" title="Particles less than 10 µm (PM10)">
+                                16 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-3">Details</label>
+                            <input type="checkbox" id="toggle-3">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
+
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Nitrogen dioxide (NO2)">
+                                NO<sub>2</sub></p>
+                            <p class="aqi-content" title="Nitrogen dioxide (NO2)">
+                                90 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-4">Details</label>
+                            <input type="checkbox" id="toggle-4">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
+
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Ozone (O3)">
+                                NO<sub>3</sub></p>
+                            <p class="aqi-content" title="Ozone (O3)">
+                                41 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-5">Details</label>
+                            <input type="checkbox" id="toggle-5">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
+
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Sulphur dioxide (SO2)">
+                                SO<sub>2</sub></p>
+                            <p class="aqi-content" title="Sulphur dioxide (SO2)">
+                                75 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-6">Details</label>
+                            <input type="checkbox" id="toggle-6">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
+
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
+                                CO</p>
+                            <p class="aqi-content" title="Carbon Monoxide (10m above ground)">
+                                23 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-7">Details</label>
+                            <input type="checkbox" id="toggle-7">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
+
+                        <div class="aqi-box">
+                            <p class="aqi-title" title="Dust particles (10m above ground)">
+                                Dust</p>
+                            <p class="aqi-content" title="Dust particles (10m above ground)">
+                                23 <sub>μg/m³</sub></p>
+                            <label class="aqi-box-btn" for="toggle-8">Details</label>
+                            <input type="checkbox" id="toggle-8">
+                            <div class="aqi-box-text">
+                                <button class="render-hourly">Hourly Forecast</button>
+                            </div>
+                        </div>
 
                     </section>
                 </div>
             </div>
 
- 
-
+            
 
         </div>
     </div>
