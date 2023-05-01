@@ -10,16 +10,21 @@
     --color-on-surface-variant: #7B7980;
     --color-on-surface-variant-2: #B9B6BF;
     --color-outline: #3E3D40;
-    --color-bg-aqi-1: #89E589;
-    --color-on-bg-aqi-1: #1F331F;
-    --color-bg-aqi-2: #E5DD89;
-    --color-on-bg-aqi-2: #33311F;
-    --color-bg-aqi-3: #E5C089;
-    --color-on-bg-aqi-3: #332B1F;
-    --color-bg-aqi-4: #E58989;
-    --color-on-bg-aqi-4: #331F1F;
-    --color-bg-aqi-5: #E589B7;
-    --color-on-bg-aqi-5: #331F29;
+    --color-bg-aqi-1: rgb(80, 240, 230);
+    --color-bg-aqi-1-hover: rgb(34, 196, 185);
+    --color-bg-aqi-1-text: rgb(0, 0, 0);
+    --color-bg-aqi-2: rgb(80, 204, 170);
+    --color-bg-aqi-2: rgb(11, 153, 115);
+    --color-bg-aqi-2-text: rgb(0, 0, 0);
+    --color-bg-aqi-3: rgb(240, 230, 65);
+    --color-bg-aqi-3-hover: rgb(184, 176, 23);
+    --color-bg-aqi-3-text: rgb(0, 0, 0);
+    --color-bg-aqi-4: rgb(255, 80, 80);
+    --color-bg-aqi-4-hover: rgb(161, 12, 12);
+    --color-bg-aqi-5: rgb(150, 0, 50);
+    --color-bg-aqi-5-hover: rgb(112, 0, 36);
+    --color-bg-aqi-6: rgb(125, 33, 129);
+    --color-bg-aqi-6-hover: rgb(64, 7, 66);
     --color-white: hsl(0, 0%, 100%);
     --color-white-alpha-4: hsla(0, 0%, 100%, 0.04);
     --color-white-alpha-8: hsla(0, 0%, 100%, 0.08);
@@ -55,4 +60,3 @@
     --transition-1s: all 1s ease-in-out;
     --transition-2s: all 2s ease-in-out;
 }
-
