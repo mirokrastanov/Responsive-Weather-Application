@@ -168,12 +168,12 @@ export function renderAQI(page, data) {
         setValue(aqiElements.aqiSTATE(), hourly[0].eAQI[2], false, [['title', `${aqiState.title}\n\nAll values are in: ${no2[1]}`],
         ['style', `background-color:var(${aqiState.bg});color:var(${aqiState.color});`],
         ['data-hover', aqiState.hover]]);
-        let shownTitle = aqiState.title.split('\n');
-        shownTitle.map(x => x.trim()).forEach(x => {
+        let stateMessage = aqiState.title.split('\n');
+        stateMessage.map(x => x.trim()).forEach(x => {
             if (x.trim() != '') {
                 let p = document.createElement('p');
                 p.textContent = x;
-                aqiElements.aqiSTATEmessage().appendChild(p);
+                if (aqiElements.aqiSTATEmessage()) aqiElements.aqiSTATEmessage().appendChild(p);
             }
         });
 

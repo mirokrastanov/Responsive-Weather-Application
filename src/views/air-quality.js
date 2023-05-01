@@ -34,6 +34,7 @@ export async function airQualityPage(ctx) {
         currentAQIinfo = { ...aqiInfo };
         renderAQI('air-quality', aqiInfo);
         removeErrorOverlay();
+        console.log(weatherInfo);
         console.log(aqiInfo);
     } catch (error) {
         let message = 'Error getting Air Quality data!';
