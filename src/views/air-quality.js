@@ -36,7 +36,7 @@ export async function airQualityPage(ctx) {
         removeErrorOverlay();
         console.log(weatherInfo);
         console.log(aqiInfo);
-        aqiElements.btnsALL().forEach(x => x.addEventListener('click', onHourlyBtnClick));
+        aqiElements.btnHourly1().addEventListener('click', onHourlyBtnClick);
     } catch (error) {
         let message = 'Error getting Air Quality data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -50,38 +50,62 @@ export async function airQualityPage(ctx) {
 function onHourlyBtnClick(e) {
     e.preventDefault();
     let btn = e.target;
-    hideAqiBoxes(btn);
-    generateRow(currentAQIinfo);
+    if (btn.textContent == 'Hourly Forecast') {
+        hideAqiBoxes();
+
+        // gen all rows 
+        currentAQIinfo.hourly.forEach((x, i) => {
+            if (i == 0) console.log(x);
+            generateRow(x);
+        });
+
+    } else if (btn.textContent == 'Back to AQI Overview') {
+        showAqiBoxes();
+        if (aqiElements.aqiDynamicRows()) {
+            aqiElements.aqiDynamicRows().forEach(x => x.remove());
+        }
+    }
 
 }
 
 
-function hideAqiBoxes(btn) {
-    aqiElements.btnsALL().forEach(x => {
-        if (x != btn) x.parentElement.parentElement.style.display = 'none';
+function hideAqiBoxes() {
+    aqiElements.aqiBoxToggle1().checked = false;
+    document.querySelectorAll('.aqi-box').forEach(x => {
+        if (x != aqiElements.aqiBoxEAQI()) {
+            x.style.display = 'none';
+        }
     });
-
+    aqiElements.btnHourly1().textContent = 'Back to AQI Overview';
 }
 
-function generateRow(item = {}) {
+function showAqiBoxes() {
+    aqiElements.aqiBoxToggle1().checked = false;
+    document.querySelectorAll('.aqi-box').forEach(x => {
+        if (x != aqiElements.aqiBoxEAQI()) {
+            x.style.display = 'flex';
+        }
+    });
+    aqiElements.btnHourly1().textContent = 'Hourly Forecast';
+}
+
+function generateRow(item = { test: true }) {
     let div = document.createElement('div');
     div.classList.add('aqi-row-all');
-
     render(aqiBoxRowTemplate(item), div);
     aqiElements.aqiFlexGrid().appendChild(div);
-
 }
 
-const aqiBoxRowTemplate = (item = {}) => html`
+const aqiBoxRowTemplate = (item) => html`
     <div class="aqi-cell">
-        <p class="aqi-title">Apr 17</p>
-        <p class="aqi-content">3 PM</p>
+        <p class="aqi-title">${item.test ? 'Apr 17' : `${item.monthShort} ${item.date}`}</p>
+        <p class="aqi-content">${item.test ? '3 PM' : `${item.hour}`}</p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Particles less than 2.5 µm (PM2.5)">
             PM<sub>2.5</sub></p>
         <p class="aqi-content" title="Particles less than 2.5 µm (PM2.5)">
-            23 <sub>μg/m³</sub></p>
+            ${item.test ? '23' : item.pm2_5[0]} <sub>μg/m³</sub></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Particles less than 10 µm (PM10)">
