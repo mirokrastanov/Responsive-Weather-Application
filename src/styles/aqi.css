@@ -232,6 +232,7 @@ input[type=checkbox]:checked~.aqi-box-text {
     align-items: stretch;
     gap: 2px;
     padding: 5px;
+    transition: var(--transition-500ms-bsh);
 }
 
 .aqi-row-all div {
