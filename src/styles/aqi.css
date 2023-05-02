@@ -130,11 +130,15 @@ div:nth-of-type(1).aqi-box {
 
 #state-message p {
     line-height: 1.2;
+    display: block;
+    max-width: 100%;
+    text-align: center;
 }
 
-#state-message p:nth-of-type(2) {
-    display: block;
-    margin-bottom: 20px;
+#state-message p:nth-of-type(2n + 1) {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
 }
 
 
@@ -250,7 +254,8 @@ input[type=checkbox]:checked~.aqi-box-text {
     background-color: var(--color-background);
 }
 
-.aqi-row-all .aqi-title {
+.aqi-row-all .aqi-title,
+.aqi-box .aqi-title {
     font-size: 1.3rem;
     text-align: center;
     background-color: var(--color-background);
