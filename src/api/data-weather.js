@@ -26,11 +26,11 @@ export function createErrorOverlay(message) {
 export function renderErrorOverlay(message) {
     removeErrorOverlay();
     if (elements.dotHeader()) elements.dotHeader().appendChild(createErrorOverlay(message));
-    if (aqiElements.aqiWrapper()) aqiElements.aqiWrapper().appendChild(createErrorOverlay(message));
+    // if (aqiElements.aqiWrapper()) aqiElements.aqiWrapper().appendChild(createErrorOverlay(message));
 }
 
 export function removeErrorOverlay() {
-    if (document.querySelector('.error-overlay')) {
+    while (document.querySelector('.error-overlay')) {
         document.querySelector('.error-overlay').remove();
     }
 }
