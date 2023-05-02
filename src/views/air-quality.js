@@ -97,11 +97,12 @@ function generateRow(item = { test: true }) {
 }
 
 const aqiBoxRowTemplate = (item) => html`
-    <div class="aqi-cell">
+    <div class="aqi-cell" style="background-color:var(${item.eAQI[3].bg});color:var(${item.eAQI[3].color});">
         <p class="aqi-title">${item.test ? 'Apr 17' : `${item.monthShort} ${item.date}`}</p>
-        <p class="aqi-content">${item.test ? '3 PM' : `${item.hour}`}</p>
+        <p class="aqi-content">${item.test ? '3 PM' : item.hour} 
+        <sub>${item.test ? 'Good' : item.eAQI[2]}</sub></p>
     </div>
-    <div class="aqi-cell">
+    <div class="aqi-cell" style="background-color:var(${item.pm2_5[3].bg});color:var(${item.pm2_5[3].color});">
         <p class="aqi-title" title="Particles less than 2.5 µm (PM2.5)">
             PM<sub>2.5</sub></p>
         <p class="aqi-content" title="Particles less than 2.5 µm (PM2.5)">
@@ -111,37 +112,37 @@ const aqiBoxRowTemplate = (item) => html`
         <p class="aqi-title" title="Particles less than 10 µm (PM10)">
             PM<sub>10</sub></p>
         <p class="aqi-content" title="Particles less than 10 µm (PM10)">
-            16 <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.pm10[0]} <sub>μg/m³</sub></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Nitrogen dioxide (NO2)">
             NO<sub>2</sub></p>
         <p class="aqi-content" title="Nitrogen dioxide (NO2)">
-            90 <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.no2[0]} <sub>μg/m³</sub></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Ozone (O3)">
             O<sub>3</sub></p>
         <p class="aqi-content" title="Ozone (O3)">
-            41 <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.o3[0]} <sub>μg/m³</sub></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Sulphur dioxide (SO2)">
             SO<sub>2</sub></p>
         <p class="aqi-content" title="Sulphur dioxide (SO2)">
-            75 <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.so2[0]} <sub>μg/m³</sub></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
             CO</p>
         <p class="aqi-content" title="Carbon Monoxide (10m above ground)">
-            24 <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.co[0]} <sub>μg/m³</sub></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Dust particles (10m above ground)">
             Dust</p>
         <p class="aqi-content" title="Dust particles (10m above ground)">
-            61 <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.dust[0]} <sub>μg/m³</sub></p>
     </div>
 `;
 
