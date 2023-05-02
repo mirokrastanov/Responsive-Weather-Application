@@ -340,11 +340,19 @@ export const aqiElements = {
     aqiBoxEAQI: () => document.querySelector('div:nth-of-type(1).aqi-box'),
     aqiBoxEAQIdetails: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-box-details'),
 
+    aqiBox2: () => document.querySelector('.aqi-box:nth-of-type(2)'),
+    aqiBox3: () => document.querySelector('.aqi-box:nth-of-type(3)'),
+    aqiBox4: () => document.querySelector('.aqi-box:nth-of-type(4)'),
+    aqiBox5: () => document.querySelector('.aqi-box:nth-of-type(5)'),
+    aqiBox6: () => document.querySelector('.aqi-box:nth-of-type(6)'),
+    aqiBox7: () => document.querySelector('.aqi-box:nth-of-type(7)'),
+    aqiBox8: () => document.querySelector('.aqi-box:nth-of-type(8)'),
+
     btnHourly1: () => document.querySelector('button:nth-of-type(1).render-hourly'),
     aqiBoxDisplay: () => document.querySelector('div.aqi-row-all'),
     aqiBoxToggle1: () => document.querySelector('input[type=checkbox]:nth-of-type(1)'),
 
     aqiDynamicRows: () => document.querySelectorAll('.aqi-row-all'),
-
+    
 };
 
