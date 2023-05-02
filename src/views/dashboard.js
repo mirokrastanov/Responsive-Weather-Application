@@ -773,7 +773,7 @@ const hourlyTemplate = () => html`
 
 export const dynamicHourlyTemplate = (items = [], mock = [1, 1, 1, 1, 1, 1, 1]) => html`
     <div class="content-middle">
-        <div class="blurred">
+        <div>
             <table class="hour-section">
                 <tbody data-hour-section>
                     <h4 id="last-updated-hourly">Last updated: 12:17 AM</h4>
