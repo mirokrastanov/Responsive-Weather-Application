@@ -33,7 +33,7 @@ export async function airQualityPage(ctx) {
         currentAQIinfo = {};
         currentAQIinfo = { ...aqiInfo };
         renderAQI('air-quality', aqiInfo);
-        colorOverviewBoxes();
+        updateOverviewBoxes();
         removeErrorOverlay();
         console.log(weatherInfo);
         console.log(aqiInfo);
@@ -54,9 +54,8 @@ function onHourlyBtnClick(e) {
     if (btn.textContent == 'Hourly Forecast') {
         hideAqiBoxes();
 
-        // gen all rows 
         currentAQIinfo.hourly.forEach((x, i) => {
-            if (i == 0) console.log(x);
+            // if (i == 0) console.log(x);
             generateRow(x);
         });
 
@@ -87,7 +86,7 @@ function showAqiBoxes() {
             x.style.display = 'flex';
         }
     });
-    colorOverviewBoxes();
+    updateOverviewBoxes();
     aqiElements.btnHourly1().textContent = 'Hourly Forecast';
 }
 
@@ -148,19 +147,22 @@ const aqiBoxRowTemplate = (item) => html`
     </div>
 `;
 
-function colorOverviewBoxes() {
-    
-
+// uses currentAQIinfo (page's scope)
+function updateOverviewBoxes() {
+    if (currentAQIinfo != {}) {
+        let boxes = [aqiElements.aqiBox2(), aqiElements.aqiBox3(),
+        aqiElements.aqiBox4(), aqiElements.aqiBox5(), aqiElements.aqiBox6()];
+        let el = { 0: 'pm2_5', 1: 'pm10', 2: 'no2', 3: 'o3', 4: 'so2' };
+        let data = currentAQIinfo.hourly[0];
+        boxes.forEach((x, i) => {
+            let temp = document.createElement('div');
+            render(html`${data[el[i]][0]} <sub>μg/m³</sub>`, temp);
+            x.querySelector('.aqi-content').innerHTML = temp.innerHTML;
+            x.style.backgroundColor = `var(${data[el[i]][3].bg})`;
+            x.style.color = `var(${data[el[i]][3].color})`;
+        });
+    }
 }
-
-const itemsTemplate = (items) => html`
-`;
-
-const itemTemplate = (item) => html`
-`;
-
-const noItemsTemplate = () => html`
-`;
 
 const initialTemplate = () => html`
 <div class="header" id="aqi-top">
