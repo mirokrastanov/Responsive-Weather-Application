@@ -33,6 +33,7 @@ export async function airQualityPage(ctx) {
         currentAQIinfo = {};
         currentAQIinfo = { ...aqiInfo };
         renderAQI('air-quality', aqiInfo);
+        colorOverviewBoxes();
         removeErrorOverlay();
         console.log(weatherInfo);
         console.log(aqiInfo);
@@ -86,6 +87,7 @@ function showAqiBoxes() {
             x.style.display = 'flex';
         }
     });
+    colorOverviewBoxes();
     aqiElements.btnHourly1().textContent = 'Hourly Forecast';
 }
 
@@ -108,25 +110,25 @@ const aqiBoxRowTemplate = (item) => html`
         <p class="aqi-content" title="Particles less than 2.5 µm (PM2.5)">
             ${item.test ? '23' : item.pm2_5[0]} <sub>μg/m³</sub></p>
     </div>
-    <div class="aqi-cell">
+    <div class="aqi-cell" style="background-color:var(${item.pm10[3].bg});color:var(${item.pm10[3].color});">
         <p class="aqi-title" title="Particles less than 10 µm (PM10)">
             PM<sub>10</sub></p>
         <p class="aqi-content" title="Particles less than 10 µm (PM10)">
         ${item.test ? '23' : item.pm10[0]} <sub>μg/m³</sub></p>
     </div>
-    <div class="aqi-cell">
+    <div class="aqi-cell" style="background-color:var(${item.no2[3].bg});color:var(${item.no2[3].color});">
         <p class="aqi-title" title="Nitrogen dioxide (NO2)">
             NO<sub>2</sub></p>
         <p class="aqi-content" title="Nitrogen dioxide (NO2)">
         ${item.test ? '23' : item.no2[0]} <sub>μg/m³</sub></p>
     </div>
-    <div class="aqi-cell">
+    <div class="aqi-cell" style="background-color:var(${item.o3[3].bg});color:var(${item.o3[3].color});">
         <p class="aqi-title" title="Ozone (O3)">
             O<sub>3</sub></p>
         <p class="aqi-content" title="Ozone (O3)">
         ${item.test ? '23' : item.o3[0]} <sub>μg/m³</sub></p>
     </div>
-    <div class="aqi-cell">
+    <div class="aqi-cell" style="background-color:var(${item.so2[3].bg});color:var(${item.so2[3].color});">
         <p class="aqi-title" title="Sulphur dioxide (SO2)">
             SO<sub>2</sub></p>
         <p class="aqi-content" title="Sulphur dioxide (SO2)">
@@ -146,29 +148,9 @@ const aqiBoxRowTemplate = (item) => html`
     </div>
 `;
 
+function colorOverviewBoxes() {
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-async function onDetails(e) {
-    e.preventDefault();
-    let item = e.currentTarget;
-    console.log(item);;
-    // let id = item.dataset.id;
-    // context.page.redirect(`/details/${id}`);
 }
 
 const itemsTemplate = (items) => html`
@@ -225,7 +207,7 @@ const initialTemplate = () => html`
                         (moderate), 60-80 (poor), 80-100 (very poor) and exceeds 100 for extremely poor
                         conditions.</span>
                     <span>More information here: <a class="info-link-inline"
-                            href="https://www.eea.europa.eu/en" target="_blank">EEA</a>
+                            href="https://airindex.eea.europa.eu/Map/AQI/Viewer/" target="_blank">EEA</a>
                         <a class="info-link-inline" href="https://en.wikipedia.org/wiki/Air_quality_index"
                             target="_blank">Wiki</a></span>
                     <button class="render-hourly">Hourly Forecast</button>
