@@ -334,6 +334,7 @@ export const hourlyElements = {
 export const aqiElements = {
     aqiCtr: () => document.querySelector('#aqi-ctr'),
     aqiWrapper: () => document.querySelector('#aqi-wrapper'),
+    aqiFlexGrid: () => document.querySelector('#aqi-flex'),
     aqiSTATE: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-content'),
     aqiSTATEmessage: () => document.querySelector('.aqi-box:nth-of-type(1) #state-message'),
     aqiBoxEAQI: () => document.querySelector('.aqi-box:nth-of-type(1)'),
@@ -348,6 +349,7 @@ export const aqiElements = {
     btnHourly6: () => document.querySelector('button:nth-of-type(6).render-hourly'),
     btnHourly7: () => document.querySelector('button:nth-of-type(7).render-hourly'),
     btnHourly8: () => document.querySelector('button:nth-of-type(8).render-hourly'),
+    aqiBoxDisplay: () => document.querySelector('div.aqi-row-all'),
 
 };
 
