@@ -1,15 +1,10 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { touchSlider } from '../util/slider.js';
+import { aqiElements, aqiParser, dashboardElements, monthsShort } from "../util/util.js";
+import { getAQI, getTimeZoneWeather } from "./api.js";
 import {
-    aqiElements,
-    aqiParser,
-    arrayParser, dashboardElements, daysFull, daysShort,
-    elements, hourlyElements, monthsShort, timeParser, valueParser,
-    weatherCodes, weatherImgRoutesDAY, weatherImgRoutesNIGHT
-} from "../util/util.js";
-import { dashboardHourlyCardLower, dashboardHourlyCardUpper, dynamicHourlyTemplate } from '../views/dashboard.js';
-import { getAQI, getTimeZoneWeather, getWeather, reverseGeolocation } from "./api.js";
-import { applyBlur, applyLoading, getCurrentTimeZone, removeBlur, removeLoading, returnDayLONG, returnHour, setValue } from './data-weather.js';
+    applyBlur, applyLoading, getCurrentTimeZone, removeBlur, removeLoading,
+    returnDayLONG, returnHour, setValue
+} from './data-weather.js';
 
 
 function generateTitleAndColor(text = 'Good') {
@@ -129,8 +124,6 @@ function parseAQIData(data) {
 }
 
 
-// i 2ta - getParsedAQI i getParsedWeather da se invoke-vat i na dvata page-a, samo render-a, da
-// si e konkreten za teky6tia page
 export async function getParsedAQIData(coords) {
     let data = await getAQI(coords[0], coords[1], getCurrentTimeZone());
     let parsedData = parseAQIData(data);
