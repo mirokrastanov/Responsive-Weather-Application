@@ -337,19 +337,14 @@ export const aqiElements = {
     aqiFlexGrid: () => document.querySelector('#aqi-flex'),
     aqiSTATE: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-content'),
     aqiSTATEmessage: () => document.querySelector('.aqi-box:nth-of-type(1) #state-message'),
-    aqiBoxEAQI: () => document.querySelector('.aqi-box:nth-of-type(1)'),
+    aqiBoxEAQI: () => document.querySelector('div:nth-of-type(1).aqi-box'),
     aqiBoxEAQIdetails: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-box-details'),
 
-    btnsALL: () => document.querySelectorAll('button.render-hourly'),
     btnHourly1: () => document.querySelector('button:nth-of-type(1).render-hourly'),
-    btnHourly2: () => document.querySelector('button:nth-of-type(2).render-hourly'),
-    btnHourly3: () => document.querySelector('button:nth-of-type(3).render-hourly'),
-    btnHourly4: () => document.querySelector('button:nth-of-type(4).render-hourly'),
-    btnHourly5: () => document.querySelector('button:nth-of-type(5).render-hourly'),
-    btnHourly6: () => document.querySelector('button:nth-of-type(6).render-hourly'),
-    btnHourly7: () => document.querySelector('button:nth-of-type(7).render-hourly'),
-    btnHourly8: () => document.querySelector('button:nth-of-type(8).render-hourly'),
     aqiBoxDisplay: () => document.querySelector('div.aqi-row-all'),
+    aqiBoxToggle1: () => document.querySelector('input[type=checkbox]:nth-of-type(1)'),
+
+    aqiDynamicRows: () => document.querySelectorAll('.aqi-row-all'),
 
 };
 
