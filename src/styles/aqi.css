@@ -134,8 +134,7 @@ input[type=checkbox] {
     left: -9999px;
 }
 
-.aqi-box-btn,
-.render-hourly {
+.aqi-box-btn {
     display: inline-block;
     background-color: var(--color-surface);
     padding: 8px 26px;
@@ -145,7 +144,6 @@ input[type=checkbox] {
 }
 
 .aqi-box-btn:hover,
-.render-hourly:hover,
 .info-link-inline:hover {
     background-color: var(--color-on-surface-variant);
     transform: translateY(-3px);
@@ -174,6 +172,24 @@ input[type=checkbox]:checked~.aqi-box-text {
 
 
 
+.render-hourly {
+    display: inline-block;
+    width: fit-content;
+    padding: 2px 2rem;
+    font-size: 14px;
+    border-radius: var(--radius-pill);
+    background-color: rgba(119, 119, 119, 0.315);
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.render-hourly:hover {
+    cursor: pointer;
+    background-color: rgba(119, 119, 119, 0.582);
+    cursor: pointer;
+    color: #fff;
+    box-shadow: inset 200px 0 0 0 #54b3d6;
+}
 
 
 .aqi-box:nth-of-type(1) {
