@@ -9,7 +9,7 @@ import {
 } from "../util/util.js";
 import { dashboardHourlyCardLower, dashboardHourlyCardUpper, dynamicHourlyTemplate } from '../views/dashboard.js';
 import { getAQI, getTimeZoneWeather, getWeather, reverseGeolocation } from "./api.js";
-import { getCurrentTimeZone, removeBlur, returnDayLONG, returnHour, setValue } from './data-weather.js';
+import { applyBlur, applyLoading, getCurrentTimeZone, removeBlur, removeLoading, returnDayLONG, returnHour, setValue } from './data-weather.js';
 
 
 function generateTitleAndColor(text = 'Good') {
@@ -145,7 +145,7 @@ export async function getParsedAQIData(coords) {
 }
 
 
-export function renderAQI(page, data) {
+export function renderAQI(page, data, flag = true) {
     const { hourly, units } = data;
     let [pm_2, no2, o3, so2] = [hourly[0].pm2_5, hourly[0].no2, hourly[0].o3, hourly[0].so2];
     let aqiState = hourly[0].eAQI[3];
@@ -176,7 +176,13 @@ export function renderAQI(page, data) {
                 if (aqiElements.aqiSTATEmessage()) aqiElements.aqiSTATEmessage().appendChild(p);
             }
         });
-
+        if (flag) {
+            applyBlur(aqiElements.aqiWrapper());
+            applyLoading();
+            setTimeout(() => {
+                removeBlur(aqiElements.aqiWrapper());
+                removeLoading();
+            }, 500);
+        }
     }
-    if (aqiElements.aqiWrapper()) removeBlur(aqiElements.aqiWrapper());
 }
