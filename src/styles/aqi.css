@@ -192,8 +192,9 @@ input[type=checkbox]:checked~.aqi-box-text {
 .render-hourly {
     display: inline-block;
     width: fit-content;
-    padding: 2px 2rem;
-    font-size: 14px;
+    padding: 5px 2rem;
+    margin: 5px;
+    font-size: 20px;
     border-radius: var(--radius-pill);
     background-color: rgba(119, 119, 119, 0.315);
     box-shadow: inset 0 0 0 0 #54b3d6;
@@ -205,7 +206,7 @@ input[type=checkbox]:checked~.aqi-box-text {
     background-color: rgba(119, 119, 119, 0.582);
     cursor: pointer;
     color: #fff;
-    box-shadow: inset 200px 0 0 0 #54b3d6;
+    box-shadow: inset 400px 0 0 0 #54b3d6;
 }
 
 .aqi-box:nth-of-type(1) .aqi-content {
@@ -241,6 +242,7 @@ input[type=checkbox]:checked~.aqi-box-text {
     justify-content: center;
     align-items: center;
     padding: 2px 8px;
+    position: relative;
 }
 
 .aqi-row-all div:nth-of-type(1) {
@@ -250,6 +252,9 @@ input[type=checkbox]:checked~.aqi-box-text {
 .aqi-row-all .aqi-title {
     font-size: 1.3rem;
     text-align: center;
+    background-color: var(--color-background);
+    border-radius: 15px;
+    padding: 0px 10px;
 }
 
 .aqi-row-all .aqi-content {
