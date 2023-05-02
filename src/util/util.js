@@ -339,5 +339,15 @@ export const aqiElements = {
     aqiBoxEAQI: () => document.querySelector('.aqi-box:nth-of-type(1)'),
     aqiBoxEAQIdetails: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-box-details'),
 
+    btnsALL: () => document.querySelectorAll('button.render-hourly'),
+    btnHourly1: () => document.querySelector('button:nth-of-type(1).render-hourly'),
+    btnHourly2: () => document.querySelector('button:nth-of-type(2).render-hourly'),
+    btnHourly3: () => document.querySelector('button:nth-of-type(3).render-hourly'),
+    btnHourly4: () => document.querySelector('button:nth-of-type(4).render-hourly'),
+    btnHourly5: () => document.querySelector('button:nth-of-type(5).render-hourly'),
+    btnHourly6: () => document.querySelector('button:nth-of-type(6).render-hourly'),
+    btnHourly7: () => document.querySelector('button:nth-of-type(7).render-hourly'),
+    btnHourly8: () => document.querySelector('button:nth-of-type(8).render-hourly'),
+
 };
 

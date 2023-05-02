@@ -146,7 +146,6 @@ input[type=checkbox] {
 .aqi-box-btn:hover,
 .info-link-inline:hover {
     background-color: var(--color-on-surface-variant);
-    transform: translateY(-3px);
 }
 
 /* Default State */

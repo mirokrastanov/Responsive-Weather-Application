@@ -36,6 +36,7 @@ export async function airQualityPage(ctx) {
         removeErrorOverlay();
         console.log(weatherInfo);
         console.log(aqiInfo);
+        
     } catch (error) {
         let message = 'Error getting Air Quality data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
