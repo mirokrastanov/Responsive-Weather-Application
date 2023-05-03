@@ -261,6 +261,7 @@ const aboutTemplate = () => html`
             <a href="https://lit.dev/docs/v1/lit-html/introduction/"
                 target="_blank">lit-html</a>
             <a href="https://www.npmjs.com/package/page" target="_blank">Page</a>
+            <a href="https://axios-http.com/docs/intro" target="_blank">Axios</a>
         </span>
         <span class="about-desc">Frameworks: No frameworks were used.</span>
     </article>
