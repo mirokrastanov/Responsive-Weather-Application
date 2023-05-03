@@ -12,7 +12,7 @@ const errorTemplate = () => html`
     <h2 class="heading">404</h2>
     <p class="body-1">Page not found!</p>
     <a href="/" class="btn-primary">
-        <span class="span">Go Home</span>
+        <span class="span">Go to Homepage</span>
     </a>
 </section>
 `; 
