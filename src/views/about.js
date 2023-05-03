@@ -7,7 +7,237 @@ export async function aboutPage(ctx) {
 }
 
 const aboutTemplate = () => html`
+<section id="about-ctr">
+    <article class="about-item">
+        <span class="about-title">Author</span>
+        <span class="about-sub">Miro Krastanov</span>
+        <span class="about-desc">
+            <a href="https://github.com/mirokrastanov" target="_blank">Github Profile</a>
+            <a href="https://github.com/mirokrastanov/Responsive-Weather-Application"
+                target="_blank">Project Repository</a>
+        </span>
 
+        <span class="about-title">Project Overview</span>
+        <span class="about-desc">
+            This is a non-commercial student project designed to showcase software development skills and
+            provide a usable web application to users.
+        </span>
+        <span class="about-desc">
+            The website was build from zero all the way to a fully functional website with dynamically
+            generated pages and real-time information updates as part of a web-based Single Page
+            Application.
+        </span>
+        <span class="about-title">Project Description</span>
+        <span class="about-desc">All the work that went into this project was done solely by myself.</span>
+        <span class="about-desc">I have used many front end design ideas, back end logic ideas, APIs,
+            royalty free image assets, global weather
+            & air quality information, geolocation and a lot more. To show appreciation to all
+            of their respective creators / distributors I have compiled this page with a detailed
+            information and contact details for all of them. If I have missed anything please feel free to
+            let me know.</span>
+        <span class="about-title">Thank You! Enjoy my App!</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-sub">References below:</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Website is powered by</span>
+        <span class="about-sub">open-meteo.com</span>
+        <span class="about-desc">
+            <a href="https://open-meteo.com/" target="_blank">Website</a>
+            <a href="https://open-meteo.com/en/docs" target="_blank">Weather API & API Docs</a>
+            <a href="https://github.com/open-meteo/open-meteo" target="_blank">Github Repository</a>
+            <a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank">Air Quality API</a>
+        </span>
+        <span class="about-desc">
+            Open-Meteo combines local (1 km resolution) and global (11 km) weather models from national
+            weather services. For every location on earth, the best forecast is available.
+
+            National weather services include <a href="https://www.dwd.de/" target="_blank">Deutscher Wetter
+                Dienst (DWD)</a>
+            <a href="https://www.noaa.gov/" target="_blank"> National Oceanic and Atmospheric Administration
+                (NOAA)</a>
+            <a href="https://meteofrance.com/" target="_blank">Meteofrance</a> and
+            <a href="https://weather.gc.ca/" target="_blank">Canadian Meteorological Center (CMC)</a>
+        </span>
+        <span class="about-title">In this project</span>
+        <span class="about-desc">APIs used: Weather API & Air Quality API</span>
+        <span class="about-title">License Information</span>
+        <span class="about-desc">API data is offered under <a
+                href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Attribution 4.0
+                International (CC BY 4.0)</a></span>
+        <span class="about-desc">Read the
+            <a href="https://open-meteo.com/en/features#terms" target="_blank">Terms & Privacy</a>
+            and <a href="https://github.com/open-meteo/open-meteo/blob/main/LICENSE" target="_blank">Full
+                License</a>
+        </span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Website is powered by</span>
+        <span class="about-sub">openweathermap.org</span>
+        <span class="about-desc">Weather forecasts, nowcasts and history in a fast and elegant way.</span>
+        <span class="about-desc"> Open weather data is provided by
+            <a href="https://www.noaa.gov/" target="_blank"> National Oceanic and Atmospheric Administration
+                (NOAA)</a>
+            <a href="https://www.metoffice.gov.uk/" target="_blank"> the Met Office</a>
+            <a href="https://weather.gc.ca/" target="_blank"> Environment Canada</a> and
+            <a href="https://www.ecmwf.int/" target="_blank"> ECMWF</a>
+        </span>
+        <span class="about-title">In this project</span>
+        <span class="about-desc">APIs used: Geolocation API, Reverse Geolocation API & Weather API</span>
+        <span class="about-desc">
+            More information at: <a href="https://openweathermap.org/" target="_blank">Website</a>
+            <a href="https://openweathermap.org/api" target="_blank">API Docs</a>
+            <a href="https://openweathermap.org/guide" target="_blank">User Guide</a>
+        </span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Front End Inspiration</span>
+        <span class="about-sub">@codewithsadee</span>
+        <span class="about-desc">
+            <a href="https://www.youtube.com/@codewithsadee" target="_blank">YT channel</a>
+            <a href="https://github.com/codewithsadee" target="_blank">Github</a>
+        </span>
+        <span class="about-desc">Huge thanks to Sadee as a big part of the initial static front end design
+            was built with his ideas and concept. They laid the groundwork for this amazing project. I
+            improved and re-iterated upon them extensively along the development of this project, but
+            without them its start would have been much harder.</span>
+        <span class="about-title">License information</span>
+        <span class="about-desc">
+            Link to Project License: <a
+                href="https://github.com/codewithsadee/weatherio-starter/blob/master/LICENSE"
+                target="_blank">MIT License</a>
+        </span>
+        <span class="about-desc">Users of software using an MIT License are permitted
+            to use, copy, modify, merge publish, distribute, sublicense and sell copies of the software.
+            Some notable projects use the MIT License including Ruby on Rails, and the X Windows
+            System.</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Front & Back End Inspirations</span>
+        <span class="about-sub">@WebDevSimplified</span>
+        <span class="about-desc">
+            <a href="https://www.youtube.com/@WebDevSimplified" target="_blank">YT channel</a>
+            <a href="https://github.com/WebDevSimplified" target="_blank">Github</a>
+        </span>
+        <span class="about-desc">
+            Parts of the front end design and a huge part of the back end design were inpired by Kyle from
+            Web Dev Simplified.
+        </span>
+        <span class="about-desc">Some dynamic elements, cool animation effects, checkbox hacks & some
+            advanced logic were also inspired by him and improved upon by me further in my project.</span>
+        <span class="about-desc">His content is amazing and always helpful! Thank You, Kyle!</span>
+        <span class="about-title">License information</span>
+        <span class="about-desc">
+            Link to Project License: <a
+                href="https://github.com/WebDevSimplified/js-weather-app/blob/main/LICENSE"
+                target="_blank">MIT License</a>
+        </span>
+        <span class="about-desc">Users of software using an MIT License are permitted
+            to use, copy, modify, merge publish, distribute, sublicense and sell copies of the software.
+            Some notable projects use the MIT License including Ruby on Rails, and the X Windows
+            System.</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">JavaScript Asset:</span>
+        <span class="about-title">Lists of countries with ISO 3166 codes in various formats</span>
+        <span class="about-sub">@incredimike</span>
+        <span class="about-desc">
+            <a href="https://gist.github.com/incredimike/1469814" target="_blank">Link to Asset</a>
+            <a href="https://gist.github.com/incredimike" target="_blank">Creator's Github Profile</a>
+            <a href="https://www.npmjs.com/package/iso3166-2-db" target="_blank">ISO 3166 (npm link)</a>
+        </span>
+        <span class="about-desc">
+            This JavaScript asset was used in the back end logic of the website as part of the utility
+            module in order to provide a country list in various formats in the form a JavaScript arrays &
+            objects.
+        </span>
+        <span class="about-title">License Information</span>
+        <span class="about-desc">
+            Licesed under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0
+                1.0 Universal</a>
+        </span>
+        <span class="about-desc">His content is amazing and always helpful! Thank You, Kyle!</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Air Quality Index</span>
+        <span class="about-sub">AQI information sources</span>
+        <span class="about-desc">
+            <a href="https://www.eea.europa.eu/en" target="_blank">European Environment Agency</a>
+            <a href="https://airindex.eea.europa.eu/Map/AQI/Viewer/" target="_blank">EEA Map Viewer + About
+                info</a>
+            <a href="https://www.eea.europa.eu/en/topics/in-depth/air-pollution" target="_blank">EEA Air
+                Polution web page</a>
+            <a href="https://www.who.int/europe/publications/i/item/9789240034433" target="_blank">WHO Air
+                Quality Guidelines</a>
+            <a href="https://eur-lex.europa.eu/legal-content/en/ALL/?uri=CELEX%3A32008L0050"
+                target="_blank">EU Air Quality Directive</a>
+            <a href="https://en.wikipedia.org/wiki/Air_quality_index" target="_blank">AQI Wiki page</a>
+        </span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Project Hosting</span>
+        <span class="about-sub">replit.com</span>
+        <span class="about-desc">
+            Project is currently hosted on
+            <a href="https://replit.com/" target="_blank">Repl It</a>
+        </span>
+        <span class="about-desc">Thank You for helping developers materialize their ideas.</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Development</span>
+        <span class="about-sub">Project Technologies</span>
+        <span class="about-desc">
+            IDE: <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>
+        </span>
+        <span class="about-desc">Extensions:
+            <a href="https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables"
+                target="_blank">CSS Variable Autocomplete</a>
+            <a href="https://marketplace.visualstudio.com/items?itemName=bierner.lit-html"
+                target="_blank">lit-html</a>
+            <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
+                target="_blank">Live Server</a>
+        </span>
+        <span class="about-desc">Languages:
+            <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+            <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a>
+            <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS</a>
+        </span>
+        <span class="about-desc">Libraries:
+            <a href="https://lit.dev/docs/v1/lit-html/introduction/"
+                target="_blank">lit-html</a>
+            <a href="https://www.npmjs.com/package/page" target="_blank">Page</a>
+        </span>
+        <span class="about-desc">Frameworks: No frameworks were used.</span>
+    </article>
+</section>
+
+<footer class="footer" id="about-footer">
+    <p class="body-3">
+        Author: Miro Krastanov. Extra credits in the About section.
+    </p>
+
+    <p class="body-3">
+        Powered By <a href="https://open-meteo.com/" title="Free Weather API" target="_blank"
+            rel="noopener">
+            <img src="/src/images/open-meteo.gif" width="150px" height="30px" loading="lazy"
+                alt="Open-Meteo">
+        </a> and <a href="https://openweathermap.org/" title="Weather & Geo API" target="_blank"
+            rel="noopener">
+            <img src="/src/images/openweather.png" width="150px" height="30px" loading="lazy"
+                alt="Open-Meteo">
+        </a>
+    </p>
+</footer>
 `;
 
 
