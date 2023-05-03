@@ -39,7 +39,7 @@ const aboutTemplate = () => html`
     </article>
 
     <article class="about-item">
-        <span class="about-sub">References below:</span>
+        <span class="about-sub">References:</span>
     </article>
 
     <article class="about-item">
@@ -184,13 +184,58 @@ const aboutTemplate = () => html`
     </article>
 
     <article class="about-item">
+        <span class="about-title">Homepage images</span>
+        <span class="about-sub">Pixabay royalty free images</span>
+        <span class="about-desc">
+            <a href="https://pixabay.com/" target="_blank">Website</a>
+        </span>
+        <span class="about-title">Images links</span>
+        <span class="about-desc">
+            <a href="https://pixabay.com/photos/shore-sunset-beach-dusk-twilight-914149/" target="_blank">1</a>
+            <a href="https://pixabay.com/photos/hd-wallpaper-rainy-day-umbrella-3443977/" target="_blank">2</a>
+            <a href="https://pixabay.com/photos/tree-dawn-morning-sun-sunrise-3189339/" target="_blank">3</a>
+            <a href="https://pixabay.com/photos/clouds-sunset-fog-mountains-449822/" target="_blank">4</a>
+            <a href="https://pixabay.com/photos/hd-wallpaper-sea-rainbow-rainfall-7039471/" target="_blank">5</a>
+            <a href="https://pixabay.com/photos/lago-di-limides-dolomites-alps-3025780/" target="_blank">6</a>
+            <a href="https://pixabay.com/photos/buildings-houses-street-city-rain-5528981/" target="_blank">7</a>
+            <a href="https://pixabay.com/photos/sky-clouds-rays-weather-1365325/" target="_blank">8</a>
+            <a href="https://pixabay.com/photos/leaf-rain-weather-rainy-weather-5298312/" target="_blank">9</a>
+            <a href="https://pixabay.com/illustrations/weather-clipart-art-rain-sun-moon-2371967/" target="_blank">10</a>
+            <a href="https://pixabay.com/photos/rainbow-cloud-evening-sun-rain-4047523/" target="_blank">11</a>
+            <a href="https://pixabay.com/photos/landscape-nature-oilseed-rape-field-3369304/" target="_blank">12</a>
+            <a href="https://pixabay.com/photos/clouds-sky-heaven-weather-nature-3353159/" target="_blank">13</a>
+            <a href="https://pixabay.com/photos/desert-mountain-field-landscape-5371434/" target="_blank">14</a>
+            <a href="https://pixabay.com/photos/pathway-mountain-grass-cliff-970705/" target="_blank">15</a>
+        </span>
+        <span class="about-title">License information</span>
+        <span class="about-desc">Licensed under 
+            <a href="https://pixabay.com/service/terms/" target="_blank">Content License</a>
+        </span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Weather Icons</span>
+        <span class="about-sub">Openweathermap.org weather icons</span>
+        <span class="about-desc">
+            <a href="https://openweathermap.org/weather-conditions" target="_blank">Icon List</a>
+        </span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Project Font</span>
+        <span class="about-sub">Nunito Sans</span>
+        <span class="about-desc"> 
+            <a href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" target="_blank">Link to font</a>
+        </span>
+    </article>
+
+    <article class="about-item">
         <span class="about-title">Project Hosting</span>
         <span class="about-sub">replit.com</span>
         <span class="about-desc">
             Project is currently hosted on
             <a href="https://replit.com/" target="_blank">Repl It</a>
         </span>
-        <span class="about-desc">Thank You for helping developers materialize their ideas.</span>
     </article>
 
     <article class="about-item">
