@@ -1,10 +1,9 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import { getGeolocation, reverseGeolocation } from '../api/api.js';
 import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
 import { searchOnTyping, onSearchClick } from '../api/data-search.js';
 import {
-    applyBlur, createErrorOverlay, getCurrentLocationCoords, getParsedWeatherData,
-    removeBlur, removeErrorOverlay, renderErrorOverlay, renderNotificationOverlay, renderWeather, updateWeatherInfo
+    applyBlur, getCurrentLocationCoords, getParsedWeatherData,
+    removeErrorOverlay, renderErrorOverlay, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
 import { addEventOnElements, dashboardElements, elements, searchUtility, valueParser } from '../util/util.js';
 

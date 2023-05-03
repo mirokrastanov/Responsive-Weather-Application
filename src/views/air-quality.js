@@ -1,8 +1,7 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { getAQI } from '../api/api.js';
 import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
-import { applyBlur, getCurrentTimeZone, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay } from '../api/data-weather.js';
-import { aqiElements, elements } from '../util/util.js';
+import { applyBlur, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay } from '../api/data-weather.js';
+import { aqiElements } from '../util/util.js';
 // import from api
 
 let context = null;

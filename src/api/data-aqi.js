@@ -1,4 +1,4 @@
-import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { html } from '../../node_modules/lit-html/lit-html.js';
 import { aqiElements, aqiParser, dashboardElements, monthsShort } from "../util/util.js";
 import { getAQI, getTimeZoneWeather } from "./api.js";
 import {

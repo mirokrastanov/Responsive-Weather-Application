@@ -5,7 +5,7 @@ import { dashboardPage } from './views/dashboard.js';
 import { aboutPage } from './views/about.js';
 import { airQualityPage } from './views/air-quality.js';
 import { errorPage } from './views/error.js';
-import { dashboardElements, navElements } from './util/util.js';
+import { navElements } from './util/util.js';
 
 const root = document.querySelector('body #main #main-ctr');
 
