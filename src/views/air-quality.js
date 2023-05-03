@@ -205,8 +205,8 @@ const initialTemplate = () => html`
                 <div class="aqi-box-text">
                     <span>European Air Quality Index (AQI) calculated for different
                         particulate matter and gases individually. The consolidated european_aqi returns the
-                        maximum of all individual indices. Ranges from 0-20 (good), 20-40 (fair), 40-60
-                        (moderate), 60-80 (poor), 80-100 (very poor) and exceeds 100 for extremely poor
+                        maximum of all individual indices. Ranges from 0-20 <p>good</p>, 20-40 <p>fair</p>, 40-60
+                        <p>moderate</p>, 60-80 <p>poor</p>, 80-100 <p>very_poor</p> and exceeds 100 for <p>extremely_poor</p>
                         conditions.</span>
                     <span>More information here: <a class="info-link-inline"
                             href="https://airindex.eea.europa.eu/Map/AQI/Viewer/" target="_blank">EEA</a>
