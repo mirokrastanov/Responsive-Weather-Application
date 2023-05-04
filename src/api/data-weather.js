@@ -293,14 +293,23 @@ async function renderCurrentWeather(page, current) {
         let lon = localStorage.getItem('lon');
         if (lat && lon) {
             let revGeoL = await reverseGeolocation(lat, lon);
-            console.log(revGeoL);
-            let nameString = 'TEST IN PROGRESS...';
-            // let x = revGeoL.data[0];
-            // let nameString = x.name;
-            // nameString = x.state ? `${nameString}, ${x.state}` : nameString;
-            // nameString = x.country ? `${nameString}, ${x.country}` : nameString;
-            // localStorage.setItem('address', nameString);
-            setValue(dashboardElements.currentLocation(), nameString);
+            // console.log(revGeoL.data);
+            let x = revGeoL.data;
+            let nameString = x.city && x.city != '' ? x.city : x.locality;
+            let fullString = nameString + ', ';
+            nameString = x.principalSubdivision && x.principalSubdivision != '' ?
+                `${nameString}, ${x.principalSubdivision}` : nameString;
+            nameString = x.countryCode && x.countryCode != '' ?
+                `${nameString}, ${x.countryCode}` : nameString;
+            localStorage.setItem('address', nameString);
+            let adminArr = (x.localityInfo.administrative)
+                .sort((a, b) => b.adminLevel - a.adminLevel || b.order - a.order);
+            adminArr.forEach(x => fullString += `${x.name}, `);
+            fullString += x.continent;
+            fullString = fullString.split(', ').filter((v, i, arr) => arr.indexOf(v) == i)
+                .join(', ');
+            setValue(dashboardElements.currentLocation(), nameString,
+                html`<span class="tooltip-text">${fullString}</span>`);
         }
 
 

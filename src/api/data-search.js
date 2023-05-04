@@ -99,8 +99,8 @@ export async function onSearchClick(e) {
     let [lat, lon] = [e.target.parentElement.dataset.lat, e.target.parentElement.dataset.lon];
     if (!lat || !lon) isValid = false;
     if (!isValid) { // the default London list item coords
-        lat = 51.5073219;
-        lon = -0.1276474;
+        lat = 51.50853;
+        lon = -0.12574;
     }
     localStorage.setItem('lat', lat);
     localStorage.setItem('lon', lon);
