@@ -35,7 +35,9 @@ export function searchOnTyping(e) {
                 dashboardElements.searchResult().classList.add('active');
                 dashboardElements.searchResult().replaceChildren();
 
-                let items = geoL.data;
+                let items = geoL.data.results;
+                if (!items) items = [];
+
                 let ul = document.createElement('ul');
                 ul.classList.add('view-list');
                 ul.setAttribute('data-search-list', '');
@@ -52,9 +54,17 @@ const searchItemsTemplate = (items) => html`
     ${items.length != 0 ?
         items.map(x => {
             let nameString = x.name;
-            nameString = x.state ? `${nameString}, ${x.state}` : nameString;
-            nameString = x.country ? `${nameString}, ${x.country}` : nameString;
-            return searchItemTemplate(x.name, nameString, x.lat, x.lon);
+            nameString = x.admin1 && x.admin1 != '' ? `${nameString}, ${x.admin1}` : nameString;
+            let fullString = nameString;
+            fullString = x.admin2 && x.admin2 != '' ? `${fullString}, ${x.admin2}` : fullString;
+            fullString = x.admin3 && x.admin3 != '' ? `${fullString}, ${x.admin3}` : fullString;
+            fullString = x.admin4 && x.admin4 != '' ? `${fullString}, ${x.admin4}` : fullString;
+            nameString = x.country_code && x.country_code != '' ?
+                `${nameString}, ${x.country_code}` : nameString;
+            fullString = x.country && x.country != '' ?
+                `${fullString}, ${x.country}` : fullString;
+
+            return searchItemTemplate(x.name, nameString, x.latitude, x.longitude, fullString);
         })
         : noItemsTemplate()
     }
@@ -70,8 +80,8 @@ const noItemsTemplate = () => html`
 </li>
 `;
 
-const searchItemTemplate = (name, nameString, lat, lon) => html`
-<li class="view-item" data-lat=${lat} data-lon=${lon}>
+const searchItemTemplate = (name, nameString, lat, lon, fullString) => html`
+<li class="view-item" data-lat=${lat} data-lon=${lon} title=${fullString}>
     <span class="m-icon">location_on</span>
     <div>
         <p class="item-title">${name}</p>
@@ -88,7 +98,7 @@ export async function onSearchClick(e) {
     let isValid = true;
     let [lat, lon] = [e.target.parentElement.dataset.lat, e.target.parentElement.dataset.lon];
     if (!lat || !lon) isValid = false;
-    if (!isValid) { // the default London list item
+    if (!isValid) { // the default London list item coords
         lat = 51.5073219;
         lon = -0.1276474;
     }

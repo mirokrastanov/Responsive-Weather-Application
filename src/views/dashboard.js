@@ -39,8 +39,8 @@ export async function dashboardPage(ctx) {
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
-        console.log(weatherInfo);
-        console.log(aqiInfo);
+        // console.log(weatherInfo);
+        // console.log(aqiInfo);
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });

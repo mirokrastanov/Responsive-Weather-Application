@@ -293,11 +293,13 @@ async function renderCurrentWeather(page, current) {
         let lon = localStorage.getItem('lon');
         if (lat && lon) {
             let revGeoL = await reverseGeolocation(lat, lon);
-            let x = revGeoL.data[0];
-            let nameString = x.name;
-            nameString = x.state ? `${nameString}, ${x.state}` : nameString;
-            nameString = x.country ? `${nameString}, ${x.country}` : nameString;
-            localStorage.setItem('address', nameString);
+            console.log(revGeoL);
+            let nameString = 'TEST IN PROGRESS...';
+            // let x = revGeoL.data[0];
+            // let nameString = x.name;
+            // nameString = x.state ? `${nameString}, ${x.state}` : nameString;
+            // nameString = x.country ? `${nameString}, ${x.country}` : nameString;
+            // localStorage.setItem('address', nameString);
             setValue(dashboardElements.currentLocation(), nameString);
         }
 
