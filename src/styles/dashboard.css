@@ -886,3 +886,42 @@ tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
 .hour-row td {
     border-radius: 10px;
 }
+
+.current-weather .meta-list .meta-item:nth-of-type(2) .meta-text {
+    position: relative;
+}
+
+.current-weather .meta-list .meta-item:nth-of-type(2) .meta-text span.tooltip-text {
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    width: 220px;
+    background-color: var(--color-surface);
+    color: var(--title-1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+        rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.current-weather .meta-list .meta-item:nth-of-type(2) .meta-text span.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.current-weather .meta-list .meta-item:nth-of-type(2) .meta-text:hover span.tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
