@@ -113,6 +113,6 @@ export async function onSearchClick(e) {
     if (isValid) searchUtility.toggleSearch();
     removeErrorOverlay();
     renderNotificationOverlay();
-    console.log(weatherInfo);
-    console.log(aqiInfo);
+    // console.log(weatherInfo);
+    // console.log(aqiInfo);
 }

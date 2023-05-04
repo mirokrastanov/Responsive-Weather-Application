@@ -34,8 +34,8 @@ export async function airQualityPage(ctx) {
         renderAQI('air-quality', aqiInfo);
         updateOverviewBoxes();
         removeErrorOverlay();
-        console.log(weatherInfo);
-        console.log(aqiInfo);
+        // console.log(weatherInfo);
+        // console.log(aqiInfo);
         aqiElements.btnHourly1().addEventListener('click', onHourlyBtnClick);
     } catch (error) {
         let message = 'Error getting Air Quality data!';
@@ -175,15 +175,20 @@ const initialTemplate = () => html`
             </p>
         </div>
         <div>
-            <div id="flex-row">
-                Powered By <a href="https://open-meteo.com/" title="Free Weather API" target="_blank"
-                    rel="noopener">
+            <div id="flex-row">Powered By 
+                <a href="https://open-meteo.com/" title="Weather, Air Quality & Geolocation API" target="_blank"
+                    style="display:inline;">
                     <img src="/src/images/open-meteo.gif" width="150px" height="30px" loading="lazy"
                         alt="Open-Meteo">
-                </a> and <a href="https://openweathermap.org/" title="Weather & Geo API" target="_blank"
-                    rel="noopener">
-                    <img src="/src/images/openweather.png" width="150px" height="30px" loading="lazy"
-                        alt="Open-Meteo"></a>
+                </a> <a href="https://www.bigdatacloud.com/" title="Reverse Geolocation API" target="_blank"
+                    style="display:inline;margin-right:10px;">
+                    <img src="/src/images/bigDataCloud.svg" width="80px" height="30px" loading="lazy"
+                        alt="Open-Meteo">
+                </a> <a href="https://openweathermap.org/" title="Weather API (only used timezone offsets)" target="_blank"
+                    style="display:inline;margin-right:10px;">
+                    <img src="/src/images/openweather.png" width="120px" height="30px" loading="lazy"
+                        alt="Open-Meteo">
+                </a>
             </div>
         </div>
     </div>

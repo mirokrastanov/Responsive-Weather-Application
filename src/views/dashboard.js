@@ -75,7 +75,7 @@ async function hourlyDetails(e) {
         renderWeather('hourly', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('hourly', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
-        console.log(weatherInfo);
+        // console.log(weatherInfo);
     } catch (error) {
         let message = 'Error getting weather data!';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -106,8 +106,8 @@ async function onCurrentLocationClick(e) {
         renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
         updateWeatherInfo('dashboard', weatherInfo); // updates everything every 10 min
         removeErrorOverlay();
-        console.log(weatherInfo);
-        console.log(aqiInfo);
+        // console.log(weatherInfo);
+        // console.log(aqiInfo);
     } catch (error) {
         let message = 'User denied Geolocation. Please allow us to use your Geolocation.';
         console.log('Error details: ', { ...error, 'stack': error.stack });
@@ -679,18 +679,23 @@ const dashboardTemplate = (items = {}) => html`
 
             <footer class="footer">
                 <p class="body-3">
-                    Author: Miro Krastanov. Extra credits in the About section.
+                    Author: <a href="https://github.com/mirokrastanov" target="_blank"
+                    style="display:inline;margin-right:10px;">Miro Krastanov.</a>
                 </p>
 
                 <p class="body-3">
-                    Powered By <a href="https://open-meteo.com/" title="Free Weather API"
-                    target="_blank" rel="noopener">
-                        <img src="/src/images/open-meteo.gif" width="150px" height="30px"
-                        loading="lazy" alt="Open-Meteo">
-                    </a> and <a href="https://openweathermap.org/" title="Weather & Geo API"
-                    target="_blank" rel="noopener">
-                        <img src="/src/images/openweather.png" width="150px" height="30px"
-                        loading="lazy" alt="Open-Meteo">
+                    Powered By <a href="https://open-meteo.com/" title="Weather, Air Quality & Geolocation API" target="_blank"
+                    style="display:inline;">
+                        <img src="/src/images/open-meteo.gif" width="150px" height="30px" loading="lazy"
+                            alt="Open-Meteo">
+                    </a> <a href="https://www.bigdatacloud.com/" title="Reverse Geolocation API" target="_blank"
+                    style="display:inline;margin-right:10px;">
+                        <img src="/src/images/bigDataCloud.svg" width="80px" height="30px" loading="lazy"
+                            alt="Open-Meteo">
+                    </a> <a href="https://openweathermap.org/" title="Weather API (only used timezone offsets)" target="_blank"
+                    style="display:inline;margin-right:10px;">
+                        <img src="/src/images/openweather.png" width="120px" height="30px" loading="lazy"
+                            alt="Open-Meteo">
                     </a>
                 </p>
             </footer>

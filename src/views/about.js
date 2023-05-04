@@ -43,13 +43,16 @@ const aboutTemplate = () => html`
     </article>
 
     <article class="about-item">
-        <span class="about-title">Website is powered by</span>
-        <span class="about-sub">open-meteo.com</span>
+        <span class="about-title">Website is mainly powered by</span>
+        <span class="about-sub"><img src="/src/images/open-meteo.gif" width="200px" height="40px" loading="lazy"
+               style="display:inline-block;" alt="Open-Meteo"></span> 
+        <span class="about-desc">All of the weather data, Air Quality data & Geolocation data this website is using is coming from open-meteo. Huge gratitude to them! They do this for free! Amazing!</span>
         <span class="about-desc">
             <a href="https://open-meteo.com/" target="_blank">Website</a>
             <a href="https://open-meteo.com/en/docs" target="_blank">Weather API & API Docs</a>
             <a href="https://github.com/open-meteo/open-meteo" target="_blank">Github Repository</a>
             <a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank">Air Quality API</a>
+            <a href="https://open-meteo.com/en/docs/geocoding-api" target="_blank">Geolocation API</a>
         </span>
         <span class="about-desc">
             Open-Meteo combines local (1 km resolution) and global (11 km) weather models from national
@@ -63,7 +66,7 @@ const aboutTemplate = () => html`
             <a href="https://weather.gc.ca/" target="_blank">Canadian Meteorological Center (CMC)</a>
         </span>
         <span class="about-title">In this project</span>
-        <span class="about-desc">APIs used: Weather API & Air Quality API</span>
+        <span class="about-desc">APIs used: Weather API, Air Quality API & Geolocation API</span>
         <span class="about-title">License Information</span>
         <span class="about-desc">API data is offered under <a
                 href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Attribution 4.0
@@ -76,9 +79,24 @@ const aboutTemplate = () => html`
     </article>
 
     <article class="about-item">
-        <span class="about-title">Website is powered by</span>
-        <span class="about-sub">openweathermap.org</span>
-        <span class="about-desc">Weather forecasts, nowcasts and history in a fast and elegant way.</span>
+        <span class="about-title">Website is also powered by</span>
+        <span class="about-sub"><img src="/src/images/bigDataCloud.svg" width="150px" height="30px" loading="lazy"
+                style="display:inline;" alt="Open-Meteo"></span>
+        <span class="about-desc">Thanks to them the website can use reverse geolocation to associate geographical coordinates with real addresses. Very grateful that they provide this service for free!</span>
+        <span class="about-title">In this project</span>
+        <span class="about-desc">APIs used: Reverse Geolocation API</span>
+        <span class="about-desc">
+            More information at: <a href="https://www.bigdatacloud.com/" target="_blank">Website</a>
+            <a href="https://www.bigdatacloud.com/docs" target="_blank">All API Docs</a>
+            <a href="https://www.bigdatacloud.com/docs/api/free-reverse-geocode-to-city-api" target="_blank">Reverse Geocoding API Docs</a>
+        </span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Website is also powered by</span>
+        <span class="about-sub"><img src="/src/images/openweather.png" width="170px" height="35px" loading="lazy"
+                style="display:inline;" alt="Open-Meteo"></span>
+        <span class="about-desc">I have only used their weather API just to extract the timezone offsets for different locations, which I have used in my time conversion / parsing functions.</span>
         <span class="about-desc"> Open weather data is provided by
             <a href="https://www.noaa.gov/" target="_blank"> National Oceanic and Atmospheric Administration
                 (NOAA)</a>
@@ -87,35 +105,12 @@ const aboutTemplate = () => html`
             <a href="https://www.ecmwf.int/" target="_blank"> ECMWF</a>
         </span>
         <span class="about-title">In this project</span>
-        <span class="about-desc">APIs used: Geolocation API, Reverse Geolocation API & Weather API</span>
+        <span class="about-desc">APIs used: Weather API (used only for location timezone offsets) </span>
         <span class="about-desc">
             More information at: <a href="https://openweathermap.org/" target="_blank">Website</a>
             <a href="https://openweathermap.org/api" target="_blank">API Docs</a>
             <a href="https://openweathermap.org/guide" target="_blank">User Guide</a>
         </span>
-    </article>
-
-    <article class="about-item">
-        <span class="about-title">Front End Inspiration</span>
-        <span class="about-sub">@codewithsadee</span>
-        <span class="about-desc">
-            <a href="https://www.youtube.com/@codewithsadee" target="_blank">YT channel</a>
-            <a href="https://github.com/codewithsadee" target="_blank">Github</a>
-        </span>
-        <span class="about-desc">Huge thanks to Sadee as a big part of the initial static front end design
-            was built with his ideas and concept. They laid the groundwork for this amazing project. I
-            improved and re-iterated upon them extensively along the development of this project, but
-            without them its start would have been much harder.</span>
-        <span class="about-title">License information</span>
-        <span class="about-desc">
-            Link to Project License: <a
-                href="https://github.com/codewithsadee/weatherio-starter/blob/master/LICENSE"
-                target="_blank">MIT License</a>
-        </span>
-        <span class="about-desc">Users of software using an MIT License are permitted
-            to use, copy, modify, merge publish, distribute, sublicense and sell copies of the software.
-            Some notable projects use the MIT License including Ruby on Rails, and the X Windows
-            System.</span>
     </article>
 
     <article class="about-item">
@@ -131,17 +126,32 @@ const aboutTemplate = () => html`
         </span>
         <span class="about-desc">Some dynamic elements, cool animation effects, checkbox hacks & some
             advanced logic were also inspired by him and improved upon by me further in my project.</span>
-        <span class="about-desc">His content is amazing and always helpful! Thank You, Kyle!</span>
+        <span class="about-desc">His content is amazing and always helpful!</span>
         <span class="about-title">License information</span>
         <span class="about-desc">
-            Link to Project License: <a
+            Link to License: <a
                 href="https://github.com/WebDevSimplified/js-weather-app/blob/main/LICENSE"
                 target="_blank">MIT License</a>
         </span>
-        <span class="about-desc">Users of software using an MIT License are permitted
-            to use, copy, modify, merge publish, distribute, sublicense and sell copies of the software.
-            Some notable projects use the MIT License including Ruby on Rails, and the X Windows
-            System.</span>
+    </article>
+
+    <article class="about-item">
+        <span class="about-title">Front End Inspiration</span>
+        <span class="about-sub">@codewithsadee</span>
+        <span class="about-desc">
+            <a href="https://www.youtube.com/@codewithsadee" target="_blank">YT channel</a>
+            <a href="https://github.com/codewithsadee" target="_blank">Github</a>
+        </span>
+        <span class="about-desc">Part of the initial static front end design
+            was built based on some of his ideas and generic concepts. They laid the groundwork for this amazing project. I
+            improved and re-iterated upon them extensively along the development of this project, but
+            without them its start would have been much harder.</span>
+        <span class="about-title">License information</span>
+        <span class="about-desc">
+            Link to License: <a
+                href="https://github.com/codewithsadee/weatherio-starter/blob/master/LICENSE"
+                target="_blank">MIT License</a>
+        </span>
     </article>
 
     <article class="about-item">
@@ -264,22 +274,28 @@ const aboutTemplate = () => html`
             <a href="https://axios-http.com/docs/intro" target="_blank">Axios</a>
         </span>
         <span class="about-desc">Frameworks: No frameworks were used.</span>
+        <br />
     </article>
 </section>
 
 <footer class="footer" id="about-footer">
     <p class="body-3">
-        Author: Miro Krastanov. Extra credits in the About section.
+        Author: <a href="https://github.com/mirokrastanov" target="_blank"
+        style="display:inline;margin-right:10px;">Miro Krastanov.</a>
     </p>
 
     <p class="body-3">
-        Powered By <a href="https://open-meteo.com/" title="Free Weather API" target="_blank"
-            rel="noopener">
+        Powered By <a href="https://open-meteo.com/" title="Weather, Air Quality & Geolocation API" target="_blank"
+        style="display:inline;">
             <img src="/src/images/open-meteo.gif" width="150px" height="30px" loading="lazy"
                 alt="Open-Meteo">
-        </a> and <a href="https://openweathermap.org/" title="Weather & Geo API" target="_blank"
-            rel="noopener">
-            <img src="/src/images/openweather.png" width="150px" height="30px" loading="lazy"
+        </a> <a href="https://www.bigdatacloud.com/" title="Reverse Geolocation API" target="_blank"
+        style="display:inline;margin-right:10px;">
+            <img src="/src/images/bigDataCloud.svg" width="80px" height="30px" loading="lazy"
+                alt="Open-Meteo">
+        </a> <a href="https://openweathermap.org/" title="Weather API (only used timezone offsets)" target="_blank"
+        style="display:inline;margin-right:10px;">
+            <img src="/src/images/openweather.png" width="120px" height="30px" loading="lazy"
                 alt="Open-Meteo">
         </a>
     </p>
