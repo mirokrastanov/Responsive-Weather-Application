@@ -39,4 +39,26 @@ const homeTemplate = () => html`
   <img class="mySlides animate-fading" src="/src/images/home/8.jpg">
   <img class="mySlides animate-fading" src="/src/images/home/9.jpg">
 </div>
+<footer class="footer" id="about-footer">
+    <p class="body-3">
+        Author: <a href="https://github.com/mirokrastanov" target="_blank"
+        style="display:inline;margin-right:10px;">Miro Krastanov.</a>
+    </p>
+
+    <p class="body-3">
+        Powered By <a href="https://open-meteo.com/" title="Weather, Air Quality & Geolocation API" target="_blank"
+        style="display:inline;">
+            <img src="/src/images/open-meteo.gif" width="150px" height="30px" loading="lazy"
+                alt="Open-Meteo">
+        </a> <a href="https://www.bigdatacloud.com/" title="Reverse Geolocation API" target="_blank"
+        style="display:inline;margin-right:10px;">
+            <img src="/src/images/bigDataCloud.svg" width="80px" height="30px" loading="lazy"
+                alt="Open-Meteo">
+        </a> <a href="https://openweathermap.org/" title="Weather API (only used timezone offsets)" target="_blank"
+        style="display:inline;margin-right:10px;">
+            <img src="/src/images/openweather.png" width="120px" height="30px" loading="lazy"
+                alt="Open-Meteo">
+        </a>
+    </p>
+</footer>
 `; 
