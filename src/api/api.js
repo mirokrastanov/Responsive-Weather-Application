@@ -1,6 +1,5 @@
 // import axios from "axios";
 import { apiKey } from "../_private/api-private.js";
-import { dashboardElements, weatherCodes } from "../util/util.js";
 
 // OPEN-METEO latitude , longitude & timezone ==> added dynamically
 export async function getWeather(lat, lon, timezone) {
