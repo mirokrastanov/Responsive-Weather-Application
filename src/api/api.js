@@ -43,16 +43,18 @@ export async function getGeolocation(searched) {
 }
 
 
-// http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}
+// BIG DATA CLOUD
+// https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=37.42159&longitude=-122.0837&localityLanguage=en
 export async function reverseGeolocation(lat, lon) {
     // lat | lon
-    let res = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`);
+    let res = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
     let data = await res;
 
     return data;
 }
 
 
+// OPEN WEATHER
 // https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}
 // mainly used for timezone at location
 export async function getTimeZoneWeather(lat, lon) {
