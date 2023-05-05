@@ -371,7 +371,7 @@ function renderDailyWeather(page, daily) {
             setImage(el, daily[i].weatherImage);
         });
         dashboardElements.dailyTemp().forEach((el, i) => {
-            setValue(el, daily[i].temp, html`&deg;<sup>c</sup>`);
+            setValue(el, getTemp(daily[i].temp), html`&deg;<sup>${degreeState}</sup>`);
         });
         dashboardElements.dailyDateMonth().forEach((el, i) => {
             let dateRaw = new Date(daily[i].timestamp);
