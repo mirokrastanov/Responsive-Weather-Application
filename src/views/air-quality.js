@@ -10,6 +10,7 @@ let currentAQIinfo = {};
 export async function airQualityPage(ctx) {
     context = ctx;
     ctx.render(initialTemplate());
+    aqiElements.aqiElInfo().forEach(x => x.addEventListener('click', infoRender));
     applyBlur(aqiElements.aqiWrapper());
     try {
         if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
@@ -212,10 +213,20 @@ const initialTemplate = () => html`
                         maximum of all individual indices. Ranges from 0-20 <p>good</p>, 20-40 <p>fair</p>, 40-60
                         <p>moderate</p>, 60-80 <p>poor</p>, 80-100 <p>very_poor</p> and exceeds 100 for <p>extremely_poor</p>
                         conditions.</span>
+                    
+                    <span>The Index is based on concentration values for up to five key pollutants, including:</span>
+                    <div>Particulate matter - PM<sub>10</sub></div>
+                    <div>Fine particulate matter - PM<sub>2.5</sub></div>
+                    <div>Ozone - O<sub>3</sub></div>
+                    <div>Nitrogen dioxide - NO<sub>2</sub></div>
+                    <div>Sulphur dioxide - SO<sub>2</sub></div>
+                    
+                    <br />
                     <span>More information here: <a class="info-link-inline"
                             href="https://airindex.eea.europa.eu/Map/AQI/Viewer/" target="_blank">EEA</a>
                         <a class="info-link-inline" href="https://en.wikipedia.org/wiki/Air_quality_index"
                             target="_blank">Wiki</a></span>
+                    <br />
                     <button class="render-hourly">Hourly Forecast</button>
                 </div>
             </div>
@@ -225,6 +236,9 @@ const initialTemplate = () => html`
                     PM<sub>2.5</sub></p>
                 <p class="aqi-content" title="Particles less than 2.5 µm (PM2.5)">
                     23 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="pm2.5">Wiki</span>
+                </div>
             </div>
 
             <div class="aqi-box">
@@ -232,6 +246,9 @@ const initialTemplate = () => html`
                     PM<sub>10</sub></p>
                 <p class="aqi-content" title="Particles less than 10 µm (PM10)">
                     16 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="pm10">Wiki</span>
+                </div>
             </div>
 
             <div class="aqi-box">
@@ -239,6 +256,9 @@ const initialTemplate = () => html`
                     NO<sub>2</sub></p>
                 <p class="aqi-content" title="Nitrogen dioxide (NO2)">
                     90 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="no2">Wiki</span>
+                </div>
             </div>
 
             <div class="aqi-box">
@@ -246,6 +266,9 @@ const initialTemplate = () => html`
                     O<sub>3</sub></p>
                 <p class="aqi-content" title="Ozone (O3)">
                     41 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="o3">Wiki</span>
+                </div>
             </div>
 
             <div class="aqi-box">
@@ -253,6 +276,9 @@ const initialTemplate = () => html`
                     SO<sub>2</sub></p>
                 <p class="aqi-content" title="Sulphur dioxide (SO2)">
                     75 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="so2">Wiki</span>
+                </div>
             </div>
 
             <div class="aqi-box">
@@ -260,6 +286,9 @@ const initialTemplate = () => html`
                     CO</p>
                 <p class="aqi-content" title="Carbon Monoxide (10m above ground)">
                     23 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="co">Wiki</span>
+                </div>
             </div>
 
             <div class="aqi-box">
@@ -267,10 +296,27 @@ const initialTemplate = () => html`
                     Dust</p>
                 <p class="aqi-content" title="Dust particles (10m above ground)">
                     23 <sub>μg/m³</sub></p>
+                <div class='aqi-el-details'>
+                    <span class="aqi-el-info" data-info="dust">Wiki</span>
+                </div>
             </div>
 
         </section>
     </div>
 </div>
 `;
+
+
+function infoRender(e) {
+    let target = e.target.dataset.info;
+    switch (target) {
+        case 'pm2.5': window.open("https://en.wikipedia.org/wiki/Particulates", "_blank"); break;
+        case 'pm10': window.open("https://en.wikipedia.org/wiki/Particulates", "_blank"); break;
+        case 'no2': window.open("https://en.wikipedia.org/wiki/Nitrogen_dioxide", "_blank"); break;
+        case 'o3': window.open("https://en.wikipedia.org/wiki/Ozone", "_blank"); break;
+        case 'so2': window.open("https://en.wikipedia.org/wiki/Sulfur_dioxide", "_blank"); break;
+        case 'co': window.open("https://en.wikipedia.org/wiki/Carbon_monoxide", "_blank"); break;
+        case 'dust': window.open("https://en.wikipedia.org/wiki/Dust", "_blank"); break;
+    }
+}
 

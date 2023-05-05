@@ -354,6 +354,7 @@ export const aqiElements = {
     aqiBoxToggle1: () => document.querySelector('input[type=checkbox]:nth-of-type(1)'),
 
     aqiDynamicRows: () => document.querySelectorAll('.aqi-row-all'),
+    aqiElInfo: () => document.querySelectorAll('.aqi-el-info'),
     
 };
 

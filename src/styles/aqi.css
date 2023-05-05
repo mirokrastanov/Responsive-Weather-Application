@@ -315,3 +315,33 @@ input[type=checkbox]:checked~.aqi-box-text {
     font-size: 1.7rem;
     text-align: center;
 }
+
+
+.aqi-el-details span {
+    background-color: var(--color-background);
+    color: var(--color-on-surface-variant);
+    padding: 1px 14px;
+    border-radius: 15px;
+    margin-top: 3px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.aqi-box:nth-of-type(7) .aqi-el-details span,
+.aqi-box:nth-of-type(8) .aqi-el-details span {
+    background-color: var(--color-on-surface-variant);
+    color: black;
+}
+
+.aqi-el-details span:hover {
+    background-color: var(--color-on-surface-variant);
+    color: black;
+    transform: scale(1.1);
+}
+
+.aqi-box:nth-of-type(7) .aqi-el-details span:hover,
+.aqi-box:nth-of-type(8) .aqi-el-details span:hover {
+    background-color: var(--color-on-surface);
+    color: var(--color-background);
+}
+
