@@ -286,11 +286,12 @@ function updateDashboardTimeNow(current) { // updates timeNow every second
     prevIntervals[1] = interval;
 }
 
+// degreeState
 async function renderCurrentWeather(page, current) {
     if (page == 'dashboard') {
         // CURRENT CARD
         setImage(dashboardElements.currentImg(), current.weatherImage);
-        setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>c</sup>`);
+        setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>${degreeState}</sup>`);
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);

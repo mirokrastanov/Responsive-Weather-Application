@@ -30,3 +30,7 @@
 .hidden-el {
     display: none;
 }
+
+sup {
+    line-height: 1.3;
+}

@@ -16,6 +16,7 @@ export async function dashboardPage(ctx) {
     document.querySelector('article.container').style.display = 'grid';
     addEventOnElements(dashboardElements.searchTogglers(), 'click', searchUtility.toggleSearch);
     dashboardElements.searchField().addEventListener('input', searchOnTyping);
+    dashboardElements.degToggler().removeEventListener('change', degreeSwitcher);
     if (localStorage.getItem('deg')) { // keeps state of toggle
         if (localStorage.getItem('deg') == 'C') dashboardElements.degToggler().checked = false;
         else if (localStorage.getItem('deg') == 'F') dashboardElements.degToggler().checked = true;
@@ -122,14 +123,18 @@ async function onCurrentLocationClick(e) {
     }
 }
 
-function degreeSwitcher(e) {
+async function degreeSwitcher(e) {
     // false = Celsius | true = Fahrenheit
     let state = e.target.checked;
     console.log(state);
     if (state) localStorage.setItem('deg', 'F');
     else localStorage.setItem('deg', 'C');
-
-
+    try {
+        defaultCoords = [localStorage.getItem('lat'), localStorage.getItem('lon')];
+        let weatherInfo = await getParsedWeatherData(defaultCoords);
+        renderWeather('dashboard', weatherInfo); // dynamic data is fed to DOM elems
+        removeErrorOverlay();
+    } catch (error) { }
 }
 
 
