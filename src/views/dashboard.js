@@ -180,6 +180,12 @@ const dashboardTemplate = (items = {}) => html`
                 data-current-weather>
                 <div class="card card-lg current-weather-card">
                 
+                    <div id="deg-toggle-ctr">
+                    <div id="toggler">
+                        <input type="checkbox" class="toggle" id="check">
+                        <label for="check"></label>
+                    </div>
+                    </div>
                     <h2 class="title-2 card-title">Now</h2>
                     <h4 id="last-updated">Last updated: 12:17 AM</h4>
 
