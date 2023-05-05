@@ -127,7 +127,7 @@ async function onCurrentLocationClick(e) {
 async function degreeSwitcher(e) {
     // false = Celsius | true = Fahrenheit
     let state = e.target.checked;
-    console.log(state);
+    // console.log(state);
     if (state) localStorage.setItem('deg', 'F');
     else localStorage.setItem('deg', 'C');
     try {
@@ -363,25 +363,26 @@ const dashboardTemplate = (items = {}) => html`
 
                                 <ul class="card-list">
 
-                                    <li class="card-item">
+                                    <li class="card-item">μg/m³
                                         <p class="title-1">23.3</p>
 
                                         <p class="label-1">PM<sub>2.5</sub></p>
+                                        
                                     </li>
 
-                                    <li class="card-item">
+                                    <li class="card-item">μg/m³
                                         <p class="title-1">23.3</p>
                                         
                                         <p class="label-1">PM<sub>2.5</sub></p>
                                     </li>
 
-                                    <li class="card-item">
+                                    <li class="card-item">μg/m³
                                         <p class="title-1">23.3</p>
                                         
                                         <p class="label-1">PM<sub>2.5</sub></p>
                                     </li>
 
-                                    <li class="card-item">
+                                    <li class="card-item">μg/m³
                                         <p class="title-1">23.3</p>
                                         
                                         <p class="label-1">PM<sub>2.5</sub></p>

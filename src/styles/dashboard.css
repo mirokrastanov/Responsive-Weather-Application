@@ -962,7 +962,8 @@ input[type="checkbox"].toggle+label {
     height: 100%;
 }
 
-input[type="checkbox"].toggle+label::before {  /* lane */
+input[type="checkbox"].toggle+label::before {
+    /* lane */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -978,7 +979,8 @@ input[type="checkbox"].toggle+label::before {  /* lane */
     transition: 300ms ease-in-out;
 }
 
-input[type="checkbox"].toggle+label::after {  /* left dc + ball */
+input[type="checkbox"].toggle+label::after {
+    /* left dc + ball */
     position: absolute;
     left: 0em;
     content: '';
@@ -993,15 +995,23 @@ input[type="checkbox"].toggle+label::after {  /* left dc + ball */
 input[type="checkbox"].toggle:checked+label::before {
     background-color: var(--color-on-surface-variant-2);
     content: 'Fahrenheit';
+    font-weight: bolder;
     padding-right: 20px;
     color: black;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 5px -2px 6px 0px inset;
+    border: none;
 }
 
-input[type="checkbox"].toggle:checked+label::after { /* right dc*/
+input[type="checkbox"].toggle:checked+label::after {
+    /* right dc*/
     transform: translateX(7.3em);
     background-color: var(--color-on-surface-variant-2);
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 5px -2px 6px 0px inset;
+    border: none;
 }
-
-
