@@ -191,7 +191,13 @@ export function removeLoading() {
 }
 
 // invoked every 10m by updateWeatherInfo()
-export function renderWeather(page, { current, daily, hourly }, flag = true) {
+let degreeState = 'C';
+export function renderWeather(page, { current, daily, hourly }, flag = true, deg = false) {
+    if (deg) degreeState = deg;
+    else if (localStorage.getItem('deg')) degreeState = localStorage.getItem('deg');
+    else if (degreeState != 'C' && degreeState != 'F') degreeState = 'C';
+    localStorage.setItem('deg', degreeState);
+
     renderCurrentWeather(page, current);
     renderDailyWeather(page, daily);
     renderHourlyWeather(page, hourly, flag);
@@ -410,6 +416,10 @@ function renderHourlyWeather(page, hourly, flag) {
     }
 }
 
+function degreesConversion(from, to) {
+
+
+}
 
 
 

@@ -272,6 +272,7 @@ export const stateAbbreviationsUSA = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO',
 
 export const dashboardElements = {
     lastUpdated: () => [document.querySelector('#last-updated'), document.querySelector('#last-updated-hourly')],
+    degToggler: () => document.querySelector('#deg-toggle-ctr #toggler input[type=checkbox].toggle#check'),
 
     currentImg: () => document.querySelector('.current-weather .weapper img'),
     currentTemp: () => document.querySelector('.current-weather .weapper .heading'),
