@@ -291,7 +291,8 @@ async function renderCurrentWeather(page, current) {
     if (page == 'dashboard') {
         // CURRENT CARD
         setImage(dashboardElements.currentImg(), current.weatherImage);
-        setValue(dashboardElements.currentTemp(), current.currentTemp, html`&deg;<sup>${degreeState}</sup>`);
+        setValue(dashboardElements.currentTemp(), getTemp(current.currentTemp),
+            html`&deg;<sup>${degreeState}</sup>`);
         setValue(dashboardElements.currentText(), current.weatherText);
         setValue(dashboardElements.currentDateDay(), `${current.
             dayLong} ${new Date().getDate()}, ${monthsShort[new Date().getMonth()]}`);
@@ -350,7 +351,8 @@ async function renderCurrentWeather(page, current) {
         // UP* ==> these lines are being updated each second from the function below
         updateDashboardTimeNow(current);
 
-        setValue(dashboardElements.highFeelsLike(), current.feelsLikeTemp, html`&deg;<sup>c</sup>`);
+        setValue(dashboardElements.highFeelsLike(), getTemp(current.feelsLikeTemp),
+            html`&deg;<sup>${degreeState}</sup>`);
         setValue(dashboardElements.highWind(), current.windSpeed, html` <sub>m/s</sub>`);
         setValue(dashboardElements.highHumidity(), current.humidity, html` <sub>%</sub>`);
         setValue(dashboardElements.highPrecip(), current.precip, html` <sub>mm</sub>`);
@@ -417,9 +419,10 @@ function renderHourlyWeather(page, hourly, flag) {
     }
 }
 
-function degreesConversion(from, to) {
 
-
+function getTemp(num) {
+    if (degreeState == 'C') return num;
+    else if (degreeState == 'F') return Math.round((num * 9 / 5) + 32);
 }
 
 
