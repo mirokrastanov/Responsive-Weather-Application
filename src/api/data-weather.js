@@ -395,7 +395,8 @@ function renderHourlyWeather(page, hourly, flag) {
             dashboardElements.dashHSlider2().replaceChildren();
             sliders.forEach((x, i) => {
                 let t = timeParser.hours24(new Date(x.timestamp));
-                let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage, x.temp);
+                let upperCard = dashboardHourlyCardUpper(`${t[0]} ${t[1]}`, x.weatherImage,
+                    getTemp(x.temp), degreeState);
                 let lowerCard = dashboardHourlyCardLower(`${t[0]} ${t[1]}`, '/src/images/weather-icons/direction.png', x.windSpeed, x.windDirection);
                 let li1 = document.createElement('li');
                 li1.classList.add('slider-item');
@@ -414,13 +415,13 @@ function renderHourlyWeather(page, hourly, flag) {
         let temp = document.createElement('div');
         root.setAttribute('id', 'hourly-render');
         root.replaceChildren();
-        render(dynamicHourlyTemplate(hourly), temp);
+        render(dynamicHourlyTemplate(hourly, degreeState), temp);
         root.innerHTML = temp.innerHTML;
     }
 }
 
 
-function getTemp(num) {
+export function getTemp(num) {
     if (degreeState == 'C') return num;
     else if (degreeState == 'F') return Math.round((num * 9 / 5) + 32);
 }

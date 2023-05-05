@@ -3,6 +3,7 @@ import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
 import { searchOnTyping, onSearchClick } from '../api/data-search.js';
 import {
     applyBlur, getCurrentLocationCoords, getParsedWeatherData,
+    getTemp,
     removeErrorOverlay, renderErrorOverlay, renderWeather, updateWeatherInfo
 } from '../api/data-weather.js';
 import { addEventOnElements, dashboardElements, elements, searchUtility, valueParser } from '../util/util.js';
@@ -801,7 +802,7 @@ const hourlyTemplate = () => html`
 </main>
 `;
 
-export const dynamicHourlyTemplate = (items = [], mock = [1, 1, 1, 1, 1, 1, 1]) => html`
+export const dynamicHourlyTemplate = (items = [], degreeState, mock = [1, 1, 1, 1, 1, 1, 1]) => html`
     <div class="content-middle">
         <div>
             <table class="hour-section">
@@ -809,7 +810,7 @@ export const dynamicHourlyTemplate = (items = [], mock = [1, 1, 1, 1, 1, 1, 1]) 
                     <h4 id="last-updated-hourly">Last updated: 12:17 AM</h4>
     ${items.length == 0
         ? mock.map(x => html`${hourRowTemplate()}`)
-        : items.map(item => html`${hourRowTemplate(item)}`)}
+        : items.map(item => html`${hourRowTemplate(item, degreeState)}`)}
                 </tbody>
             </table>
             <footer class="footer">
@@ -832,7 +833,7 @@ export const dynamicHourlyTemplate = (items = [], mock = [1, 1, 1, 1, 1, 1, 1]) 
 `;
 
 // used in both the initial and the dynamically filled templates (can work with dynamic data)
-const hourRowTemplate = (item = { test: true }) => html`
+const hourRowTemplate = (item = { test: true }, degreeState = 'C') => html`
 <tr class="hour-row">
     <td>
         <div class="info-group">
@@ -872,13 +873,13 @@ const hourRowTemplate = (item = { test: true }) => html`
     <td>
         <div class="info-group">
             <div class="label">Temp</div>
-            <div>${item.test ? '31' : item.temp}&deg;<sup>c</sup></div>
+            <div>${item.test ? '31' : getTemp(item.temp)}&deg;<sup>${degreeState}</sup></div>
         </div>
     </td>
     <td>
         <div class="info-group">
             <div class="label">FL Temp</div>
-            <div>${item.test ? '25' : item.feelsLikeTemp}&deg;<sup>c</sup></div>
+            <div>${item.test ? '25' : getTemp(item.feelsLikeTemp)}&deg;<sup>${degreeState}</sup></div>
         </div>
     </td>
     <td>
@@ -907,14 +908,14 @@ const hourRowTemplate = (item = { test: true }) => html`
 </tr>
 `;
 
-export const dashboardHourlyCardUpper = (time, img, temp) => html`
+export const dashboardHourlyCardUpper = (time, img, temp, degreeState) => html`
 <div class="card card-sm slider-card">
     <p class="body-3">${time}</p>
 
     <img src="${img}" width="48" height="48"
     loading="lazy" alt="hourly-forecast-img" class="weather-icon" title="">
 
-    <p class="body-3">${temp}&deg;<sup>C</sup></p>
+    <p class="body-3">${temp}&deg;<sup>${degreeState}</sup></p>
 </div>
 `;
 
