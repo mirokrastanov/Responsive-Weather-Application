@@ -894,7 +894,7 @@ tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
 
 .current-weather .meta-list .meta-item:nth-of-type(2) .meta-text span.tooltip-text {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     visibility: hidden;
     width: 220px;
     background-color: var(--color-surface);
@@ -905,7 +905,7 @@ tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
     border-radius: 15px;
     padding: 10px;
     bottom: 125%;
-    left: 50%;
+    left: 20%;
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
@@ -915,7 +915,7 @@ tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
     content: "";
     position: absolute;
     top: 100%;
-    left: 50%;
+    left: 20%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
@@ -926,6 +926,7 @@ tr td:nth-of-type(11) .info-group div:nth-of-type(2) {
     visibility: visible;
     opacity: 1;
 }
+
 
 
 
