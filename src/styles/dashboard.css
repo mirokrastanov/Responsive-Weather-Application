@@ -616,7 +616,7 @@ article.container::before {
     position: absolute;
     top: 16px;
     right: 16px;
-    padding: 2px 12px;
+    padding: 5px 30px;
     border-radius: var(--radius-pill);
     font-weight: var(--weight-semiBold);
     cursor: help;
