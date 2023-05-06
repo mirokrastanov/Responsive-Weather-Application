@@ -394,3 +394,10 @@ input[type=checkbox]:checked~.aqi-box-text {
 #aqi-location>* {
     font-size: 2rem;
 }
+
+.aqi-row-all .aqi-cell:nth-of-type(7) .aqi-title,
+.aqi-row-all .aqi-cell:nth-of-type(8) .aqi-title {
+    background-color: var(--color-on-surface-variant);
+    color: black;
+    font-weight: bolder;
+}
