@@ -1,6 +1,6 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
-import { applyBlur, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay } from '../api/data-weather.js';
+import { applyBlur, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay, setValue } from '../api/data-weather.js';
 import { aqiElements } from '../util/util.js';
 // import from api
 
@@ -11,6 +11,7 @@ export async function airQualityPage(ctx) {
     context = ctx;
     ctx.render(initialTemplate());
     aqiElements.aqiElInfo().forEach(x => x.addEventListener('click', infoRender));
+    aqiElements.aqiToggle1().addEventListener('change', showHideAqiRed);
     applyBlur(aqiElements.aqiWrapper());
     try {
         if (localStorage.getItem('lat') && localStorage.getItem('lon')) {
@@ -137,13 +138,13 @@ const aqiBoxRowTemplate = (item) => html`
         <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
             CO</p>
         <p class="aqi-content" title="Carbon Monoxide (10m above ground)">
-        ${item.test ? '23' : item.co[0]} <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.co[0]} <sub>μg/m³</sub><p class="special-abs">*</p></p>
     </div>
     <div class="aqi-cell">
         <p class="aqi-title" title="Dust particles (10m above ground)">
             Dust</p>
         <p class="aqi-content" title="Dust particles (10m above ground)">
-        ${item.test ? '23' : item.dust[0]} <sub>μg/m³</sub></p>
+        ${item.test ? '23' : item.dust[0]} <sub>μg/m³</sub><p class="special-abs">*</p></p>
     </div>
 `;
 
@@ -161,6 +162,11 @@ function updateOverviewBoxes() {
             x.style.backgroundColor = `var(${data[el[i]][3].bg})`;
             x.style.color = `var(${data[el[i]][3].color})`;
         });
+        console.log(currentAQIinfo);
+        setValue(aqiElements.aqiBox7().querySelector('.aqi-content'),
+            currentAQIinfo.hourly[0].co[0], html`<sub>μg/m³</sub>`);
+        setValue(aqiElements.aqiBox8().querySelector('.aqi-content'),
+            currentAQIinfo.hourly[0].dust[0], html`<sub>μg/m³</sub>`);
     }
 }
 
@@ -209,8 +215,12 @@ const initialTemplate = () => html`
                 </li>
                 <p class="aqi-content">Good</p>
                 <div id="state-message"></div>
+                <button class="render-hourly">Hourly Forecast</button>
                 <label class="aqi-box-btn" for="toggle-1">Details</label>
                 <input type="checkbox" id="toggle-1">
+                <article id="aqi-red" class="red">* CO & Dust are not colored, 
+                    because they are not part of the combined EU AQI. 
+                    Click Details to read more.</article>
                 <div class="aqi-box-text">
                     <span>European Air Quality Index (AQI) calculated for different
                         particulate matter and gases individually. The consolidated european_aqi returns the
@@ -219,19 +229,40 @@ const initialTemplate = () => html`
                         conditions.</span>
                     
                     <span>The Index is based on concentration values for up to five key pollutants, including:</span>
-                    <div>Particulate matter - PM<sub>10</sub></div>
-                    <div>Fine particulate matter - PM<sub>2.5</sub></div>
-                    <div>Ozone - O<sub>3</sub></div>
-                    <div>Nitrogen dioxide - NO<sub>2</sub></div>
-                    <div>Sulphur dioxide - SO<sub>2</sub></div>
+                    <div>Particulate matter (PM<sub>10</sub>), 
+                    Fine particulate matter - (PM<sub>2.5</sub>),
+                    Ozone (O<sub>3</sub>), 
+                    Nitrogen dioxide (NO<sub>2</sub>),
+                    Sulphur dioxide (SO<sub>2</sub>). </div>
+
+                    <span>Pollutants outside of the combined European Air Quality Index:</span>
+                    <div class="red">* Carbon Monoxide - CO:  
+                    <a class="info-link-inline" 
+                    href="https://www.eea.europa.eu/data-and-maps/figures/carbon-monoxide-8-hour-mean-limit-value-for-the-protection-of-human-health-5#:~:text=In%20the%20air%20quality%20directive,metre%20(mg%2Fm3)."
+                    target="_blank">EEA Recommendation</a>
+                    <a class="info-link-inline" 
+                    href="https://www.transportpolicy.net/standard/eu-air-quality-standards/"
+                    target="_blank">EU Standard (short)</a>
+                    <a class="info-link-inline" 
+                    href="https://www.concawe.eu/wp-content/uploads/2017/01/rpt_97-51-2004-01704-01-e.pdf"
+                    target="_blank">Documentation</a>
+                    </div>
+                    <div class="red">* Dust Particles - Dust: 
+                    <a class="info-link-inline" 
+                    href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32014L0034"
+                    target="_blank">EU Directive</a>
+                    <a class="info-link-inline" 
+                    href="https://acp.copernicus.org/articles/23/3629/2023/"
+                    target="_blank">Impact on Air Quality</a>
+                    </div>
                     
+
                     <br />
                     <span>More information here: <a class="info-link-inline"
                             href="https://airindex.eea.europa.eu/Map/AQI/Viewer/" target="_blank">EEA</a>
                         <a class="info-link-inline" href="https://en.wikipedia.org/wiki/Air_quality_index"
                             target="_blank">Wiki</a></span>
                     <br />
-                    <button class="render-hourly">Hourly Forecast</button>
                 </div>
             </div>
 
@@ -287,13 +318,12 @@ const initialTemplate = () => html`
 
             <div class="aqi-box">
                 <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
-                    Unregulated</p>
-                <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
                     CO</p>
                 <p class="aqi-content" title="Carbon Monoxide (10m above ground)">
                     23 <sub>μg/m³</sub></p>
                 <div class='aqi-el-details'>
                     <span class="aqi-el-info" data-info="co">Wiki</span>
+                    <p class="special-abs">*</p>
                 </div>
             </div>
 
@@ -304,6 +334,7 @@ const initialTemplate = () => html`
                     23 <sub>μg/m³</sub></p>
                 <div class='aqi-el-details'>
                     <span class="aqi-el-info" data-info="dust">Wiki</span>
+                    <p class="special-abs">*</p>
                 </div>
             </div>
 
@@ -312,6 +343,11 @@ const initialTemplate = () => html`
 </div>
 `;
 
+
+function showHideAqiRed(e) {
+    if (aqiElements.aqiToggle1().checked) aqiElements.aqiRed().style.display = 'none';
+    else aqiElements.aqiRed().style.display = 'block';
+}
 
 function infoRender(e) {
     let target = e.target.dataset.info;

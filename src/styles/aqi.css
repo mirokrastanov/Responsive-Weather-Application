@@ -116,8 +116,23 @@ div:nth-of-type(1).aqi-box {
     font-size: 2.5rem;
 }
 
-.aqi-box span:nth-of-type(2) {
-    margin: 5px 0 15px 0;
+.aqi-box span:nth-of-type(2),
+.aqi-box span:nth-of-type(3) {
+    margin: 15px 0 5px 0;
+}
+
+.aqi-box span:nth-of-type(3),
+.red {
+    color: red;
+}
+
+.red {
+    margin: 3px 0px;
+}
+
+.red a {
+    color: white;
+    margin: 0px 3px;
 }
 
 .info-link-inline {
@@ -196,9 +211,8 @@ input[type=checkbox]:checked~.aqi-box-text {
 
 
 
-
-
-.render-hourly {
+.render-hourly,
+.aqi-box-btn {
     display: inline-block;
     width: fit-content;
     padding: 5px 2rem;
@@ -207,10 +221,11 @@ input[type=checkbox]:checked~.aqi-box-text {
     border-radius: var(--radius-pill);
     background-color: rgba(119, 119, 119, 0.315);
     box-shadow: inset 0 0 0 0 #54b3d6;
-    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    transition: var(--transition-500ms-bsh);
 }
 
-.render-hourly:hover {
+.render-hourly:hover,
+.aqi-box-btn:hover {
     cursor: pointer;
     background-color: rgba(119, 119, 119, 0.582);
     cursor: pointer;
@@ -263,6 +278,30 @@ input[type=checkbox]:checked~.aqi-box-text {
 .aqi-box:nth-of-type(1) .aqi-box-text span:nth-of-type(1) p:nth-of-type(6) {
     background-color: var(--color-bg-aqi-6);
     color: var(--color-bg-aqi-6-text);
+}
+
+.aqi-box:nth-of-type(7),
+.aqi-box:nth-of-type(8) {
+    position: relative;
+}
+
+.special-abs {
+    position: absolute;
+    top: 0%;
+    right: 4%;
+    color: red;
+    font-size: 3rem;
+}
+
+.aqi-cell .special-abs {
+    font-size: 2rem;
+}
+
+.aqi-box:nth-of-type(7) .aqi-title,
+.aqi-box:nth-of-type(8) .aqi-title {
+    background-color: var(--color-on-surface-variant);
+    color: var(--color-background);
+    font-weight: bolder;
 }
 
 .aqi-row-all {
@@ -320,7 +359,7 @@ input[type=checkbox]:checked~.aqi-box-text {
 .aqi-el-details span {
     background-color: var(--color-background);
     color: var(--color-on-surface-variant);
-    padding: 1px 14px;
+    padding: 0px 8px;
     border-radius: 15px;
     margin-top: 3px;
     font-weight: bold;
@@ -352,7 +391,6 @@ input[type=checkbox]:checked~.aqi-box-text {
     gap: 4px;
 }
 
-#aqi-location > * {
+#aqi-location>* {
     font-size: 2rem;
 }
-

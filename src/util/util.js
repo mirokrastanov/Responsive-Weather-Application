@@ -341,6 +341,8 @@ export const aqiElements = {
     aqiSTATEmessage: () => document.querySelector('.aqi-box:nth-of-type(1) #state-message'),
     aqiBoxEAQI: () => document.querySelector('div:nth-of-type(1).aqi-box'),
     aqiBoxEAQIdetails: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-box-details'),
+    aqiToggle1: () => document.querySelector('#toggle-1'),
+    aqiRed: () => document.querySelector('article#aqi-red'),
 
     aqiBox2: () => document.querySelector('.aqi-box:nth-of-type(2)'),
     aqiBox3: () => document.querySelector('.aqi-box:nth-of-type(3)'),
