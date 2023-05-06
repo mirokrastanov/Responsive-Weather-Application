@@ -300,6 +300,7 @@ export const dashboardElements = {
     highTimeSunset: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(1).card-list .card-item:nth-of-type(3) .title-1'),
     highYourTime: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(1) .title-1'),
     highTimeDiff: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(2) .title-1'),
+    highTimeDiffLabel: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(2) .label-1'),
     highTimeDiffIcon: () => document.querySelector('div.card.card-sm.highlight-card.two div:nth-of-type(2).card-list .card-item:nth-of-type(2) .m-icon'),
 
     highFeelsLike: () => document.querySelector('.highlight-list div:nth-of-type(3).card-sm.highlight-card .wrapper .title-1'),

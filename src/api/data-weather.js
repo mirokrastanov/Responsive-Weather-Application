@@ -328,10 +328,11 @@ async function renderCurrentWeather(page, current) {
         let locBehind = yourOffset > locOffset;
         let [hoursDiff, diffIcon] = [null, null];
         if (yourOffset == locOffset) {
-            hoursDiff = 'same time';
+            hoursDiff = 'same timezone';
             diffIcon = 'nest_clock_farsight_analog';
         } else {
-            hoursDiff = !locBehind ? `${offsetDiff / 60}h behind` : `${offsetDiff / 60}h ahead`;
+            hoursDiff = !locBehind ? `${offsetDiff / 60}h behind`
+                : `${offsetDiff / 60}h ahead`;
             diffIcon = !locBehind ? 'history' : 'update';
         }
         let myTime = timeParser.getLocationTime(0, locBehind);
@@ -347,7 +348,13 @@ async function renderCurrentWeather(page, current) {
         // MY TIME & time difference
         setValue(dashboardElements.highYourTime(), `${myTime[0]}:${myTime[1]} ${myTime[2]}`); // UP*
         setValue(dashboardElements.highTimeDiffIcon(), diffIcon);
-        setValue(dashboardElements.highTimeDiff(), hoursDiff);
+        if (yourOffset != locOffset) {
+            setValue(dashboardElements.highTimeDiffLabel(), 'You are');
+            setValue(dashboardElements.highTimeDiff(), hoursDiff);
+        } else {
+            setValue(dashboardElements.highTimeDiffLabel(), 'You are in the');
+            setValue(dashboardElements.highTimeDiff(), hoursDiff);
+        }
         // UP* ==> these lines are being updated each second from the function below
         updateDashboardTimeNow(current);
 
