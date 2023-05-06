@@ -172,7 +172,7 @@ const initialTemplate = () => html`
         </div>
         <div>
             <p class="body-3">
-                Author: Miro Krastanov. Extra credits in the About section.
+                Author: Miro Krastanov.
             </p>
         </div>
         <div>
@@ -203,6 +203,10 @@ const initialTemplate = () => html`
 
             <div class="aqi-box">
                 <p class="aqi-title">European Air Quality Index</p>
+                <li class="meta-item" id="aqi-location">
+                    <span class="m-icon">location_on</span>
+                    <p class="title-3 meta-text">Greater London, England, GB</p>
+                </li>
                 <p class="aqi-content">Good</p>
                 <div id="state-message"></div>
                 <label class="aqi-box-btn" for="toggle-1">Details</label>
@@ -282,6 +286,8 @@ const initialTemplate = () => html`
             </div>
 
             <div class="aqi-box">
+                <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
+                    Unregulated</p>
                 <p class="aqi-title" title="Carbon Monoxide (10m above ground)">
                     CO</p>
                 <p class="aqi-content" title="Carbon Monoxide (10m above ground)">

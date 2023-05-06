@@ -336,6 +336,7 @@ export const aqiElements = {
     aqiCtr: () => document.querySelector('#aqi-ctr'),
     aqiWrapper: () => document.querySelector('#aqi-wrapper'),
     aqiFlexGrid: () => document.querySelector('#aqi-flex'),
+    aqiLocation: () => document.querySelector('#aqi-location .title-3.meta-text'),
     aqiSTATE: () => document.querySelector('.aqi-box:nth-of-type(1) .aqi-content'),
     aqiSTATEmessage: () => document.querySelector('.aqi-box:nth-of-type(1) #state-message'),
     aqiBoxEAQI: () => document.querySelector('div:nth-of-type(1).aqi-box'),

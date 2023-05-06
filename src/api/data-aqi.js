@@ -158,6 +158,7 @@ export function renderAQI(page, data, flag = true) {
 
 
     } else if (page == 'air-quality') {
+        if (localStorage.getItem('address')) setValue(aqiElements.aqiLocation(), localStorage.getItem('address'));
         setValue(aqiElements.aqiSTATE(), hourly[0].eAQI[2], false, [['title', `${aqiState.title}\n\nAll values are in: ${no2[1]}`],
         ['style', `background-color:var(${aqiState.bg});color:var(${aqiState.color});`],
         ['data-hover', aqiState.hover]]);

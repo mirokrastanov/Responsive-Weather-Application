@@ -345,3 +345,14 @@ input[type=checkbox]:checked~.aqi-box-text {
     color: var(--color-background);
 }
 
+#aqi-location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+#aqi-location > * {
+    font-size: 2rem;
+}
+
