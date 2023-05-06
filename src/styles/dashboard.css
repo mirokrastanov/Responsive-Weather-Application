@@ -555,7 +555,8 @@ article.container::before {
 }
 
 .highlights .card-sm {
-    background-color: var(--color-black-alpha-10);
+    /* background-color: var(--color-black-alpha-10); */
+    background-color: var(--color-background);
     position: relative;
 }
 
