@@ -341,6 +341,10 @@
         font-size: 3.6rem;
     }
 
+    .card.card-sm.highlight-card.one {
+        min-height: 220px;
+    }
+
     .highlight-card.one .card-item {
         width: 25%;
         flex-direction: column-reverse;
