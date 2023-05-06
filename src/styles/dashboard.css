@@ -502,7 +502,7 @@ article.container::before {
 }
 
 .current-weather-card .meta-text {
-    color: var(--color-on-surface-variant);
+    color: var(--color-on-surface-variant-2);
 }
 
 
