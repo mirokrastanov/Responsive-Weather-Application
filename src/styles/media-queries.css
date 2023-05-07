@@ -247,6 +247,8 @@
         font-size: 2rem;
     }
 
+
+    /* resp home */
     .overlay-home a {
         font-size: 1.3rem;
     }
@@ -278,12 +280,117 @@
         content: 'Credits: "About" Page';
     }
 
+    /* resp dashboard */
+    .header {
+        height: 50px;
+        margin-bottom: 5px;
+    }
 
+    .header .container {
+        padding: 5px;
+        height: 50px;
+        justify-content: space-evenly;
+        gap: 5%;
+    }
 
+    .m-icon {
+        font-size: 1.5rem;
+    }
 
+    .icon-btn {
+        height: 34px;
+        width: 34px;
+    }
 
+    .header-actions {
+        gap: 10px;
+    }
+
+    .header .container .btn-primary {
+        padding: 9px;
+        height: 34px;
+    }
+
+    .notif-overlay {
+        margin-top: -40px;
+        font-size: 1rem;
+        padding: 0px 3px;
+        border-radius: 2px;
+    }
+
+    #deg-toggle-ctr {
+        transform: scale(0.7);
+    }
+}
+
+@media all and (max-width: 230px) {
+    .label-1 {
+        font-size: 1.1rem;
+    }
+
+    li.card-item {
+        font-size:0.9rem;
+    }
+
+    .title-1 {
+        font-size: 1.3rem;
+    }
+
+    .title-2 {
+        font-size: 1.2rem;
+    }
+
+    .title-3 {
+        font-size: 1.1rem;
+    }
+
+    #highlights-label {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    div.card.card-sm.highlight-card.one {
+        padding: 10px;
+    }
+
+    div.card.card-sm.highlight-card.one .title-3 {
+        margin: 5px;
+        text-align: center;
+    }
+
+    div.card.card-sm.highlight-card.one .wrapper {
+        flex-direction: column;
+        justify-content: baseline;
+        align-items: center;
+    }
+    
+    div.card.card-sm.highlight-card.one .wrapper .card-list {
+        flex-direction: column;
+        width: 90%;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+
+    div.card.card-sm.highlight-card.one .wrapper .card-list .card-item {
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
+
+    .badge.aqi-1.label-1 {
+        padding: 1px 8px;
+        font-size: 1rem;
+        right: 50%;
+        transform: translateX(50%);
+        top: -6px;
+    }
+
+    #aqi-link {
+        margin: 0px auto;
+        font-size: 1.2rem;
+    }
 
 }
+
 
 @media all and (min-width: 768px) {
 
