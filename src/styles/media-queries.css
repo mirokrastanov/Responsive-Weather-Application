@@ -462,6 +462,75 @@
 }
 
 @media all and (max-width: 230px) {
+    header {
+        height: 60px;
+    }
+    
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 2px;
+        width: 100%;
+        padding-bottom: 1px;
+    }
+
+    html body header nav a {
+        border-radius: 100px;
+    }
+
+    header nav a {
+        height: 28px;
+        width: 100%;
+        font-size: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        border-radius: 5px;
+        background-color: rgb(41, 41, 41);
+        margin: 0px;
+    }
+
+    nav a:nth-of-type(1) img {
+        display: none;
+    }
+
+    #main {
+        margin-top: 30px;
+    }
+
+    main article.container {
+        padding: 10px 0px;
+    }
+
+    article.container::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    .card {
+        margin: 0px 2px;
+        border-radius: 10px;
+    }
+
+    .card:nth-of-type(1) {
+        margin-top: 10px;
+    }
+
+    .header {
+        padding: 10px 0px;
+        height: fit-content;
+        margin: 0px;
+    }
+
+    .header .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .header .logo img {
+        height: 17px;
+        width: 100px;
+    }
+
     .label-1 {
         font-size: 1.1rem;
     }
@@ -501,6 +570,39 @@
         justify-content: baseline;
         align-items: center;
     }
+
+    .current-weather-card .weapper {
+        justify-content: center;
+        align-items: center;
+        margin-top: 0px;
+    }
+
+    #deg-toggle-ctr {
+        transform: scale(0.5);
+    }
+
+    .current-weather-card img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .current-weather-card .heading {
+        font-size: 2rem;
+    }
+
+    #last-updated {
+        font-size: 1rem;
+    }
+
+    .section.highlights .card-lg {
+        padding: 5px;
+        padding: 2px 4px;
+    }
+
+    #h-info {
+        width: 90%;
+    }
+
     
     div.card.card-sm.highlight-card.one .wrapper .card-list {
         flex-direction: column;
@@ -514,8 +616,25 @@
         justify-content: center;
     }
 
-    .badge.aqi-1.label-1 {
-        padding: 1px 8px;
+    .slider-list:nth-child(2) .slider-card p:nth-of-type(2).body-3 {
+        font-size: 0.9rem;
+    }
+
+    .hourly-forecast .slider-container .slider-list .slider-item div.card.card-sm.slider-card img {
+        width: 20px;
+        height: 20px;
+        margin: 0px;
+    }
+
+    .content-right .highlights .card-lg {
+        padding: 5px 2px 15px 2px;
+    }
+
+    #highlights-label {
+        margin: 5px 0px;
+    }
+
+    #main-ctr footer.footer p {
         font-size: 1rem;
         right: 50%;
         transform: translateX(50%);
