@@ -563,6 +563,27 @@
         font-size: 1.2rem;
     }
 
+    
+    #main-ctr #about-ctr {
+        padding: 8px 2px 8px 9px;
+        width: 99%;
+    }
+
+    #main-ctr #about-ctr .about-item {
+        padding: 10px 2px;
+    }
+
+    #main-ctr #about-ctr .about-item .about-title {
+        font-size: 1.3rem;
+    }
+
+    #main-ctr #about-ctr .about-item .about-sub {
+        font-size: 1.4rem;
+    }
+
+    #main-ctr #about-ctr .about-item .about-desc {
+        font-size: 1.1rem;
+    }
 
 }
 
