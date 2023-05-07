@@ -458,6 +458,7 @@
         width: 90px;
         height: 20px;
     }
+
     
     .hour-section {
         padding-top: 5px;
@@ -569,7 +570,7 @@
     header {
         height: 60px;
     }
-    
+
     nav {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -629,7 +630,7 @@
         justify-content: center;
         align-items: center;
     }
-    
+
     .header .logo img {
         height: 17px;
         width: 100px;
@@ -699,7 +700,8 @@
         font-size: 2rem;
     }
 
-    #last-updated {
+    #last-updated,
+    #last-updated-hourly {
         font-size: 1rem;
     }
 
@@ -712,7 +714,7 @@
         width: 90%;
     }
 
-    
+
     .hourly-forecast .slider-container {
         margin: 0px;
         width: 100%;
@@ -770,11 +772,42 @@
 
     #main-ctr footer.footer p {
         font-size: 1rem;
+        gap: 0px;
+    }
+
+    footer.footer {
+        padding-bottom: 20px;
     }
 
     .footer img {
         height: 15px;
         width: 75px;
+    }
+
+    #aqi-top #aqi-header-ctr {
+        margin-top: -15px;
+    }
+
+    #aqi-ctr {
+        margin-top: -15px;
+    }
+
+    .aqi-row-all {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    #state-message p {
+        font-size: 1.2rem;
+    }
+
+    .render-hourly,
+    .aqi-box-btn, 
+    #aqi-red,
+    #aqi-location span,
+    #aqi-location p,
+    .aqi-content {
+        font-size: 1.3rem;
     }
 
 }
