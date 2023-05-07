@@ -401,3 +401,16 @@ input[type=checkbox]:checked~.aqi-box-text {
     color: black;
     font-weight: bolder;
 }
+
+#red-details {
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 0px 6px;
+    color: white;
+}
+
+#red-details:hover {
+    border-bottom: 1px solid white;
+    border-top: 1px solid red;
+    transform: scale(1.03);
+}

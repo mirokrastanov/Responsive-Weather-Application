@@ -359,6 +359,7 @@ export const aqiElements = {
 
     aqiDynamicRows: () => document.querySelectorAll('.aqi-row-all'),
     aqiElInfo: () => document.querySelectorAll('.aqi-el-info'),
-    
+    aqiBoxBtn: () => document.querySelector('.aqi-box-btn'),
+
 };
 

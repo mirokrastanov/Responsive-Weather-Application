@@ -220,7 +220,7 @@ const initialTemplate = () => html`
                 <input type="checkbox" id="toggle-1">
                 <article id="aqi-red" class="red">* CO & Dust are not colored, 
                     because they are not part of the combined EU AQI. 
-                    Click Details to read more.</article>
+                    Click <label id="red-details" for="toggle-1">Details</label> to read more.</article>
                 <div class="aqi-box-text">
                     <span>European Air Quality Index (AQI) calculated for different
                         particulate matter and gases individually. The consolidated european_aqi returns the
@@ -345,8 +345,13 @@ const initialTemplate = () => html`
 
 
 function showHideAqiRed(e) {
-    if (aqiElements.aqiToggle1().checked) aqiElements.aqiRed().style.display = 'none';
-    else aqiElements.aqiRed().style.display = 'block';
+    if (aqiElements.aqiToggle1().checked) {
+        aqiElements.aqiRed().style.display = 'none';
+        aqiElements.aqiBoxBtn().textContent = 'Hide Details';
+    } else {
+        aqiElements.aqiRed().style.display = 'block';
+        aqiElements.aqiBoxBtn().textContent = 'Details';
+    }
 }
 
 function infoRender(e) {
