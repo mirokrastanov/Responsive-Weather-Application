@@ -459,6 +459,110 @@
         height: 20px;
     }
     
+    .hour-section {
+        padding-top: 5px;
+    }
+
+    #hourly-render::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .hour-row {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        margin: 10px 1px;
+    }
+
+    .hour-row img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .hour-row .info-group .label {
+        font-size: 0.8rem;
+    }
+
+    .hour-row .info-group div:nth-of-type(2) {
+        font-size: 0.8rem;
+    }
+
+    .hour-row td {
+        grid-row: span 1;
+        grid-column: span 1;
+        height: 40px;
+        align-items: center;
+    }
+
+    .hour-section .hour-row td:nth-of-type(1) {
+        grid-column: span 1;
+    }
+
+    .hour-section .hour-row td:nth-of-type(2) {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+
+    .hour-section .hour-row td:nth-of-type(7) {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+
+    .hour-section .hour-row td:nth-of-type(8) {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+
+    .hour-section .hour-row td:nth-of-type(4) {
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+    }
+
+    .hour-section .hour-row td:nth-of-type(10) {
+        grid-row: 3 / 4;
+        grid-column: 2 / 3;
+    }
+
+    .hour-section .hour-row td:nth-of-type(9) {
+        grid-row: 4 / 5;
+        grid-column: 2 / 3;
+    }
+
+    #aqi-top #aqi-header-ctr {
+        margin-top: 40px;
+    }
+
+    #aqi-ctr {
+        margin-top: 40px;
+    }
+
+    #flex-row {
+        flex-wrap: wrap;
+        font-size: 1.2rem;
+    }
+
+    #flex-row img {
+        height: 18px;
+        width: 85px;
+    }
+
+    .aqi-row-all .aqi-cell {
+        padding: 2px;
+        border-radius: 5px;
+    }
+
+    .aqi-cell .aqi-title {
+        font-size: 0.8rem;
+    }
+
+    .aqi-cell .aqi-content {
+        font-size: 1rem;
+    }
+
+    .aqi-cell .special-abs {
+        font-size: 1.2rem;
+    }
+
+
 }
 
 @media all and (max-width: 230px) {
