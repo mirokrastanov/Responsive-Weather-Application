@@ -52,7 +52,7 @@ This website is Fully Responsive and works with multiple resolutions - supportin
 <br /> 
 
 ## Technologies used for the creation of this App
-<p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w3.png?raw=true" alt="img-banner" height="303px"></p>
+<p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w3.png?raw=true" alt="img-banner" height="230px"></p>
 
 
 ## [Source Code](https://github.com/mirokrastanov/Responsive-Weather-Application/src/)
