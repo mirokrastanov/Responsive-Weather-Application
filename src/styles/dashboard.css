@@ -975,8 +975,9 @@ input[type="checkbox"].toggle+label::before {
     height: 2em;
     /* background-color: rgba(0, 191, 255, 0.5); */
     background-color: var(--color-background);
+    border: 1px solid var(--color-on-surface-variant);
     /* border: 2px solid white; */
-    border: 2px solid var(--color-on-surface-variant-2);
+    /* border: 2px solid var(--color-on-surface-variant-2); */
     border-radius: 4em;
     transition: 300ms ease-in-out;
 }
@@ -989,7 +990,7 @@ input[type="checkbox"].toggle+label::after {
     width: 3em;
     height: 3em;
     background-color: var(--color-background);
-    border: 2px solid var(--color-on-surface-variant-2);
+    border: 1px solid var(--color-on-surface-variant);
     border-radius: 50%;
     transition: 300ms ease-in-out;
 }
