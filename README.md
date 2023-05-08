@@ -40,10 +40,10 @@ This website is Fully Responsive and works with multiple resolutions - supportin
 <p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w18.png?raw=true" alt="img-banner" height="869px"></p>
 
 ### PC View - Weather Dashboard Page - Hourly Preview Section + Daily Forecast Section
-<p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w6.png?raw=true" alt="img-banner" height="500px"></p>
+<p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w6.png?raw=true" alt="img-banner" height="400px"></p>
 
 ### PC View - Air Quality Page - AQI Overview section
-<p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w8.png?raw=true" alt="img-banner" height="600px"></p>
+<p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w8.png?raw=true" alt="img-banner" height="450px"></p>
 
 ### More Images - Link below
 <a href="github.com/mirokrastanov/Responsive-Weather-Application/tree/main/src/images/github-doc">Click for more images</a>
