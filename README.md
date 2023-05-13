@@ -1,7 +1,7 @@
 # Responsive-Weather-Application
 ☀️🌤️🌧️🌨️🌡️Web application with modern responsive design showing information about the weather, air quality &amp; more.
 
-<p align="center"><a href="https://weather.mirokrastanov.repl.co/"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w-sidebar.png?raw=true" alt="img-banner" height="400px"></a></p>
+<p align="center"><a href="https://weather.mirokrastanov.repl.co/"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w-sidebar.png?raw=true" alt="img-banner" height="420px"></a></p>
 
 ## Live Demo
 [<img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" alt="run-button" height="40px" />](https://weather.mirokrastanov.repl.co/)
