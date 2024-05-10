@@ -55,6 +55,6 @@ This website is Fully Responsive and works with multiple resolutions - supportin
 <p align="center"><img src="https://github.com/mirokrastanov/Responsive-Weather-Application/blob/main/src/images/github-doc/w3.png?raw=true" alt="img-banner" height="230px"></p>
 
 
-## [Source Code](https://github.com/mirokrastanov/Responsive-Weather-Application/src/)
+## [Source Code](https://github.com/mirokrastanov/Responsive-Weather-Application/tree/main/src)
 
 <br />
