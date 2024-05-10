@@ -1,5 +1,5 @@
-import page from '../node_modules/page/page.mjs';
-import { render } from '../node_modules/lit-html/lit-html.js';
+import page from 'https://cdn.jsdelivr.net/npm/page/page.mjs';
+import { render } from 'https://cdn.jsdelivr.net/npm/lit-html/lit-html.js';
 import { homePage } from './views/home.js';
 import { dashboardPage } from './views/dashboard.js';
 import { aboutPage } from './views/about.js';

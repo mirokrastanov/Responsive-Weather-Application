@@ -1,4 +1,4 @@
-import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { html, render } from 'https://cdn.jsdelivr.net/npm/lit-html/lit-html.js';
 import { touchSlider } from '../util/slider.js';
 import {
     aqiElements,

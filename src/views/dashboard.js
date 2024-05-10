@@ -1,4 +1,4 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+import { html } from 'https://cdn.jsdelivr.net/npm/lit-html/lit-html.js';
 import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
 import { searchOnTyping, onSearchClick } from '../api/data-search.js';
 import {

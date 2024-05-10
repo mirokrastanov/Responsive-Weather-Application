@@ -1,4 +1,4 @@
-import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { html, render } from 'https://cdn.jsdelivr.net/npm/lit-html/lit-html.js';
 import { arrayParser, dashboardElements, elements, searchUtility } from '../util/util.js';
 import { getGeolocation } from './api.js';
 import { getParsedAQIData, renderAQI } from './data-aqi.js';

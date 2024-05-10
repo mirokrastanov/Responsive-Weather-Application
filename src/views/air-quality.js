@@ -1,4 +1,4 @@
-import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { html, render } from 'https://cdn.jsdelivr.net/npm/lit-html/lit-html.js';
 import { getParsedAQIData, renderAQI } from '../api/data-aqi.js';
 import { applyBlur, getParsedWeatherData, removeErrorOverlay, renderErrorOverlay, setValue } from '../api/data-weather.js';
 import { aqiElements } from '../util/util.js';
@@ -162,7 +162,7 @@ function updateOverviewBoxes() {
             x.style.backgroundColor = `var(${data[el[i]][3].bg})`;
             x.style.color = `var(${data[el[i]][3].color})`;
         });
-        console.log(currentAQIinfo);
+        // console.log(currentAQIinfo);
         setValue(aqiElements.aqiBox7().querySelector('.aqi-content'),
             currentAQIinfo.hourly[0].co[0], html`<sub>μg/m³</sub>`);
         setValue(aqiElements.aqiBox8().querySelector('.aqi-content'),

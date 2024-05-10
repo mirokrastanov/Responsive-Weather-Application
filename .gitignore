@@ -28,3 +28,7 @@ _templates/
 
 # API KEYS & private variables
 _private/
+
+
+# Firebase cache
+.firebase/

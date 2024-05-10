@@ -1,18 +1,20 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+import { html } from 'https://cdn.jsdelivr.net/npm/lit-html/lit-html.js';
 
 let context = null;
 export async function homePage(ctx) {
     context = ctx;
     ctx.render(homeTemplate());
     slideshow(ctx);
-    window.addEventListener("keydown", (e) => {
-        if (e.code == 'F5') {
-            e.preventDefault(); // prevents issues on REPLIT, as it doesn't support SPAs that well
-            alert(`            > REFRESH is not allowed on this website.
-            > You can use BACK, FORWARD or the NAVIGATION.
-            > If you need to Launch the app again go to the main page.`);
-        }
-    });
+
+    // NO LONGER NEEDED as Firebase can handle refreshing just fine!
+        // window.addEventListener("keydown", (e) => {
+        //     if (e.code == 'F5') {
+        //         e.preventDefault(); // prevents issues on REPLIT, as it doesn't support SPAs that well
+        //         alert(`            > REFRESH is not allowed on this website.
+        //         > You can use BACK, FORWARD or the NAVIGATION.
+        //         > If you need to Launch the app again go to the main page.`);
+        //     }
+        // });
 }
 
 let myIndex = 0;
